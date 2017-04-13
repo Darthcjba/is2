@@ -1,4 +1,8 @@
-from django.http import HttpResponse
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+@login_required
 def index(request):
-    return HttpResponse("<h1>Pagina de inicio a polireserva</h1>")
+    """A view that can only be accessed by logged-in users"""
+    return render(request, 'principal/pagina_principal.html', {'current_user': request.user})
