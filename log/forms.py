@@ -2,6 +2,8 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
+from polireserva.models import Usuario
+from django.db import  models
 
 #If I dont do this I cannot use Bootstrap CSS
 class LoginForm(AuthenticationForm):
@@ -21,6 +23,7 @@ class SignUpForm(UserCreationForm):
                                widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password'}))
     password2 = forms.CharField(label="Repetir contrasena", max_length=30,
                                widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'repeat_password'}))
+
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')

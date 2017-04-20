@@ -5,20 +5,20 @@
 <div class="container">
     <div class="row">
         <div class="jumbotron">
-            <h1>Bienvienido</h1>
-            <p>Menu</p>
-            <ul class="media-list " role="menu">
-                                            <li>
-                                                <a class=" btn list-group-item" href="#">Administrar Reservas</a>
+            <h2>Bienvienido, {{request.user.first_name}} {{request.user.last_name}}!</h2>
+            <p class="text-center">Menu</p>
+            <ul class=" media-list " role="menu">
+                                            <li >
+                                                <a class="btn-success btn-menu btn  center-block" href="#">Administrar Reservas</a>
                                             </li>
                                             <li>
-                                                <a class=" btn list-group-item" href="#">Administrar Usuarios</a>
+                                                <a class="btn-success btn-menu btn center-block" href="#">Administrar Usuarios</a>
                                             </li>
                                             <li>
-                                                <a class="btn list-group-item" href="#">Administrar Recursos</a>
+                                                <a class="btn-success btn-menu btn center-block" href="#">Administrar Recursos</a>
                                             </li>
                                             <li>
-                                                <a class="btn list-group-item" href="/logout">Salir</a>
+                                                <a class="btn-success btn-menu btn center-block" href="/logout">Salir</a>
                                             </li>
                                         </ul>
         </div>
