@@ -6,5 +6,3 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'principal/pagina_principal.html', {'current_user': request.user})
 
-def register(request):
-    return render(request, 'registration/register.html', {'current_user': request.user})
