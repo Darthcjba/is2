@@ -51,6 +51,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'is2.urls'
 
+STATICFILES_DIRS = [
+os.path.join(BASE_DIR, "static"),
+]
+
 
 TEMPLATES = [
     {
