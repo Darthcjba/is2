@@ -1,16 +1,13 @@
 from django.test import TestCase
 
 # Create your tests here.
-import datetime
 from django.contrib.auth.models import User, Group
-from django.contrib.auth.models import Permission
-from django.core.urlresolvers import reverse
 from django.test import TestCase
-from django.contrib.auth.models import User, Group, Permission
+from django.contrib.auth.models import User
+from .models import Usuario
+from .models import TdRecurso
 from django.contrib.auth import SESSION_KEY
 from django.utils import timezone
-import reversion
-from project.models import Proyecto, Flujo, UserStory, Sprint, Actividad
 
 
 class LoginTest(TestCase):
@@ -47,3 +44,12 @@ class LoginTest(TestCase):
         self.assertTrue(login)
         c.logout()
         self.assertTrue(SESSION_KEY not in self.client.session)
+
+
+class test_TDR(TestCase):
+
+    def setUp(self):
+        TdRecurso.objects.create('123', 'Descripcion')
+
+    def test_modificar(self):
+        t = TdRecurso.objects.get(id_tdr='123')

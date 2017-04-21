@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'polireserva',
+    'tastypie',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polireserva',
 ]
 
 MIDDLEWARE = [
@@ -52,15 +53,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'is2.urls'
 
-STATICFILES_DIRS = [
-os.path.join(BASE_DIR, "static"),
-]
-
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +67,6 @@ TEMPLATES = [
             ],
         },
     },
-
 ]
 
 WSGI_APPLICATION = 'is2.wsgi.application'
@@ -128,10 +123,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+STATIC_ROOT = "/home/cjba/Documents/is2/static_root"
 
+#AUTH_USER_MODEL = 'polireserva.Usuario'
 
 import sys
 if 'test' in sys.argv:
     DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
 
-LOGIN_REDIRECT_URL = '/polireserva'

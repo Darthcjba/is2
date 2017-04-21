@@ -13,19 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import include, url
+from django.conf.urls import url
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
-from log.forms import LoginForm
-from log import views as log_views
-
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^polireserva/', include('polireserva.urls')),
-    url(r'', include('log.urls')),
-    url(r'^login/$', auth_views.login, {'template_name': 'registration/login.html', 'authentication_form': LoginForm}, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': '/login'}, name='logout'),
-    url(r'^register/$', log_views.register, name='register'),
-
+    url(r'^', admin.site.urls),
 ]

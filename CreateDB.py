@@ -6,7 +6,7 @@ conn = psycopg2.connect(database="postgres", user="postgres", password="postgres
 conn.set_isolation_level(0)
 cursor = conn.cursor()
 try:
-    cursor.execute('DROP DATABASE  projectium')
+    cursor.execute('DROP DATABASE  Polireserva')
     print "DB has been deleted."
 except psycopg2.ProgrammingError:
     print "DB does not exist."

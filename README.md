@@ -1,8 +1,3 @@
-
-
-
-MODIFICACION DE ALVARO 2
-
 # is2
 # ..
 Proyecto de IS2
