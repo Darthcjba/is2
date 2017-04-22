@@ -31,8 +31,8 @@ class TdRecurso(models.Model):
 class Recurso(models.Model):
     STATUS_CHOICES = (
         ('Disponible', 'Disponible'),
-        ('EnUso', 'EnUso'),
-        ('NoDisponible', 'NoDisponible'),
+        ('EnUso', 'En Uso'),
+        ('NoDisponible', 'No Disponible'),
         ('Mantenimiento', 'Mantenimiento')
     )
 
@@ -128,5 +128,3 @@ class Reservas(models.Model):
 
     def get_date_f(self):
         return self.date_f
-
-
