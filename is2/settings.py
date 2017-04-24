@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'log',
-    'polireserva',
+    'log.apps.LogConfig',
+    'polireserva.apps.PolireservaConfig',
 ]
 
 MIDDLEWARE = [
