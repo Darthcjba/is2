@@ -1,6 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from models import TdRecurso
+from .forms import TdRecursoFillForm
+
 
 @login_required(login_url='login/')
 def index(request):
@@ -14,3 +18,17 @@ def tdrlist(request):
 def tdrdetail(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     return render(request,'tdr/detail.html', {'tdr':tdr})
+
+
+def tdrfill(request):
+    tdrflag = False
+    if request.method == 'POST':
+        form = TdRecursoFillForm(request.POST)
+        if form.is_valid():
+            new_tdr=form.save(commit=False)
+            new_tdr.save()
+            tdrflag = True
+            return redirect('../')
+    else:
+        form = TdRecursoFillForm()
+    return render(request,'tdr/tdrfill.html',{'form':form})

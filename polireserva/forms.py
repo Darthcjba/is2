@@ -11,6 +11,16 @@ class TdRecursoForm(forms.ModelForm):
         fields = ('id_tdr', 'description')
 
 
+class TdRecursoFillForm(forms.ModelForm):
+    id_tdr = forms.IntegerField(label= "ID")
+    description = forms.CharField(max_length=25,label="Nombre del tipo de Recurso")
+
+    class Meta:
+        model = TdRecurso
+        fields = ('id_tdr', 'description')
+
+
+
 
 class RecursoForm(forms.ModelForm):
 

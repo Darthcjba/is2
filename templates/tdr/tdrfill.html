@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h2>Nuevo Tipo de recurso</h2>
+            <div class="panel-body" >
+                {% if tdrflag %}
+                    <p>Tipo de recurso creado exitosamente</p>
+                    <a class="btn btn-success btn-sm" href="../tdr">Atras</a>
+                {% else %}
+                <form action="." method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                     <button class="btn btn-success btn-sm" type="submit">Crear</button>
+                </form>
+                {% endif %}
+             </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
