@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h2>Tipos de Recursos</h2>
+             <ul class=" media-list " role="menu">
+                {% for tdr in all_tdr %}
+                <li ><a class="btn-success btn-menu btn  center-block" href="/polireserva/tdr/{{tdr.id_tdr}}/">{{tdr.description}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
