@@ -10,7 +10,7 @@
             <ul class=" media-list " role="menu">
                  {% if tdr.recurso_set.all %}
                     {% for recurso in tdr.recurso_set.all %}
-                    <li ><a class="btn-success btn-menu btn  center-block" href="/polireserva/tdr/{{tdr.id_tdr}}/">{{recurso.name_r}}</a></li>
+                    <li ><a class="btn-success btn-menu btn  center-block" href="#">{{recurso.name_r}}</a></li>
                     {% endfor %}
                  {% else %}
                     <h4>No existen Recursos registrados con ese Tipo de Recurso en el sistema.</h4>

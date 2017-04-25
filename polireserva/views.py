@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-from django.http import Http404
+from django.shortcuts import render, get_object_or_404
 from models import TdRecurso
 
 @login_required(login_url='login/')
@@ -9,15 +8,9 @@ def index(request):
 
 def tdrlist(request):
     all_tdr = TdRecurso.objects.all()
-    context = {
-        'all_tdr':all_tdr,
-    }
-    return render(request, 'tdr/list.html', context)
+    return render(request, 'tdr/list.html', {'all_tdr':all_tdr})
 
 
 def tdrdetail(request, id_tdr):
-    try:
-        tdr = TdRecurso.objects.get(pk=id_tdr)
-    except TdRecurso.DoesNotExist:
-        raise Http404("Tipo de Recurso no existe")
+    tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     return render(request,'tdr/detail.html', {'tdr':tdr})

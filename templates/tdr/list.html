@@ -9,7 +9,7 @@
              <ul class=" media-list " role="menu">
                  {% if all_tdr %}
                     {% for tdr in all_tdr %}
-                    <li ><a class="btn-success btn-menu btn  center-block" href="/polireserva/tdr/{{tdr.id_tdr}}/">{{tdr.description}}</a></li>
+                    <li ><a class="btn-success btn-menu btn  center-block" href="{% url 'polireserva:tdrdetail' tdr.id_tdr %}">{{tdr.description}}</a></li>
                     {% endfor %}
                  {% else %}
                     <h4>No existen Tipos de Recursos registrados en el sistema.</h4>
