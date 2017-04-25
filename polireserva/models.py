@@ -75,6 +75,9 @@ class Recurso(models.Model):
         '''
         return self.description
 
+    def __str__(self):
+        return self.name_r
+
 
 class Reservas(models.Model):
     STATUS_CHOICES = (

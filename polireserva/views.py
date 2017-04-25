@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import Http404
 from models import TdRecurso
 
 @login_required(login_url='login/')
@@ -16,4 +16,8 @@ def tdrlist(request):
 
 
 def tdrdetail(request, id_tdr):
-    return HttpResponse("<h2>Detalles de Tipo de Recurso id: " + str(id_tdr) + "</h2>")
+    try:
+        tdr = TdRecurso.objects.get(pk=id_tdr)
+    except TdRecurso.DoesNotExist:
+        raise Http404("Tipo de Recurso no existe")
+    return render(request,'tdr/detail.html', {'tdr':tdr})
