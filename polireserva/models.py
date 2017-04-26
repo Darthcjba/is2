@@ -1,7 +1,10 @@
 from __future__ import unicode_literals
 
+from attr.filters import exclude
+
 from django.db import models
 from log.models import Usuario
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -88,7 +91,7 @@ class Reservas(models.Model):
 
     id_R = models.AutoField(primary_key=True)
 
-    user = models.ForeignKey(Usuario)
+    user = models.ForeignKey(User)
     tdr = models.ForeignKey(TdRecurso)
     recursos = models.ManyToManyField(Recurso)
 

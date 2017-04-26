@@ -34,7 +34,7 @@ class RecursoAdmin(admin.ModelAdmin):
     actions over admin
     '''
 
-    fieldsets = ((None, {'fields': ('id_r', 'name_r', 'id_tdr', 'description', 'status', 'date_c', 'date_m')}),)
+    fieldsets = ((None, {'fields': ( 'name_r', 'id_tdr', 'description', 'status', 'date_c', 'date_m')}),)
 
     form = RecursoForm
 

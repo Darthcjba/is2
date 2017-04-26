@@ -1,35 +1,69 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from models import TdRecurso
-from .forms import TdRecursoFillForm
+from models import *
+from .forms import *
 
 
 @login_required(login_url='login/')
 def index(request):
     return render(request, 'principal/pagina_principal.html', {'current_user': request.user})
 
+
+@login_required(login_url='login/')
 def tdrlist(request):
     all_tdr = TdRecurso.objects.all()
-    return render(request, 'tdr/list.html', {'all_tdr':all_tdr})
+    return render(request, 'tdr/list.html', {'all_tdr': all_tdr})
 
 
+@login_required(login_url='login/')
 def tdrdetail(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
-    return render(request,'tdr/detail.html', {'tdr':tdr})
+    return render(request, 'tdr/detail.html', {'tdr': tdr})
 
 
+@login_required(login_url='login/')
 def tdrfill(request):
     tdrflag = False
     if request.method == 'POST':
         form = TdRecursoFillForm(request.POST)
         if form.is_valid():
-
-            new_tdr=form.save(commit=False)
+            new_tdr = form.save(commit=False)
             new_tdr.save()
             tdrflag = True
             return redirect('../')
     else:
         form = TdRecursoFillForm()
-    return render(request,'tdr/tdrfill.html',{'form':form})
+    return render(request, 'tdr/tdrfill.html', {'form': form})
+
+
+## METODOS DE RESERVA ##
+
+@login_required(login_url='login/')
+def reservalist(request):
+    all_reservas = Reservas.objects.all()
+    return render(request, 'reservas/listareservas.html', {'all_reservas': all_reservas})
+
+
+@login_required(login_url='login/')
+def reservadetail(request, id_R):
+    reserva = get_object_or_404(Reservas, pk=id_R)
+    return render(request, 'reservas/reservasdetail.html', {'reserva': reserva})
+
+
+@login_required(login_url='login/')
+def newreserva(request):
+    reservaflag = False
+    if request.method == 'POST':
+        form = ReservasForm(request.POST)
+        if form.is_valid():
+            new_reserva = form.save(commit=False)
+            new_reserva.user = request.user
+         #   new_reserva.recursos = form.recursos
+            new_reserva.save()
+            reservaflag = True
+            return redirect('../')
+    else:
+        form = ReservasForm()
+    return render(request, 'reservas/newreserva.html', {'form': form})

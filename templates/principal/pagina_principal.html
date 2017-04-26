@@ -3,13 +3,13 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
+    <div class="row ">
         <div class="jumbotron">
             <h2>Bienvienido, {{request.user.first_name}} {{request.user.last_name}}!</h2>
             <p class="text-center">Menu</p>
             <ul class=" media-list " role="menu">
                                             <li >
-                                                <a class="btn-success btn-menu btn  center-block" href="#">Administrar Reservas</a>
+                                                <a class="btn-success btn-menu btn  center-block" href="../polireserva/reservas/">Administrar Reservas</a>
                                             </li>
                                             <li>
                                                 <a class="btn-success btn-menu btn center-block" href="#">Administrar Usuarios</a>

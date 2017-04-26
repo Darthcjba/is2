@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h2>Reservas</h2>
+             <ul class=" media-list " role="menu">
+                 {% if all_reservas %}
+                    {% for reserva in all_reservas %}
+                        <li ><a class="btn-success btn-menu btn  center-block" href="{% url 'polireserva:reservadetail' reserva.id_R %}">De <h4>{{reserva.date_i}}</h4> a <h4>{{reserva.date_f}}</h4></a></li>
+                    {% endfor %}
+                 {% else %}
+                    <h4>No existen reservas registradas en el sistema.</h4>
+                 {% endif %}
+            </ul>
+                   <a class="btn btn-success btn-sm" href="../">Atras</a>
+            <a class="btn btn-success btn-sm" href="new/">Nueva reserva</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
