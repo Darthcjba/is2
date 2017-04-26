@@ -8,7 +8,10 @@ from .forms import *
 
 @login_required(login_url='login/')
 def index(request):
-    return render(request, 'principal/pagina_principal.html', {'current_user': request.user})
+    return render(request, 'principal/pagina_principal2.html', {'current_user': request.user})
+
+def modulo_admin(request):
+    return render(request, 'principal/modulo_administracion.html')
 
 
 @login_required(login_url='login/')
@@ -67,3 +70,23 @@ def newreserva(request):
     else:
         form = ReservasForm()
     return render(request, 'reservas/newreserva.html', {'form': form})
+
+    return render(request,'tdr/tdrfill.html',{'form':form})
+
+
+def recursofill(request,id_tdr):
+    tdr = get_object_or_404(TdRecurso, pk=id_tdr)
+    recursoflag = False
+    if request.method == 'POST':
+        form = RecursoFillForm(request.POST)
+        if form.is_valid():
+
+            new_r=form.save(commit=False)
+            new_r.id_tdr= tdr
+            new_r.save()
+            recursoflag = True
+            return redirect('../')
+    else:
+        form = RecursoFillForm()
+    return render(request,'tdr/recursofill.html',{'form':form,
+                                                  'tdr':tdr})

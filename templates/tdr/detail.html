@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="jumbotron">
-            <h2>Recurso: {{tdr.description}}</h2>
+            <h2>Tipo de Recurso: {{tdr.description}}</h2>
             <h4>ID: {{tdr.id_tdr}}</h4>
             <ul class=" media-list " role="menu">
                  {% if tdr.recurso_set.all %}
@@ -17,7 +17,7 @@
                  {% endif %}
             </ul>
            <a class="btn btn-success btn-sm" href="../">Atras</a>
-            <a class="btn btn-success btn-sm" href="#">Agregar recurso</a>
+            <a class="btn btn-success btn-sm" href="{% url 'polireserva:recursofill' tdr.id_tdr %}" >Agregar recurso</a>
 
         </div>
     </div>
