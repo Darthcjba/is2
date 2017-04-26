@@ -12,8 +12,8 @@ class TdRecursoForm(forms.ModelForm):
 
 
 class TdRecursoFillForm(forms.ModelForm):
-    id_tdr = forms.IntegerField(label= "ID")
-    description = forms.CharField(max_length=25,label="Nombre del tipo de Recurso")
+    id_tdr = forms.IntegerField(label= "ID", widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'idtdr'}))
+    description = forms.CharField(max_length=25,label="Nombre del tipo de Recurso", widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'descripciontdr'}))
 
     class Meta:
         model = TdRecurso
