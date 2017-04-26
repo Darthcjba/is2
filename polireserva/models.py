@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.contrib.auth.models import User
+from log.models import Usuario
 
 # Create your models here.
 
@@ -88,7 +88,7 @@ class Reservas(models.Model):
 
     id_R = models.IntegerField(primary_key=True)
 
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(Usuario)
     tdr = models.ForeignKey(TdRecurso)
     recursos = models.ManyToManyField(Recurso)
 
