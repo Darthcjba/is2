@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h2>Bienvienido, {{request.user.first_name}} {{request.user.last_name}}!</h2>
+            <p class="text-center">Menu</p>
+            <ul class=" media-list " role="menu">
+                <li >
+                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:modulo_admin'%}">Modulo de Administracion</a>
+                </li>
+                <li>
+                    <a class="btn-success btn-menu btn center-block" href="#">Modulo de Reservas</a>
+                </li>
+                <li>
+                    <a class="btn-success btn-menu btn center-block" href="#">Modulo de Recepcion</a>
+                </li>
+                <li>
+                    <a class="btn-success btn-menu btn center-block" href="#">Modulo de Mantenimiento</a>
+                </li>
+                <li>
+                    <a class="btn-success btn-menu btn center-block" href="#">Modulo de Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

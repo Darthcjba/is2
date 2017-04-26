@@ -6,6 +6,8 @@ app_name = 'polireserva'
 urlpatterns = [
     # /polireserva/
     url(r'^$', views.index, name='polindex'),
+    # /polireserva/administracion/
+    url(r'^administracion/$', views.modulo_admin, name='modulo_admin'),
     #/polireserva/tdr/
     url(r'^tdr/$', views.tdrlist, name= 'tdrlist'),
     #/polireserva/tdr/<id_tdr>/
