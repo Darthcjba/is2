@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^tdr/$', views.tdrlist, name= 'tdrlist'),
     url(r'^tdr/(?P<id_tdr>[0-9]+)/$', views.tdrdetail, name= 'tdrdetail'),
     url(r'^tdr/new/$',views.tdrfill,name='tdrfill'),
+    url(r'^tdr/(?P<id_tdr>[0-9]+)/new/$', views.recursofill, name='recursofill'),
 
     #Reservas
     url(r'^reservas/$', views.reservalist, name='reservalist'),

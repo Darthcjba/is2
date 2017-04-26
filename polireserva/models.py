@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from attr.filters import exclude
+#from attr.filters import exclude
 
 from django.db import models
 from log.models import Usuario

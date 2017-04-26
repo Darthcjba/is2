@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'log.apps.LogConfig',
     'polireserva.apps.PolireservaConfig',
-    'datetimewidget',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +124,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+EMAIL_HOST = 'mail.tellezyasociados.com.py'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'm.rivas@tellezyasociados.com.py'
+EMAIL_HOST_PASSWORD = '4716567'
+EMAIL_USE_TLS = True
 
 
 # Static files (CSS, JavaScript, Images)
