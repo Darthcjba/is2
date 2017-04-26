@@ -9,7 +9,7 @@
              <ul class=" media-list " role="menu">
                  {% if all_reservas %}
                     {% for reserva in all_reservas %}
-                        <li ><a class="btn-success btn-menu btn  center-block" href="{% url 'polireserva:reservadetail' reserva.id_R %}">De <h4>{{reserva.date_i}}</h4> a <h4>{{reserva.date_f}}</h4></a></li>
+                        <li ><a class="btn-success btn-menu btn  center-block" href="{% url 'polireserva:reservadetail' reserva.id_R %}">De <br/>{{reserva.date_i}}<br/> a <br/>{{reserva.date_f}}</a></li>
                     {% endfor %}
                  {% else %}
                     <h4>No existen reservas registradas en el sistema.</h4>
