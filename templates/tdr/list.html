@@ -11,9 +11,9 @@
                         <table class="list-group-item-success" style="width: 100%">
                             {% for tdr in all_tdr %}
 
-                                <tr><th style="width: 90%"><a class="btn btn-menu list-group-item left float-left btn-block"
+                                <tr><th style="width: 90%"><a class="btn btn-menu list-group-item  btn-block"
                                        href="{% url 'polireserva:tdrdetail' tdr.id_tdr %}">{{ tdr.description }}</a></th>
-                                    <th><a class="btn btn-danger btn-block float-right right" href="#">Eliminar</a></th>
+                                    <th><a class="btn btn-danger btn-block " href="#">Eliminar</a></th>
                                 </tr>
                             {% endfor %}
 
