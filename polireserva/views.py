@@ -25,6 +25,7 @@ def tdrfill(request):
     if request.method == 'POST':
         form = TdRecursoFillForm(request.POST)
         if form.is_valid():
+
             new_tdr=form.save(commit=False)
             new_tdr.save()
             tdrflag = True

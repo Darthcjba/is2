@@ -10,7 +10,7 @@ class TdRecurso(models.Model):
     def __unicode__(self):
         return str(self.description)
 
-    id_tdr = models.IntegerField("Codigo del Tipo de Recurso", primary_key=True)
+    id_tdr = models.AutoField("Codigo del Tipo de Recurso", primary_key=True)
     description = models.CharField("Descripcion del Tipo de Recurso", max_length=30)
 
     def set_description(self, description):
@@ -36,7 +36,7 @@ class Recurso(models.Model):
         ('Mantenimiento', 'Mantenimiento')
     )
 
-    id_r = models.IntegerField("Codigo del item", primary_key=True)
+    id_r = models.AutoField("Codigo del item", primary_key=True)
     id_tdr = models.ForeignKey(TdRecurso)
     name_r = models.CharField("Nombre del item", max_length=30)
     description = models.CharField("Descripcion del item", max_length=50)
@@ -86,7 +86,7 @@ class Reservas(models.Model):
         ('FIN', 'Finalizada')
     )
 
-    id_R = models.IntegerField(primary_key=True)
+    id_R = models.AutoField(primary_key=True)
 
     user = models.ForeignKey(Usuario)
     tdr = models.ForeignKey(TdRecurso)
