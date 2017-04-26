@@ -8,7 +8,7 @@ from .forms import *
 
 @login_required(login_url='login/')
 def index(request):
-    return render(request, 'principal/pagina_principal2.html', {'current_user': request.user})
+    return render(request, 'principal/pagina_principal.html', {'current_user': request.user})
 
 def modulo_admin(request):
     return render(request, 'principal/modulo_administracion.html')

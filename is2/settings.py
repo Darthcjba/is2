@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'log.apps.LogConfig',
     'polireserva.apps.PolireservaConfig',
+    'datetimewidget',
 ]
 
 MIDDLEWARE = [
