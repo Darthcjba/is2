@@ -116,7 +116,7 @@ class Reservas(models.Model):
     def set_date_i(self, date_i):
         '''
         :param date_i: 
-        :return:
+        :return:felices los 4
         '''
         self.date_i = date_i
 

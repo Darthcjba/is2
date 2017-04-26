@@ -23,9 +23,31 @@ class TdRecursoFillForm(forms.ModelForm):
 
 class RecursoForm(forms.ModelForm):
 
+
     class Meta:
         model = Recurso
         fields = ('id_r', 'name_r', 'status', 'date_c', 'date_m', 'description', )
+
+
+
+class RecursoFillForm(forms.ModelForm):
+    STATUS_CHOICES = (
+        ('Disponible', 'Disponible'),
+        ('EnUso', 'En Uso'),
+        ('NoDisponible', 'No Disponible'),
+        ('Mantenimiento', 'Mantenimiento')
+    )
+
+    name_r= forms.CharField(max_length=25,label="Nombre del Recurso")
+    status=forms.ChoiceField(choices=STATUS_CHOICES, label="Estado")
+    date_c=forms.DateField(label="Fecha de submision")
+    date_m=forms.DateField(label="Fecha de alteracion")
+    description = forms.CharField(label="Descripcion del item" , max_length=50)
+
+    class Meta:
+        model = Recurso
+        fields = ('name_r', 'status', 'date_c', 'date_m', 'description',)
+
 
 
 
