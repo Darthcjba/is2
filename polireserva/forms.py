@@ -60,7 +60,7 @@ class RecursoFillForm(forms.ModelForm):
 
 
 class ReservasForm(forms.ModelForm):
-    id_R = forms.IntegerField(label="ID", max_value=1000, )
+    id_R = forms.IntegerField(label="ID", max_value=1000, widget=forms.HiddenInput, required=False)
     tdr = forms.ModelChoiceField(label="Tipo de recurso", queryset=TdRecurso.objects.all(), required=True,
                                  widget=forms.Select(attrs={'class': 'form-control', 'name': 'tdrselect'}))
     recursos = forms.ModelMultipleChoiceField(label="Recursos", queryset=Recurso.objects.all(), required=True,
