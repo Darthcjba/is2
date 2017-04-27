@@ -2,22 +2,35 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="jumbotron">
-            <h2>Reservas</h2>
-             <ul class=" media-list " role="menu">
-                 {% if all_reservas %}
-                    {% for reserva in all_reservas %}
-                        <li ><a class="btn-success btn-menu btn  center-block" href="{% url 'polireserva:reservadetail' reserva.id_R %}">De <br/>{{reserva.date_i}}<br/> a <br/>{{reserva.date_f}}</a></li>
-                    {% endfor %}
-                 {% else %}
-                    <h4>No existen reservas registradas en el sistema.</h4>
-                 {% endif %}
-            </ul>
-                   <a class="btn btn-success btn-sm" href="../">Atras</a>
-            <a class="btn btn-success btn-sm" href="new/">Nueva reserva</a>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h2>Reservas</h2>
+                <ul class=" media-list " role="menu">
+                    {% if all_reservas %}
+                        <table class="" style="width: 100%">
+                            {% for reserva in all_reservas %}
+                                <tr>
+                                    <th style="width:90%">
+                                        <a class="btn-success btn-menu btn  center-block"
+                                           href="{% url 'polireserva:reservadetail' reserva.id_R %}">De
+                                            <br/>{{ reserva.date_i }}<br/> a <br/>{{ reserva.date_f }}</a>
+                                    </th>
+                                    <th style="width:10%">
+                                        <a class="btn btn-danger btn-block " href="#">Eliminar</a>
+                                        <a class="btn btn-danger btn-block " href="#">Modificar Reserva</a>
+                                    </th>
+                                </tr>
+                            {% endfor %}
+                                                </table>
+
+                            {% else %}
+                            <h4>No existen reservas registradas en el sistema.</h4>
+                    {% endif %}
+                </ul>
+                <a class="btn btn-success btn-sm" href="../">Atras</a>
+                <a class="btn btn-success btn-sm" href="new/">Nueva reserva</a>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

@@ -11,7 +11,8 @@
                         <table class="" style="width: 100%">
                             {% for tdr in all_tdr %}
 
-                                <tr><th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
+                                <tr>
+                                    <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
                                        href="{% url 'polireserva:tdrdetail' tdr.id_tdr %}">{{ tdr.description }}</a></th>
                                     <th><a class="btn btn-danger btn-block " href="#">Eliminar</a></th>
                                 </tr>
