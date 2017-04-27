@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h2>Esta seguro que desea eliminar el Recurso {{ recurso.name_r }}</h2>
+                    <h4>No existen Tipos de Recursos registrados en el sistema.</h4>
+                    <table>
+                        <tr>
+                            <th><a class="btn btn-success btn-sm" href="../../">No</a></th>
+                            <th><a class="btn btn-danger btn-block " href="{% url 'polireserva:confirmrecurso' tdr.id_tdr recurso.id_r %}" >Si</a></th>
+                        </tr>
+                    </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

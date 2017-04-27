@@ -9,9 +9,14 @@
             <h4>ID: {{tdr.id_tdr}}</h4>
             <ul class=" media-list " role="menu">
                  {% if tdr.recurso_set.all %}
-                    {% for recurso in tdr.recurso_set.all %}
-                    <li ><a class="btn-success btn-menu btn  center-block" href="#">{{recurso.name_r}}</a></li>
-                    {% endfor %}
+                       <table class="" style="width: 100%">
+                         {% for recurso in tdr.recurso_set.all %}
+                            <tr>
+                                <th style="width: 90%" ><a class="btn-success btn-menu btn btn-block" href="#">{{recurso.name_r}}</a></th>
+                                <th><a class="btn btn-danger btn-block " href="{% url 'polireserva:deleterecurso' tdr.id_tdr recurso.id_r %}">Eliminar</a></th>
+                            </tr>
+                         {% endfor %}
+                      </table>
                  {% else %}
                     <h4>No existen Recursos registrados con ese Tipo de Recurso en el sistema.</h4>
                  {% endif %}

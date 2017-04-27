@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from models import *
 from .forms import *
 
@@ -25,6 +25,24 @@ def tdrlist(request):
 def tdrdetail(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     return render(request, 'tdr/detail.html', {'tdr': tdr})
+
+
+def deleterecurso(request,id_tdr,id_r):
+    tdr = get_object_or_404(TdRecurso, pk=id_tdr)
+    recurso = get_object_or_404(Recurso,pk=id_r)
+    #recurso.delete()
+    return render(request,'tdr/delete.html',{
+        'tdr' : tdr,
+        'recurso': recurso
+    })
+
+def deleterecursonconfirm(request,id_tdr,id_r):
+    tdr = get_object_or_404(TdRecurso, pk=id_tdr)
+    recurso = get_object_or_404(Recurso, pk=id_r)
+    recurso.delete()
+    return redirect('polireserva:tdrdetail', tdr.id_tdr)
+
+
 
 
 @login_required(login_url='login/')
@@ -88,3 +106,5 @@ def recursofill(request, id_tdr):
         form = RecursoFillForm()
     return render(request, 'tdr/recursofill.html', {'form': form,
                                                     'tdr': tdr})
+
+
