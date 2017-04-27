@@ -10,6 +10,7 @@ from .forms import *
 def index(request):
     return render(request, 'principal/pagina_principal.html', {'current_user': request.user})
 
+
 def modulo_admin(request):
     return render(request, 'principal/modulo_administracion.html')
 
@@ -63,30 +64,27 @@ def newreserva(request):
         if form.is_valid():
             new_reserva = form.save(commit=False)
             new_reserva.user = request.user
-         #   new_reserva.recursos = form.recursos
             new_reserva.save()
+            form.save_m2m()
             reservaflag = True
             return redirect('../')
     else:
         form = ReservasForm()
     return render(request, 'reservas/newreserva.html', {'form': form})
 
-    return render(request,'tdr/tdrfill.html',{'form':form})
 
-
-def recursofill(request,id_tdr):
+def recursofill(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     recursoflag = False
     if request.method == 'POST':
         form = RecursoFillForm(request.POST)
         if form.is_valid():
-
-            new_r=form.save(commit=False)
-            new_r.id_tdr= tdr
+            new_r = form.save(commit=False)
+            new_r.id_tdr = tdr
             new_r.save()
             recursoflag = True
             return redirect('../')
     else:
         form = RecursoFillForm()
-    return render(request,'tdr/recursofill.html',{'form':form,
-                                                  'tdr':tdr})
+    return render(request, 'tdr/recursofill.html', {'form': form,
+                                                    'tdr': tdr})

@@ -5,7 +5,6 @@ from datetimewidget.widgets import DateTimeWidget
 
 
 class TdRecursoForm(forms.ModelForm):
-
     class Meta:
         model = TdRecurso
         fields = ('id_tdr', 'description')
@@ -20,13 +19,11 @@ class TdRecursoFillForm(forms.ModelForm):
         fields = ('description',)
 
 
-
-
 class RecursoForm(forms.ModelForm):
-
     class Meta:
         model = Recurso
         fields = ('name_r', 'status', 'date_c', 'date_m', 'description',)
+
 
 class RecursoFillForm(forms.ModelForm):
     STATUS_CHOICES = (
@@ -36,11 +33,14 @@ class RecursoFillForm(forms.ModelForm):
         ('Mantenimiento', 'Mantenimiento')
     )
 
-    name_r= forms.CharField(max_length=25,label="Nombre del Recurso", widget = forms.TextInput(attrs={'class': 'form-control'}))
-    status=forms.ChoiceField(choices=STATUS_CHOICES, label="Estado", widget = forms.Select(attrs={'class': 'form-control'}))
-    date_c=forms.DateTimeField(label="Fecha de submision", widget=DateTimeWidget(attrs={'class': 'form-control'}))
-    date_m=forms.DateTimeField(label="Fecha de modificacion", widget=DateTimeWidget(attrs={'class': 'form-control'}))
-    description = forms.CharField(label="Descripcion del item" , max_length=50, widget = forms.TextInput(attrs={'class': 'form-control'})   )
+    name_r = forms.CharField(max_length=25, label="Nombre del Recurso",
+                             widget=forms.TextInput(attrs={'class': 'form-control'}))
+    status = forms.ChoiceField(choices=STATUS_CHOICES, label="Estado",
+                               widget=forms.Select(attrs={'class': 'form-control'}))
+    date_c = forms.DateTimeField(label="Fecha de submision", widget=DateTimeWidget(attrs={'class': 'form-control'}))
+    date_m = forms.DateTimeField(label="Fecha de modificacion", widget=DateTimeWidget(attrs={'class': 'form-control'}))
+    description = forms.CharField(label="Descripcion del item", max_length=50,
+                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Recurso
@@ -59,11 +59,8 @@ class RecursoFillForm(forms.ModelForm):
         }
 
 
-
-
-
 class ReservasForm(forms.ModelForm):
-    id_R = forms.IntegerField(label="ID", max_value=1000, widget=forms.HiddenInput, required=False)
+    id_R = forms.IntegerField(label="ID", max_value=1000, )
     tdr = forms.ModelChoiceField(label="Tipo de recurso", queryset=TdRecurso.objects.all(), required=True,
                                  widget=forms.Select(attrs={'class': 'form-control', 'name': 'tdrselect'}))
     recursos = forms.ModelMultipleChoiceField(label="Recursos", queryset=Recurso.objects.all(), required=True,
@@ -92,3 +89,4 @@ class ReservasForm(forms.ModelForm):
                                      bootstrap_version=3),
             'date_f': DateTimeWidget(attrs={'id': "date_f", 'class': 'form-control'}, usel10n=True, bootstrap_version=3)
         }
+
