@@ -4,8 +4,10 @@ from __future__ import unicode_literals
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.db import models
+from django.contrib import messages
 
 
 # Create your models here.
@@ -45,6 +47,11 @@ class UsuarioManager(BaseUserManager):
 
 
 class Usuario(models.Model):
+
+    def __unicode__(self):
+        return str(self.user.username)
+
+
     user = models.ForeignKey(User)
     ladder = models.CharField("Cargo del Usuario en la Institucion", max_length=20)
     cin = models.CharField("Nro de Cedula de Identidad", primary_key=True, max_length=7)
@@ -65,7 +72,6 @@ class Usuario(models.Model):
         'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(('date joined'))
     '''
-
 
 
 
@@ -97,6 +103,10 @@ class TdRecurso(models.Model):
 
 
 class Recurso(models.Model):
+
+
+    def __unicode__(self):
+        return str(self.name_r)
 
     STATUS_CHOICES = (
         ('Disponible', 'Disponible'),
@@ -151,6 +161,8 @@ class Recurso(models.Model):
 class Reservas(models.Model):
 
 
+
+
     STATUS_CHOICES = (
         ('ACT', 'Activa'),
         ('CAN', 'Cancelada'),
@@ -161,12 +173,26 @@ class Reservas(models.Model):
 
     user = models.ForeignKey(Usuario)
     tdr = models.ForeignKey(TdRecurso)
-    recursos = models.ManyToManyField(Recurso)
+    recursos = models.ManyToManyField(Recurso, validators=[])
 
     status = models.CharField(choices = STATUS_CHOICES, default = 'Activa', max_length = 10 )
     obs = models.CharField(max_length=100) ##make it private possibly
     date_i = models.DateTimeField( auto_now = False, auto_now_add = False)
     date_f = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+
+    '''def save(self, *args, **kwargs):
+
+        recurso = Recurso.objects.get(id=self.recursos.)
+        if recurso.status == 'Disponible':
+            super(Reservas, self).save(*args, **kwargs)
+        else:
+            raise Exception('Not available', 'Fuck you')
+    '''
+
+
+
+
 
     def _set_obs(self, obs):
         '''

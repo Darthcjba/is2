@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>polireserva.models.Usuario</title>
+  <title>polireserva.models.TdRecurso</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -36,7 +36,7 @@
       <span class="breadcrumbs">
         Package&nbsp;polireserva ::
         <a href="polireserva.models-module.html">Module&nbsp;models</a> ::
-        Class&nbsp;Usuario
+        Class&nbsp;TdRecurso
       </span>
     </td>
     <td>
@@ -46,18 +46,18 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="polireserva.models.Usuario-class.html"
+            >]&nbsp;|&nbsp;<a href="polireserva.models.TdRecurso-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class Usuario</h1><p class="nomargin-top"><span class="codelink"><a href="polireserva.models-pysrc.html#Usuario">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class TdRecurso</h1><p class="nomargin-top"><span class="codelink"><a href="polireserva.models-pysrc.html#TdRecurso">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 django.db.models.Model --+
                          |
-                        <strong class="uidshort">Usuario</strong>
+                        <strong class="uidshort">TdRecurso</strong>
 </pre>
 
 <hr />
@@ -86,7 +86,42 @@ django.db.models.Model --+
         <tr>
           <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="polireserva.models-pysrc.html#Usuario.__unicode__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="polireserva.models-pysrc.html#TdRecurso.__unicode__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_description"></a><span class="summary-sig-name">set_description</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">description</span>)</span><br />
+      :return:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="polireserva.models-pysrc.html#TdRecurso.set_description">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_description"></a><span class="summary-sig-name">get_description</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      :return:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="polireserva.models-pysrc.html#TdRecurso.get_description">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -116,35 +151,14 @@ django.db.models.Model --+
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="user"></a><span class="summary-name">user</span> = <code title="models.ForeignKey(User)">models.ForeignKey(User)</code>
+        <a href="polireserva.models.TdRecurso-class.html#id_tdr" class="summary-name">id_tdr</a> = <code title="models.IntegerField(&quot;Codigo del Tipo de Recurso&quot;, primary_key= True)">models.IntegerField(&quot;Codigo del Tipo de Recurso&quot;, pri<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.Usuario-class.html#ladder" class="summary-name">ladder</a> = <code title="models.CharField(&quot;Cargo del Usuario en la Institucion&quot;, max_length= 20\
-)">models.CharField(&quot;Cargo del Usuario en la Institucion<code class="variable-ellipsis">...</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="polireserva.models.Usuario-class.html#cin" class="summary-name">cin</a> = <code title="models.CharField(&quot;Nro de Cedula de Identidad&quot;, primary_key= True, max_\
-length= 7)">models.CharField(&quot;Nro de Cedula de Identidad&quot;, primary_k<code class="variable-ellipsis">...</code></code><br />
-      name = models.CharField(max_length=20, editable=True)
-lastname = models.CharField(max_length=20, editable=True)
-cin = models.CharField(max_length=7, primary_key=True)
-ladder = models.CharField(max_length=20)
-email = models.EmailField(('email address'), max_length=255,
-                          unique=True)
-is_staff = models.BooleanField(
-    ('staff status'), default=False, help_text=(
-        'Designates whether the user can log into this admin site.'))
-is_active = models.BooleanField(('active'), default=True, help_text=(
-    'Designates whether this user should be treated as '
-    'active.
+        <a href="polireserva.models.TdRecurso-class.html#description" class="summary-name">description</a> = <code title="models.CharField(&quot;Descripcion del Tipo de Recurso&quot;, max_length= 30)">models.CharField(&quot;Descripcion del Tipo de Recurs<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 </table>
@@ -166,55 +180,37 @@ is_active = models.BooleanField(('active'), default=True, help_text=(
   </td>
 </tr>
 </table>
-<a name="ladder"></a>
+<a name="id_tdr"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">ladder</h3>
+  <h3 class="epydoc">id_tdr</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-models.CharField(&quot;Cargo del Usuario en la Institucion&quot;, max_length= 20<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-)
+models.IntegerField(&quot;Codigo del Tipo de Recurso&quot;, primary_key= True)
 </pre></td></tr></table>
 </dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="cin"></a>
+<a name="description"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">cin</h3>
-  <pre class="literalblock">
-
-name = models.CharField(max_length=20, editable=True)
-lastname = models.CharField(max_length=20, editable=True)
-cin = models.CharField(max_length=7, primary_key=True)
-ladder = models.CharField(max_length=20)
-email = models.EmailField(('email address'), max_length=255,
-                          unique=True)
-is_staff = models.BooleanField(
-    ('staff status'), default=False, help_text=(
-        'Designates whether the user can log into this admin site.'))
-is_active = models.BooleanField(('active'), default=True, help_text=(
-    'Designates whether this user should be treated as '
-    'active. Unselect this instead of deleting accounts.'))
-date_joined = models.DateTimeField(('date joined'))
-
-</pre>
+  <h3 class="epydoc">description</h3>
+  
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-models.CharField(&quot;Nro de Cedula de Identidad&quot;, primary_key= True, max_<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-length= 7)
+models.CharField(&quot;Descripcion del Tipo de Recurso&quot;, max_length= 30)
 </pre></td></tr></table>
 </dd>
   </dl>

@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>polireserva.models</title>
+  <title>polireserva.admin.UsuarioAdmin</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -35,7 +35,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         Package&nbsp;polireserva ::
-        Module&nbsp;models
+        <a href="polireserva.admin-module.html">Module&nbsp;admin</a> ::
+        Class&nbsp;UsuarioAdmin
       </span>
     </td>
     <td>
@@ -45,25 +46,32 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="polireserva.models-module.html"
+            >]&nbsp;|&nbsp;<a href="polireserva.admin.UsuarioAdmin-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
-<!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module models</h1><p class="nomargin-top"><span class="codelink"><a href="polireserva.models-pysrc.html">source&nbsp;code</a></span></p>
-<!-- ==================== CLASSES ==================== -->
-<a name="section-Classes"></a>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class UsuarioAdmin</h1><p class="nomargin-top"><span class="codelink"><a href="polireserva.admin-pysrc.html#UsuarioAdmin">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+django.contrib.admin.ModelAdmin --+
+                                  |
+                                 <strong class="uidshort">UsuarioAdmin</strong>
+</pre>
+
+<hr />
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="left"><span class="table-header">Class Variables</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Classes"
+         ><span class="options">[<a href="#section-ClassVariables"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -74,28 +82,42 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.Usuario-class.html" class="summary-name">Usuario</a>
+        <a name="fieldsets"></a><span class="summary-name">fieldsets</span> = <code title="None, {'fields':('cin', 'ladder', 'user')},">None, {'fields':('cin', 'ladder', 'user')},</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.TdRecurso-class.html" class="summary-name">TdRecurso</a>
+        <a name="form"></a><span class="summary-name">form</span> = <code title="TdRecursoForm">TdRecursoForm</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.Recurso-class.html" class="summary-name">Recurso</a>
+        <a name="list_display"></a><span class="summary-name">list_display</span> = <code title="'cin',">'cin',</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.Reservas-class.html" class="summary-name">Reservas</a>
+        <a name="list_filter"></a><span class="summary-name">list_filter</span> = <code title="'cin',">'cin',</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="search_fields"></a><span class="summary-name">search_fields</span> = <code title="'name', 'lastname'">'name', 'lastname'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ordering"></a><span class="summary-name">ordering</span> = <code title="'cin',">'cin',</code>
     </td>
   </tr>
 </table>

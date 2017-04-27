@@ -3,7 +3,7 @@
 # The list of objects to document.  Objects can be named using
 # dotted names, module filenames, or package directory names.
 # Alases for this option include "objects" and "values".
-modules: manage.py, polireserva/models.py, is2/settings.py
+modules: manage.py, polireserva/models.py, is2/settings.py, polireserva/forms.py, polireserva/admin.py
 #modules: polireserva/models.py
 #modules: is2/settings.py
 
