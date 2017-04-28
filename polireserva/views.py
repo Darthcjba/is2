@@ -43,6 +43,18 @@ def deleterecursonconfirm(request,id_tdr,id_r):
     return redirect('polireserva:tdrdetail', tdr.id_tdr)
 
 
+def deletetdr(request,id_tdr):
+    tdr = get_object_or_404(TdRecurso, pk=id_tdr)
+    return render(request,'tdr/deletetdr.html',{'tdr': tdr})
+
+def deletetdrconfirm(request,id_tdr):
+    tdr = get_object_or_404(TdRecurso, pk=id_tdr)
+    tdr.delete()
+    return redirect('polireserva:tdrlist')
+
+
+
+
 
 
 @login_required(login_url='login/')

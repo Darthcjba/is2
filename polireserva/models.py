@@ -40,7 +40,7 @@ class Recurso(models.Model):
     )
 
     id_r = models.AutoField("Codigo del item", primary_key=True)
-    id_tdr = models.ForeignKey(TdRecurso)
+    id_tdr = models.ForeignKey(TdRecurso,on_delete=models.CASCADE)
     name_r = models.CharField("Nombre del item", max_length=30)
     description = models.CharField("Descripcion del item", max_length=50)
     status = models.CharField("Estado", choices=STATUS_CHOICES, default='Disponible', max_length=13)

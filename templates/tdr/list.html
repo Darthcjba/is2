@@ -14,7 +14,7 @@
                                 <tr>
                                     <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
                                        href="{% url 'polireserva:tdrdetail' tdr.id_tdr %}">{{ tdr.description }}</a></th>
-                                    <th><a class="btn btn-danger btn-block " href="#">Eliminar</a></th>
+                                    <th><a class="btn btn-danger btn-block " href="{% url 'polireserva:deletetdr' tdr.id_tdr %}">Eliminar</a></th>
                                 </tr>
                             {% endfor %}
 
