@@ -53,8 +53,14 @@ class RecursoFillForm(forms.ModelForm):
 
 
 class ReservasForm(forms.ModelForm):
+    dateTimeOptions = {
+        'format': 'mm/dd/yyyy hh:ii',
+        'weekStart': 1,
+        'clearBtn': False
+    }
+
     id_R = forms.IntegerField(label="ID", max_value=1000, widget=forms.HiddenInput, required=False)
-    tdr = forms.ModelChoiceField(label="Tipo de recurso", queryset=TdRecurso.objects.all(), required=True,
+    tdr = forms.ModelChoiceField(label="Tipo de recurso", queryset=TdRecurso.objects.all().order_by('description'), required=True,
                                  widget=forms.Select(attrs={'class': 'form-control', 'name': 'tdrselect'}))
     recursos = forms.ModelMultipleChoiceField(label="Recursos", queryset=Recurso.objects.all(), required=True,
                                               widget=forms.SelectMultiple(
@@ -63,23 +69,9 @@ class ReservasForm(forms.ModelForm):
                                widget=forms.Select(attrs={'class': 'form-control', 'name': 'statusselect'}))
     obs = forms.CharField(max_length=25, label="Observacion",
                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'reservaobs'}))
-    date_i = forms.DateTimeField(label="Fecha", widget=DateTimeWidget(attrs={'class': 'form-control'}))
-    date_f = forms.DateTimeField(label="Fecha", widget=DateTimeWidget(attrs={'class': 'form-control'}))
+    date_i = forms.DateTimeField(label="Fecha", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
+    date_f = forms.DateTimeField(label="Fecha", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
 
     class Meta:
         model = Reservas
         fields = ('tdr', 'recursos', 'status', 'obs', 'date_i', 'date_f')
-        dateTimeOptions = {
-            'format': 'dd/mm/yyyy HH:ii',
-            'autoclose': True,
-            'showMeridian': True
-        }
-
-        widgets = {
-            'recursos': forms.Select(),
-            # Use localization and bootstrap 3
-            'date_i': DateTimeWidget(attrs={'id': "date_i", 'class': 'form-control'}, usel10n=True,
-                                     bootstrap_version=3),
-            'date_f': DateTimeWidget(attrs={'id': "date_f", 'class': 'form-control'}, usel10n=True, bootstrap_version=3)
-        }
-
