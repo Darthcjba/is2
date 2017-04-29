@@ -17,7 +17,7 @@ def modulo_admin(request):
 
 @login_required(login_url='login/')
 def tdrlist(request):
-    all_tdr = TdRecurso.objects.all()
+    all_tdr = TdRecurso.objects.all().order_by('description')
     return render(request, 'tdr/list.html', {'all_tdr': all_tdr})
 
 
@@ -26,7 +26,7 @@ def tdrdetail(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     return render(request, 'tdr/detail.html', {'tdr': tdr})
 
-
+@login_required(login_url='login/')
 def deleterecurso(request,id_tdr,id_r):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     recurso = get_object_or_404(Recurso,pk=id_r)
@@ -36,6 +36,7 @@ def deleterecurso(request,id_tdr,id_r):
         'recurso': recurso
     })
 
+@login_required(login_url='login/')
 def deleterecursonconfirm(request,id_tdr,id_r):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     recurso = get_object_or_404(Recurso, pk=id_r)
@@ -43,18 +44,17 @@ def deleterecursonconfirm(request,id_tdr,id_r):
     return redirect('polireserva:tdrdetail', tdr.id_tdr)
 
 
+@login_required(login_url='login/')
 def deletetdr(request,id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     return render(request,'tdr/deletetdr.html',{'tdr': tdr})
 
+
+@login_required(login_url='login/')
 def deletetdrconfirm(request,id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     tdr.delete()
     return redirect('polireserva:tdrlist')
-
-
-
-
 
 
 @login_required(login_url='login/')
@@ -76,7 +76,7 @@ def tdrfill(request):
 
 @login_required(login_url='login/')
 def reservalist(request):
-    all_reservas = Reservas.objects.all()
+    all_reservas = Reservas.objects.all().order_by('date_i')
     return render(request, 'reservas/listareservas.html', {'all_reservas': all_reservas})
 
 
