@@ -1,7 +1,7 @@
 from django import forms
 from .models import *
 from django.contrib.auth.models import User
-from datetimewidget.widgets import DateTimeWidget
+from datetimewidget.widgets import DateTimeWidget, DateWidget
 
 
 class TdRecursoForm(forms.ModelForm):
@@ -33,30 +33,23 @@ class RecursoFillForm(forms.ModelForm):
         ('Mantenimiento', 'Mantenimiento')
     )
 
+    dateTimeOptions = {
+        'format': 'yyyy-mm-dd',
+        'weekStart':1,
+        'clearBtn':False
+    }
+
     name_r = forms.CharField(max_length=25, label="Nombre del Recurso",
                              widget=forms.TextInput(attrs={'class': 'form-control'}))
     status = forms.ChoiceField(choices=STATUS_CHOICES, label="Estado",
                                widget=forms.Select(attrs={'class': 'form-control'}))
-    date_c = forms.DateTimeField(label="Fecha de submision", widget=DateTimeWidget(attrs={'class': 'form-control'}))
-    date_m = forms.DateTimeField(label="Fecha de modificacion", widget=DateTimeWidget(attrs={'class': 'form-control'}))
-    description = forms.CharField(label="Descripcion del item", max_length=50,
-                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
+    date_c = forms.DateField(label="Fecha de submision", widget=DateWidget(usel10n= False,attrs={'id': "date_c", 'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
+    date_m = forms.DateField(label="Fecha de modificacion", widget=DateWidget(usel10n=False,attrs={'id': "date_m", 'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
+    description = forms.CharField(label="Descripcion del item", max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Recurso
         fields = ('name_r', 'status', 'date_c', 'date_m', 'description',)
-        dateTimeOptions = {
-            'format': 'dd/mm/yyyy',
-            'autoclose': True,
-            'showMeridian': True
-        }
-
-        widgets = {
-            # Use localization and bootstrap 3
-            'date_i': DateTimeWidget(attrs={'id': "date_i", 'class': 'form-control'}, usel10n=True,
-                                     bootstrap_version=3),
-            'date_f': DateTimeWidget(attrs={'id': "date_f", 'class': 'form-control'}, usel10n=True, bootstrap_version=3)
-        }
 
 
 class ReservasForm(forms.ModelForm):
