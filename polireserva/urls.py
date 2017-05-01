@@ -21,6 +21,8 @@ urlpatterns = [
     #ELiminar tdr
     url(r'^tdr/(?P<id_tdr>[0-9]+)/delete/$', views.deletetdr, name='deletetdr'),
     url(r'^tdr/(?P<id_tdr>[0-9]+)/confirm/$', views.deletetdrconfirm, name='confirmtdr'),
+    #Listar usuarios
+    url(r'^usuarios/$', views.userlist, name= 'userlist'),
 
     #Reservas
     url(r'^reservas/$', views.reservalist, name='reservalist'),

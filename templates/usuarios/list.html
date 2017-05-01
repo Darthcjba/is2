@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h2>Usuarios</h2>
+                <ul class=" media-list " role="menu">
+                    {% if all_user %}
+                        <table class="" style="width: 100%">
+                            {% for user in all_user %}
+
+                                <tr>
+                                    <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
+                                       href="#">{{ user.username }}</a></th>
+                                    <th><a class="btn btn-danger btn-block " href="#">Eliminar</a></th>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                    {% else %}
+                        <h4>No existen usuarios en el sistema.</h4>
+                    {% endif %}
+                </ul>
+                <a class="btn btn-success btn-sm" href="../">Atras</a>
+                <a class="btn btn-success btn-sm" href="#">Agregar usuario</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

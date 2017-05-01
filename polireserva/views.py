@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from models import *
 from .forms import *
+from log import models
 
 
 @login_required(login_url='login/')
@@ -13,6 +14,11 @@ def index(request):
 
 def modulo_admin(request):
     return render(request, 'principal/modulo_administracion.html')
+
+
+def userlist(request):
+    all_user = Usuario.objects.all().order_by('username')
+    return render(request,'usuarios/list.html',{'all_user':all_user})
 
 
 @login_required(login_url='login/')
