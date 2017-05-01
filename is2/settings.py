@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'log.apps.LogConfig',
     'polireserva.apps.PolireservaConfig',
     'datetimewidget',
+    'rolepermissions',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,5 @@ if 'test' in sys.argv:
     DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
 
 LOGIN_REDIRECT_URL = '/polireserva'
+
+ROLEPERMISSIONS_MODULE = 'is2.roles'

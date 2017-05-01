@@ -1,0 +1,111 @@
+from rolepermissions.roles import AbstractUserRole
+
+class Administrador(AbstractUserRole):
+    available_permissions = {
+        'can_access_admin': True,
+        'can_access_reservas': True,
+        'can_access_recepcion': True,
+        'can_access_mantenimiento': True,
+        'can_access_dashboard': True,
+        'can_add_usuario': True,
+        'can_modify_usuario': True,
+        'can_delete_usuario': True,
+        'can_assign_role':True,
+        'can_add_tdr': True,
+        'can_modify_tdr': True,
+        'can_delete_tdr': True,
+        'can_add_recurso': True,
+        'can_modify_recurso': True,
+        'can_delete_recurso': True,
+        'can_add_reserva': True,
+        'can_modify_reserva': True,
+        'can_delete_reserva': True,
+    }
+
+class Usuario(AbstractUserRole):
+    available_permissions = {
+        'can_access_admin': False,
+        'can_access_reservas': True,
+        'can_access_recepcion': False,
+        'can_access_mantenimiento': False,
+        'can_access_dashboard': True,
+        'can_add_usuario': False,
+        'can_modify_usuario': False,
+        'can_delete_usuario': False,
+        'can_assign_role':False,
+        'can_add_tdr': False,
+        'can_modify_tdr': False,
+        'can_delete_tdr': False,
+        'can_add_recurso': False,
+        'can_modify_recurso': False,
+        'can_delete_recurso': False,
+        'can_add_reserva': True,
+        'can_modify_reserva': True,
+        'can_delete_reserva': True,
+    }
+
+class Recepcionista(AbstractUserRole):
+    available_permissions = {
+        'can_access_admin': False,
+        'can_access_reservas': False,
+        'can_access_recepcion': True,
+        'can_access_mantenimiento': False,
+        'can_access_dashboard': True,
+        'can_add_usuario': False,
+        'can_modify_usuario': False,
+        'can_delete_usuario': False,
+        'can_assign_role':False,
+        'can_add_tdr': False,
+        'can_modify_tdr': False,
+        'can_delete_tdr': False,
+        'can_add_recurso': False,
+        'can_modify_recurso': False,
+        'can_delete_recurso': False,
+        'can_add_reserva': False,
+        'can_modify_reserva': True,
+        'can_delete_reserva': True,
+    }
+
+class Tecnico(AbstractUserRole):
+    available_permissions = {
+        'can_access_admin': False,
+        'can_access_reservas': False,
+        'can_access_recepcion': False,
+        'can_access_mantenimiento': True,
+        'can_access_dashboard': True,
+        'can_add_usuario': False,
+        'can_modify_usuario': False,
+        'can_delete_usuario': False,
+        'can_assign_role':False,
+        'can_add_tdr': False,
+        'can_modify_tdr': False,
+        'can_delete_tdr': False,
+        'can_add_recurso': False,
+        'can_modify_recurso': False,
+        'can_delete_recurso': False,
+        'can_add_reserva': False,
+        'can_modify_reserva': False,
+        'can_delete_reserva': False,
+    }
+
+class Invitado(AbstractUserRole):
+    available_permissions = {
+        'can_access_admin': False,
+        'can_access_reservas': False,
+        'can_access_recepcion': False,
+        'can_access_mantenimiento': False,
+        'can_access_dashboard': True,
+        'can_add_usuario': False,
+        'can_modify_usuario': False,
+        'can_delete_usuario': False,
+        'can_assign_role':False,
+        'can_add_tdr': False,
+        'can_modify_tdr': False,
+        'can_delete_tdr': False,
+        'can_add_recurso': False,
+        'can_modify_recurso': False,
+        'can_delete_recurso': False,
+        'can_add_reserva': False,
+        'can_modify_reserva': False,
+        'can_delete_reserva': False,
+    }
