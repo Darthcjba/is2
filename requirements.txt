@@ -5,5 +5,5 @@ requests==2.13.0
 six==1.10.0
 django>1.10.6
 django-datetime-widget==0.9.3
-
+django-role-permissions==2.0.1
 
