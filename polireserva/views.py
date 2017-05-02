@@ -2,37 +2,67 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
-from models import *
 from .forms import *
-from log import models
-
+from rolepermissions.decorators import has_permission_decorator
 
 @login_required(login_url='login/')
 def index(request):
-    return render(request, 'principal/pagina_principal.html', {'current_user': request.user})
+    return render(request, 'principal/pagina_principal2.html', {'current_user': request.user})
 
 
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_admin')
 def modulo_admin(request):
-    return render(request, 'principal/modulo_administracion.html')
+    return render(request, 'modulos/modulo_administracion.html')
 
 
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_reservas')
+def modulo_reservas(request):
+    return render(request, 'modulos/modulo_reservas.html')
+
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_recepcion')
+def modulo_recepcion(request):
+    return render(request, 'modulos/modulo_recepcion.html')
+
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_mantenimiento')
+def modulo_mantenimiento(request):
+    return render(request, 'modulos/modulo_mantenimiento.html')
+
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_dashboard')
+def modulo_dashboard(request):
+    return render(request, 'modulos/modulo_dashboard.html')
+
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_list_usuario')
 def userlist(request):
     all_user = Usuario.objects.all().order_by('username')
     return render(request,'usuarios/list.html',{'all_user':all_user})
 
 
 @login_required(login_url='login/')
+@has_permission_decorator('can_list_tdr')
 def tdrlist(request):
     all_tdr = TdRecurso.objects.all().order_by('description')
     return render(request, 'tdr/list.html', {'all_tdr': all_tdr})
 
 
 @login_required(login_url='login/')
+@has_permission_decorator('can_list_tdr')
 def tdrdetail(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     return render(request, 'tdr/detail.html', {'tdr': tdr})
 
+
 @login_required(login_url='login/')
+@has_permission_decorator('can_delete_recurso')
 def deleterecurso(request,id_tdr,id_r):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     recurso = get_object_or_404(Recurso,pk=id_r)
@@ -42,7 +72,9 @@ def deleterecurso(request,id_tdr,id_r):
         'recurso': recurso
     })
 
+
 @login_required(login_url='login/')
+@has_permission_decorator('can_delete_recurso')
 def deleterecursonconfirm(request,id_tdr,id_r):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     recurso = get_object_or_404(Recurso, pk=id_r)
@@ -51,12 +83,14 @@ def deleterecursonconfirm(request,id_tdr,id_r):
 
 
 @login_required(login_url='login/')
+@has_permission_decorator('can_delete_tdr')
 def deletetdr(request,id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     return render(request,'tdr/deletetdr.html',{'tdr': tdr})
 
 
 @login_required(login_url='login/')
+@has_permission_decorator('can_delete_tdr')
 def deletetdrconfirm(request,id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     tdr.delete()
@@ -64,6 +98,7 @@ def deletetdrconfirm(request,id_tdr):
 
 
 @login_required(login_url='login/')
+@has_permission_decorator('can_add_tdr')
 def tdrfill(request):
     tdrflag = False
     if request.method == 'POST':
@@ -79,20 +114,22 @@ def tdrfill(request):
 
 
 ## METODOS DE RESERVA ##
-
 @login_required(login_url='login/')
+@has_permission_decorator('can_list_reserva')
 def reservalist(request):
     all_reservas = Reservas.objects.all().order_by('date_i')
     return render(request, 'reservas/listareservas.html', {'all_reservas': all_reservas})
 
 
 @login_required(login_url='login/')
+@has_permission_decorator('can_list_reserva')
 def reservadetail(request, id_R):
     reserva = get_object_or_404(Reservas, pk=id_R)
     return render(request, 'reservas/reservasdetail.html', {'reserva': reserva})
 
 
 @login_required(login_url='login/')
+@has_permission_decorator('can_add_reserva')
 def newreserva(request):
     reservaflag = False
     if request.method == 'POST':
@@ -109,6 +146,8 @@ def newreserva(request):
     return render(request, 'reservas/newreserva.html', {'form': form})
 
 
+@login_required(login_url='login/')
+@has_permission_decorator('can_add_recurso')
 def recursofill(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     recursoflag = False
