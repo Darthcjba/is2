@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load permission_tags %}
 
 {% block content %}
 
@@ -8,21 +9,31 @@
             <h2>Bienvienido, {{request.user.first_name}} {{request.user.last_name}}!</h2>
             <p class="text-center">Menu</p>
             <ul class=" media-list " role="menu">
+                {% if user|can:'can_access_admin' %}
                 <li >
                     <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:modulo_admin'%}">Modulo de Administracion</a>
                 </li>
+                {% endif %}
+                {% if user|can:'can_access_reservas' %}
                 <li>
                     <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:modulo_reservas'%}">Modulo de Reservas</a>
                 </li>
+                {% endif %}
+                {% if user|can:'can_access_recepcion' %}
                 <li>
                     <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:modulo_recepcion'%}">Modulo de Recepcion</a>
                 </li>
+                {% endif %}
+                {% if user|can:'can_access_mantenimiento' %}
                 <li>
                     <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:modulo_mantenimiento'%}">Modulo de Mantenimiento</a>
                 </li>
+                {% endif %}
+                {% if user|can:'can_access_dashboard' %}
                 <li>
                     <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:modulo_dashboard'%}">Modulo de Dashboard</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
