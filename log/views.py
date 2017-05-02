@@ -11,7 +11,7 @@ from django.contrib.auth import login, authenticate
 # view without authenticating
 @login_required(login_url="login/")
 def home(request):
-    return render(request, "principal/pagina_principal.html")
+    return render(request, "principal/pagina_principal2.html")
 
 
 def register(request):

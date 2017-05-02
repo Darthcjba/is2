@@ -16,8 +16,8 @@ urlpatterns = [
     url(r'^mantenimiento/$', views.modulo_mantenimiento, name='modulo_mantenimiento'),
     # /polireserva/dashboard/ --Modulo de Dashboard
     url(r'^dashboard/$', views.modulo_dashboard, name='modulo_dashboard'),
-    #/polireserva/tdr/list/ --Lista Tipos de Recursos
-    url(r'^tdr/list/$', views.tdrlist, name= 'tdrlist'),
+    #/polireserva/tdr/ --Lista Tipos de Recursos
+    url(r'^tdr/$', views.tdrlist, name= 'tdrlist'),
     # /polireserva/tdr/<id_tdr>/ --Detalles Tipo de Recurso
     url(r'^tdr/(?P<id_tdr>[0-9]+)/$', views.tdrdetail, name= 'tdrdetail'),
     # /polireserva/tdr/new/ --Crear Tipo de Recurso

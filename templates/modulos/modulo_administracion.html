@@ -7,8 +7,18 @@
         <div class="jumbotron">
             <p class="text-center">Modulo de Administracion</p>
             <ul class=" media-list " role="menu">
+                <li >
+                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:userlist'%}">Administracion de Usuarios</a>
+                </li>
+                 <li >
+                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:tdrlist'%}">Administracion de Recursos</a>
+                </li>
+                 <li >
+                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:reservalist'%}">Administracion de Reservas</a>
+                </li>
 
             </ul>
+            <a class="btn btn-success btn-sm" href="../">Atras</a>
         </div>
     </div>
 </div>
