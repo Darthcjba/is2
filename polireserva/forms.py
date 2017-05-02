@@ -4,6 +4,24 @@ from django.contrib.auth.models import User
 from datetimewidget.widgets import DateTimeWidget, DateWidget
 
 
+ROLES = (
+    ('administrador','administrador'),
+    ('usuario','usuario'),
+    ('recepcionista','recepcionista'),
+    ('mantenimiento','mantenimiento'),
+    ('invitado','invitado'),
+    )
+
+class RolesForm(forms.Form):
+    roles=forms.MultipleChoiceField(
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+        choices=ROLES,
+    )
+
+
+
+
 class TdRecursoForm(forms.ModelForm):
     class Meta:
         model = TdRecurso

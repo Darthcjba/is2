@@ -10,10 +10,9 @@
                     {% if all_user %}
                         <table class="" style="width: 100%">
                             {% for user in all_user %}
-
                                 <tr>
                                     <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
-                                       href="#">{{ user.username }}</a></th>
+                                       href="{% url 'polireserva:roleslist' user.username_id %}">{{ user.username }}</a></th>
                                     <th><a class="btn btn-danger btn-block " href="#">Eliminar</a></th>
                                 </tr>
                             {% endfor %}

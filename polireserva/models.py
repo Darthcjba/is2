@@ -31,6 +31,8 @@ class TdRecurso(models.Model):
         return self.description
 
 
+
+
 class Recurso(models.Model):
     STATUS_CHOICES = (
         ('Disponible', 'Disponible'),

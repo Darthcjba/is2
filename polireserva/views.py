@@ -4,6 +4,10 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .forms import *
 from rolepermissions.decorators import has_permission_decorator
+from log import models
+from rolepermissions.roles import get_user_roles
+from django.contrib.auth.models import User
+
 
 @login_required(login_url='login/')
 def index(request):
@@ -41,10 +45,29 @@ def modulo_dashboard(request):
 
 
 @login_required(login_url='login/')
-@has_permission_decorator('can_list_usuario')
+@has_permission_decorator('can_list_usuarios')
 def userlist(request):
     all_user = Usuario.objects.all().order_by('username')
     return render(request,'usuarios/list.html',{'all_user':all_user})
+
+
+def rolelist(request,username_id):
+    user= User.objects.get(id=username_id)
+    roles = get_user_roles(user)
+    return render(request,'usuarios/roles.html',{'user':user,
+                                                 'roles':roles})
+
+def roleassing(request,username_id):
+    assigned = False
+    if request.method == 'POST':
+
+            assigned = True
+            return redirect('../')
+    else:
+        form = RolesForm()
+    return render(request, 'usuarios/addrole.html', {'form': form})
+
+
 
 
 @login_required(login_url='login/')
