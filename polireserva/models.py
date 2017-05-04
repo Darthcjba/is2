@@ -233,3 +233,67 @@ class Reservas(models.Model):
         return self.date_f
 
 
+class Mantenimiento(models.Model):
+
+    KIND_CHOICES = (
+        ('PRE', 'Preventivo'),
+        ('COR', 'Correctivo')
+    )
+
+    id_M = models.IntegerField(primary_key=True)
+    user = models.ForeignKey(Usuario)
+    recurso = models.ForeignKey(Recurso)
+    date_c = models.DateField("Fecha de submicion")
+    kindM = models.CharField("Tipo de mantenimiento realizado", choices=KIND_CHOICES, default='Preventivo', max_length=10)
+    reason = models.CharField("Razon del mantenimiento", max_length=200)
+    report = models.CharField("Reporte de finalizacion", max_length=100)
+
+    def get_report(self):
+        '''
+        get reporte
+        :return: reporte
+        '''
+        return self.report
+
+    def get_reason(self):
+        '''
+        get razon
+        :return: razon
+        '''
+        return self.reason
+
+    def get_date_c(self):
+
+        '''
+        get fecha
+        :return: fecha
+        '''
+        return self.date_c
+
+    def set_report(self, *args):
+        '''
+        set reporte
+        :param args: 
+        :return: 
+        '''
+        self.report = args
+        return self.report
+
+    def set_date_c(self, date):
+        '''
+        set fecha
+        :param date: 
+        :return: 
+        '''
+        self.date_c = date
+        return self.date_c
+
+    def set_reason(self, reason):
+        '''
+        set razon
+        :param reason: 
+        :return: 
+        '''
+        self.reason = reason
+        return self.reason
+

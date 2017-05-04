@@ -6,9 +6,11 @@ from .models import Usuario
 from .models import TdRecurso
 from .models import Recurso
 from .models import Reservas
+from .models import Mantenimiento
 from .forms import TdRecursoForm
 from .forms import RecursoForm
 from .forms import ReservasForm
+from .forms import MantenimientoForm
 
 
 class UsuarioAdmin(admin.ModelAdmin):
@@ -18,7 +20,7 @@ class UsuarioAdmin(admin.ModelAdmin):
     #fields = ('cin', 'ladder', 'user')
     form = TdRecursoForm
 
-    list_display = ('cin',)
+    list_display = ('cin', 'user')
     list_filter = ('cin',)
     search_fields = ('name', 'lastname')
     ordering = ('cin',)
@@ -77,4 +79,18 @@ class ReservasAdmin(admin.ModelAdmin):
     ordering = ('id_R',)
 
 admin.site.register(Reservas, ReservasAdmin)
+
+class MantenimientoAdmin(admin.ModelAdmin):
+
+    fieldsets = ((None, {'fields' : ('id_M', 'user', 'recurso', 'kindM', 'reason', 'report', 'date_c')}),
+    )
+
+    form = ReservasForm
+
+    list_display = ('id_M', 'user',)
+    list_filter = ('reason',)
+    search_fields = ('id_M', 'user',)
+    ordering = ('id_M',)
+
+admin.site.register(Mantenimiento, MantenimientoAdmin)
 

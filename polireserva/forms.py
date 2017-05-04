@@ -3,6 +3,7 @@ from .models import Usuario
 from .models import TdRecurso
 from .models import Recurso
 from .models import Reservas
+from .models import Mantenimiento
 
 class UsuarioForm(forms.ModelForm):
 
@@ -33,4 +34,10 @@ class ReservasForm(forms.ModelForm):
         model = Reservas
         fields = ('id_R', 'tdr', 'user', 'recursos', 'status', 'obs', 'date_i', 'date_f')
 
+
+class MantenimientoForm(forms.ModelForm):
+
+    class Meta:
+        model = Mantenimiento
+        fields = ('id_M', 'user', 'recurso', 'kindM', 'reason', 'report', 'date_c')
 
