@@ -40,6 +40,9 @@ urlpatterns = [
     #agregar roles a un usuario
     url(r'^usuarios/(?P<username_id>[0-9]+)/addroles$', views.roleassing, name= 'rolesassing'),
 
+    #asignar rol
+    url(r'^usuarios/(?P<username_id>[0-9]+)/addroles/(?P<role_id>[0-9]+)/$', views.roleassignation, name='rolesassignation'),
+
     #Reservas
     url(r'^reservas/$', views.reservalist, name='reservalist'),
     #polireservas/reservas/list/ --Listar reservas

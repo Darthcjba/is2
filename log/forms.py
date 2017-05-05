@@ -39,6 +39,7 @@ class UsuarioForm(forms.ModelForm):
     cin = forms.CharField(label="C.I.", max_length=10,
                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'cin'}))
     ladder = forms.ChoiceField(choices=models.LADDER_CHOICES, widget=forms.Select(attrs={'class': 'form-control', 'name': 'ladder'}))
+
     phone = forms.CharField(label="Telefono", max_length=10,
                             widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'telefono'}))
 

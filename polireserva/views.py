@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .forms import *
 from rolepermissions.decorators import has_permission_decorator
 from log import models
-from rolepermissions.roles import get_user_roles
+from rolepermissions.roles import get_user_roles, assign_role
 from django.contrib.auth.models import User
 
 
@@ -58,15 +58,25 @@ def rolelist(request,username_id):
                                                  'roles':roles})
 
 def roleassing(request,username_id):
-    assigned = False
-    if request.method == 'POST':
+    user=User.objects.get(id=username_id)
+    return render(request, 'usuarios/addrole.html',{'user':user})
 
-            assigned = True
-            return redirect('../')
+
+def roleassignation(request,username_id,role_id):
+    user = User.objects.get(id=username_id)
+    if role_id == 1:
+        assign_role(user,'administrador')
+    elif role_id == 2:
+        assign_role(user,'usuario')
+    elif role_id == 3:
+        assign_role(user,'recepcionista')
+    elif role_id == 4:
+        assign_role(user,'tecnico')
+    elif role_id == 5:
+        assign_role(user,'invitado')
     else:
-        form = RolesForm()
-    return render(request, 'usuarios/addrole.html', {'form': form})
-
+        redirect('polireserva:polindex')
+    return redirect('polireserva:roleslist',username_id)
 
 
 
