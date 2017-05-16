@@ -5,15 +5,18 @@ from django.contrib import admin
 from .models import Usuario
 from .models import TdRecurso
 from .models import Recurso
-from .models import Reservas
+from .models import Reserva
 from .models import Mantenimiento
+from .models import RecursoReserva
 from .forms import TdRecursoForm
 from .forms import RecursoForm
-from .forms import ReservasForm
+from .forms import ReservaForm
+from .forms import RecursoReserva
 from .forms import MantenimientoForm
 
 
 class UsuarioAdmin(admin.ModelAdmin):
+
     fieldsets = (
         (None, {'fields': ('cin', 'ladder', 'user')}),
     )
@@ -66,26 +69,41 @@ class RecursoAdmin(admin.ModelAdmin):
 admin.site.register(Recurso, RecursoAdmin)
 
 
-class ReservasAdmin(admin.ModelAdmin):
+class ReservaAdmin(admin.ModelAdmin):
 
-    fieldsets = ((None, {'fields' : ('id_R', 'tdr', 'user', 'recursos', 'status', 'obs', 'date_i', 'date_f')}),
+    fieldsets = ((None, {'fields' : ('id_R', 'tdr', 'user', 'status', 'obs', 'date_i', 'date_f')}),
     )
 
-    form = ReservasForm
+    form = ReservaForm
 
     list_display = ('id_R', 'user', 'status',)
     list_filter = ('status',)
     search_fields = ('id_R', 'status',)
     ordering = ('id_R',)
 
-admin.site.register(Reservas, ReservasAdmin)
+admin.site.register(Reserva, ReservaAdmin)
+
+class RecursoReservaAdmin(admin.ModelAdmin):
+
+    fieldsets = ((None, {'fields' : ('id_RR', 'id_reserva', 'id_recurso')}),
+    )
+
+    form = ReservaForm
+
+    list_display = ('id_RR', 'id_reserva', 'id_recurso',)
+    list_filter = ('id_reserva',)
+    search_fields = ('id_reserva', 'id_recurso',)
+    ordering = ('id_RR',)
+
+admin.site.register(RecursoReserva, RecursoReservaAdmin)
+
 
 class MantenimientoAdmin(admin.ModelAdmin):
 
     fieldsets = ((None, {'fields' : ('id_M', 'user', 'recurso', 'kindM', 'reason', 'report', 'date_c')}),
     )
 
-    form = ReservasForm
+    form = MantenimientoForm
 
     list_display = ('id_M', 'user',)
     list_filter = ('reason',)

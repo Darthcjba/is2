@@ -12,39 +12,6 @@ from django.contrib import messages
 
 # Create your models here.
 
-'''
-class UsuarioManager(BaseUserManager):
-
-    def create_user(self, email, name, lastname, ladder, cin, password=None):
-        """
-        Creates and saves a User with the given email, date of
-        birth and password.
-        """
-        if not email:
-            raise ValueError('Users must have an email address')
-
-        user = self.model(email = UsuarioManager.normalize_email(email),
-            name = name,
-            lastname = lastname,
-            ladder = ladder,
-            cin = cin,
-         )
-
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, email, name, lastname, ladder, cin, password):
-        """
-        Creates and saves a superuser with the given email, date of
-        birth and password.
-        """
-        u = self.create_user(email, name, lastname, ladder, cin, password=password)
-        u.is_admin = True
-        u.save(using=self._db)
-        return u
-'''
-
 
 class Usuario(models.Model):
 
@@ -55,24 +22,6 @@ class Usuario(models.Model):
     user = models.ForeignKey(User)
     ladder = models.CharField("Cargo del Usuario en la Institucion", max_length=20)
     cin = models.CharField("Nro de Cedula de Identidad", primary_key=True, max_length=7)
-
-
-    '''
-    name = models.CharField(max_length=20, editable=True)
-    lastname = models.CharField(max_length=20, editable=True)
-    cin = models.CharField(max_length=7, primary_key=True)
-    ladder = models.CharField(max_length=20)
-    email = models.EmailField(('email address'), max_length=255,
-                              unique=True)
-    is_staff = models.BooleanField(
-        ('staff status'), default=False, help_text=(
-            'Designates whether the user can log into this admin site.'))
-    is_active = models.BooleanField(('active'), default=True, help_text=(
-        'Designates whether this user should be treated as '
-        'active. Unselect this instead of deleting accounts.'))
-    date_joined = models.DateTimeField(('date joined'))
-    '''
-
 
 
 
@@ -158,10 +107,9 @@ class Recurso(models.Model):
 
 
 
-class Reservas(models.Model):
 
 
-
+class Reserva(models.Model):
 
     STATUS_CHOICES = (
         ('ACT', 'Activa'),
@@ -173,25 +121,11 @@ class Reservas(models.Model):
 
     user = models.ForeignKey(Usuario)
     tdr = models.ForeignKey(TdRecurso)
-    recursos = models.ManyToManyField(Recurso, validators=[])
 
     status = models.CharField(choices = STATUS_CHOICES, default = 'Activa', max_length = 10 )
     obs = models.CharField(max_length=100) ##make it private possibly
     date_i = models.DateTimeField( auto_now = False, auto_now_add = False)
     date_f = models.DateTimeField(auto_now=False, auto_now_add=False)
-
-
-    '''def save(self, *args, **kwargs):
-
-        recurso = Recurso.objects.get(id=self.recursos.)
-        if recurso.status == 'Disponible':
-            super(Reservas, self).save(*args, **kwargs)
-        else:
-            raise Exception('Not available', 'Fuck you')
-    '''
-
-
-
 
 
     def _set_obs(self, obs):
@@ -231,6 +165,13 @@ class Reservas(models.Model):
     def get_date_f(self):
 
         return self.date_f
+
+
+class RecursoReserva(models.Model):
+    id_RR = models.IntegerField(primary_key=True)
+
+    id_reserva = models.ForeignKey(Reserva)
+    id_recurso = models.ForeignKey(Recurso)
 
 
 class Mantenimiento(models.Model):

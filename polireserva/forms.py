@@ -2,8 +2,9 @@ from django import forms
 from .models import Usuario
 from .models import TdRecurso
 from .models import Recurso
-from .models import Reservas
+from .models import Reserva
 from .models import Mantenimiento
+from .models import RecursoReserva
 
 class UsuarioForm(forms.ModelForm):
 
@@ -28,11 +29,18 @@ class RecursoForm(forms.ModelForm):
 
 
 
-class ReservasForm(forms.ModelForm):
+class ReservaForm(forms.ModelForm):
 
     class Meta:
-        model = Reservas
-        fields = ('id_R', 'tdr', 'user', 'recursos', 'status', 'obs', 'date_i', 'date_f')
+        model = Reserva
+        fields = ('id_R', 'tdr', 'user', 'status', 'obs', 'date_i', 'date_f')
+
+
+class RecursoReservaForm(forms.ModelForm):
+
+    class Meta:
+        model = RecursoReserva
+        fields = ('id_RR', 'id_reserva', 'id_recurso')
 
 
 class MantenimientoForm(forms.ModelForm):
