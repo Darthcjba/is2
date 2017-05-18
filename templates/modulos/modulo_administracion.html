@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load permission_tags %}
 
 {% block content %}
 
@@ -7,15 +8,24 @@
         <div class="jumbotron">
             <p class="text-center">Modulo de Administracion</p>
             <ul class=" media-list " role="menu">
-                <li >
-                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:userlist'%}">Administracion de Usuarios</a>
-                </li>
-                 <li >
-                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:tdrlist'%}">Administracion de Recursos</a>
-                </li>
-                 <li >
-                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:reservalist'%}">Administracion de Reservas</a>
-                </li>
+
+                {% if user|can:'can_list_usuarios' %}
+                    <li >
+                        <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:userlist'%}">Administracion de Usuarios</a>
+                    </li>
+                {% endif %}
+
+                {% if user|can:'can_list_tdr' %}
+                    <li >
+                        <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:tdrlist'%}">Administracion de Recursos</a>
+                    </li>
+                {% endif %}
+
+                {% if user|can:'can_list_reserva' %}
+                    <li >
+                        <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:reservalist'%}">Administracion de Reservas</a>
+                    </li>
+                {% endif %}
 
             </ul>
             <a class="btn btn-success btn-sm" href="../">Atras</a>

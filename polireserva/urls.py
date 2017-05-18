@@ -43,8 +43,7 @@ urlpatterns = [
     #asignar rol
     url(r'^usuarios/(?P<username_id>[0-9]+)/addroles/(?P<role_id>[0-9]+)/$', views.roleassignation, name='rolesassignation'),
 
-    #Reservas
-    url(r'^reservas/$', views.reservalist, name='reservalist'),
+
     #polireservas/reservas/list/ --Listar reservas
     url(r'^reservas/list/$', views.reservalist, name='reservalist'),
     # polireservas/reservas/new/ --Nueva reserva
