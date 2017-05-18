@@ -51,5 +51,6 @@ urlpatterns = [
     url(r'^reservas/list/new/$', views.newreserva, name='newreserva'),
     # polireservas/reservas/<id_R>/ --Detalles reserva
     url(r'^reservas/(?P<id_R>[0-9]+)/$', views.reservadetail, name='reservadetail'),
-
+    #polireservas/reservas/misreservas/ --Listar mis reservas
+    url(r'^reservas/misreservas/$', views.misreservas, name='misreservas'),
 ]

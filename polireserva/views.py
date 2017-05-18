@@ -155,7 +155,12 @@ def reservalist(request):
 
 
 @login_required(login_url='login/')
-@has_permission_decorator('can_list_reserva')
+def misreservas(request):
+    mis_reservas = Reservas.objects.filter(user=request.user).order_by('date_i')
+    return render(request, 'reservas/listareservas.html', {'all_reservas': mis_reservas})
+
+
+@login_required(login_url='login/')
 def reservadetail(request, id_R):
     reserva = get_object_or_404(Reservas, pk=id_R)
     return render(request, 'reservas/reservasdetail.html', {'reserva': reserva})

@@ -5,21 +5,24 @@
 <div class="container">
     <div class="row">
         <div class="jumbotron">
-            <h2>Reserva de {{reserva.user.first_name}}, {{reserva.user.last_name}}</h2>
+            <h2>Reserva de {{reserva.user.first_name}} {{reserva.user.last_name}}</h2>
             <h4>ID: {{reserva.id_R}}</h4>
-            <h4>Fecha de inicio: {{reserva.date_i}}</h4>
-            <h4>Fecha de fin: {{reserva.date_f}}</h4>
+            <h4>Desde: {{reserva.date_i}}</h4>
+            <h4>Hasta: {{reserva.date_f}}</h4>
 <br/>
-                    <h2>Lista de Recursos</h2>
-            <ul class=" media-list " role="menu">
+                    <h3><u>Lista de Recursos</u></h3>
+            <ul style="list-style-type:disc">
                  {% if reserva.recursos.all %}
                     {% for recursos in reserva.recursos.all %}
-                    <li ><a class="btn-success btn-menu btn  center-block" href="#">Item: {{recursos.name_r}}   &nbsp&nbsp&nbsp  Descripcion: {{ recursos.description }}</a></li>
+                    <li ><h4>{{recursos.name_r}}   &nbsp&nbsp&nbsp  Descripcion: {{ recursos.description }}</h4></li>
                     {% endfor %}
                  {% else %}
                     <h4>No existen Recursos registrados con esta Reserva en el sistema.</h4>
                  {% endif %}
             </ul>
+        <br/>
+            <h4>Observaciones: {{reserva.obs}}</h4>
+<br/>
            <a class="btn btn-success btn-sm" href="../">Atras</a>
             <a class="btn btn-success btn-sm" href="#">Modificar reserva</a>
 
