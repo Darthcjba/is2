@@ -2,6 +2,7 @@ from django import forms
 from .models import *
 from django.contrib.auth.models import User
 from datetimewidget.widgets import DateTimeWidget, DateWidget
+from django.utils import timezone
 
 
 ROLES = (
@@ -87,8 +88,21 @@ class ReservasForm(forms.ModelForm):
                                widget=forms.Select(attrs={'class': 'form-control', 'name': 'statusselect'}))
     obs = forms.CharField(max_length=25, label="Observacion",
                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'reservaobs'}))
-    date_i = forms.DateTimeField(label="Fecha", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
-    date_f = forms.DateTimeField(label="Fecha", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
+    date_i = forms.DateTimeField(label="Desde", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
+    date_f = forms.DateTimeField(label="Hasta", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
+
+    #evita que la fecha de inicio sea fijada en el pasado
+    def clean_date_i(self):
+        date_i = self.cleaned_data['date_i']
+        if date_i<timezone.now():
+            raise forms.ValidationError("La fecha de inicio de la reserva no puede ser una fecha pasada!")
+        return date_i
+    #evita que la fecha de fin sea fijada en el pasado
+    def clean_date_f(self):
+        date_f = self.cleaned_data['date_f']
+        if date_f < timezone.now():
+            raise forms.ValidationError("La fecha de fin de la reserva no puede ser una fecha pasada!")
+        return date_f
 
     class Meta:
         model = Reservas
