@@ -75,7 +75,8 @@ class ReservasForm(forms.ModelForm):
     dateTimeOptions = {
         'format': 'mm/dd/yyyy hh:ii',
         'weekStart': 1,
-        'clearBtn': False
+        'clearBtn': False,
+        'minuteStep':15
     }
 
     id_R = forms.IntegerField(label="ID", max_value=1000, widget=forms.HiddenInput, required=False)
@@ -97,12 +98,24 @@ class ReservasForm(forms.ModelForm):
         if date_i<timezone.now():
             raise forms.ValidationError("La fecha de inicio de la reserva no puede ser una fecha pasada!")
         return date_i
+
     #evita que la fecha de fin sea fijada en el pasado
     def clean_date_f(self):
         date_f = self.cleaned_data['date_f']
         if date_f < timezone.now():
             raise forms.ValidationError("La fecha de fin de la reserva no puede ser una fecha pasada!")
         return date_f
+
+    #evita que la fecha de fin sea fijada antes de la fecha de inicio
+    def clean(self):
+        cleaned_data = super(ReservasForm, self).clean()
+        date_i = cleaned_data.get("date_i")
+        date_f = cleaned_data.get("date_f")
+
+        if date_i and date_f:
+            if date_f<date_i:
+                raise forms.ValidationError("La fecha de fin de la reserva no puede ser anterior a la de inicio")
+        return cleaned_data
 
     class Meta:
         model = Reservas
