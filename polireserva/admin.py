@@ -4,9 +4,11 @@ from django.contrib import admin
 from .forms import TdRecursoForm
 from .forms import RecursoForm
 from .forms import ReservasForm
+from .forms import MantenimientoForm
 from .models import TdRecurso
 from .models import Recurso
 from .models import Reservas
+from .models import Mantenimiento
 
 
 class TdRecursoAdmin(admin.ModelAdmin):
@@ -61,3 +63,16 @@ class ReservasAdmin(admin.ModelAdmin):
 
 admin.site.register(Reservas, ReservasAdmin)
 
+
+class MantenimientoAdmin(admin.ModelAdmin):
+
+    fieldsets = ((None, {'fields' : ('user', 'recurso', 'kindM', 'reason', 'report', 'date_c')}),)
+
+    form = MantenimientoForm
+
+    list_display = ('id_M', 'user',)
+    list_filter = ('reason',)
+    search_fields = ('id_M', 'user',)
+    ordering = ('id_M',)
+
+admin.site.register(Mantenimiento, MantenimientoAdmin)

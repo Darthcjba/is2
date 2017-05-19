@@ -107,3 +107,38 @@ class ReservasForm(forms.ModelForm):
     class Meta:
         model = Reservas
         fields = ('tdr', 'recursos', 'status', 'obs', 'date_i', 'date_f')
+
+
+
+class MantenimientoForm(forms.ModelForm):
+
+    class Meta:
+        model = Mantenimiento
+        fields = ( 'user', 'recurso', 'kindM', 'reason', 'report', 'date_c',)
+
+
+class MantenimientoNewForm(forms.ModelForm):
+    dateTimeOptions = {
+        'format': 'yyyy-mm-dd',
+        'weekStart': 1,
+        'clearBtn': False
+    }
+
+    recurso = forms.ModelChoiceField(label="Recursos", queryset=Recurso.objects.filter(status='Disponible'), required=True,
+                                              widget=forms.Select(attrs={'class': 'form-control', 'name': 'rselect'}))
+    date_c = forms.DateField(label="Fecha de submision",widget=DateWidget(usel10n=False, attrs={'id': "date_c", 'class': 'form-control'},bootstrap_version=3, options=dateTimeOptions))
+    kindM= forms.ChoiceField(label="Fecha",choices=Mantenimiento.KIND_CHOICES,required=True,initial='')
+    reason = forms.CharField(label="Razon del mantenimiento", max_length=200)
+
+    class Meta:
+        model=Mantenimiento
+        fields = {'recurso','date_c','kindM','reason'}
+
+
+class MantenimientoFinForm(forms.ModelForm):
+
+    report = forms.CharField(label="Reporte de mantenimiento", max_length=100)
+
+    class Meta:
+        model=Mantenimiento
+        fields = { 'report'}

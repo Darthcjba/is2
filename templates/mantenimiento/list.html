@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h2>Modulo de mantenimiento</h2>
+                <ul class=" media-list " role="menu">
+                    <h3>Recursos en mantenimiento</h3>
+                    {% if all_man %}
+                        <table class="" style="width: 100%">
+                            {% for man in all_man %}
+
+                                <tr>
+                                    <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
+                                       href="#">{{ man.recurso.name_r }}</a></th>
+                                    <th><a class="btn btn-danger btn-block" href="{% url 'polireserva:mantenimientofin' man.id_M %}">Finalizar</a></th>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                    {% else %}
+                        <h4>No existen Recursos en mantenimiento.</h4>
+                    {% endif %}
+                </ul>
+                <a class="btn btn-success btn-sm" href="../">Atras</a>
+                <a class="btn btn-success btn-sm" href="{% url 'polireserva:mantenimientonew' %}">Agregar recurso a mantenimiento</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

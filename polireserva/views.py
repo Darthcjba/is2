@@ -78,7 +78,45 @@ def roleassignation(request,username_id,role_id):
         redirect('polireserva:polindex')
     return redirect('polireserva:roleslist',username_id)
 
+def mantenimientolist(request):
+    all_man = Mantenimiento.objects.filter(encurso=True)
+    return render(request,'mantenimiento/list.html',{'all_man': all_man})
 
+
+def mantenimientonew(request):
+    if request.method == 'POST':
+        form = MantenimientoNewForm(request.POST)
+        if form.is_valid():
+            new_man = form.save(commit=False)
+            new_man.user=request.user
+            new_man.encurso=True
+            recurso=new_man.recurso
+            recurso.status='Mantenimiento'
+            recurso.save()
+            new_man.save()
+        return redirect('../')
+    else:
+        form = MantenimientoNewForm()
+    return render(request, 'mantenimiento/new.html', {'form': form})
+
+def mantenimientofin(request,id_M):
+    man = get_object_or_404(Mantenimiento,pk=id_M)
+
+    if request.method == 'POST':
+        form = MantenimientoFinForm(request.POST)
+        if form.is_valid():
+            new_man=form.save(commit=False)
+            man.report=new_man.report
+            man.encurso=False
+            recurso=man.recurso
+            recurso.status='Disponible'
+            recurso.save()
+            man.save()
+            return redirect('../../')
+    else:
+        form= MantenimientoFinForm()
+    return render(request,'mantenimiento/fin.html',{'form':form,
+                                                     'man':man})
 
 @login_required(login_url='login/')
 @has_permission_decorator('can_list_tdr')
@@ -104,6 +142,7 @@ def deleterecurso(request,id_tdr,id_r):
         'tdr' : tdr,
         'recurso': recurso
     })
+
 
 
 @login_required(login_url='login/')
