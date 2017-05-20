@@ -217,7 +217,7 @@ def newreserva(request):
             new_reserva.save()
             form.save_m2m()
             reservaflag = True
-            return redirect('../')
+            return redirect('polireserva:reservadetail',new_reserva.id_R)
     else:
         form = ReservasForm()
     return render(request, 'reservas/newreserva.html', {'form': form})
