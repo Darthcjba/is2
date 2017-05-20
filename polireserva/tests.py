@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from rolepermissions.roles import assign_role
 from rolepermissions.checkers import has_permission,has_role
 from polireserva.models import Mantenimiento
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404,render_to_response
 
 
 class LoginTest(TestCase):
