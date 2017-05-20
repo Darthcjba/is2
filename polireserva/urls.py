@@ -50,6 +50,10 @@ urlpatterns = [
     url(r'^reservas/(?P<id_R>[0-9]+)/$', views.reservadetail, name='reservadetail'),
     #polireservas/reservas/misreservas/ --Listar mis reservas
     url(r'^reservas/misreservas/$', views.misreservas, name='misreservas'),
+    # /polireserva/reservas/<id_R>/delete/ --Eliminar reserva
+    url(r'^reservas/(?P<id_R>[0-9]+)/delete/$', views.deletereserva, name='deletereserva'),
+    # /polireserva/reservas/<id_R>/delete/confirm --Eliminar reserva confirmado
+    url(r'^reservas/(?P<id_R>[0-9]+)/delete/confirm/$', views.deletereservaconfirm, name='deletereservaconfirm'),
 
     # polireservas/mantenimiento --listar los mantenimientos
     url(r'^mantenimiento/$',views.mantenimientolist,name='mantenimientolist'),

@@ -224,6 +224,18 @@ def newreserva(request):
 
 
 @login_required(login_url='login/')
+def deletereserva(request,id_R):
+    reserva = get_object_or_404(Reservas, pk=id_R)
+    return render(request,'reservas/deletereserva.html', {'reserva':reserva})
+
+@login_required(login_url='login/')
+def deletereservaconfirm(request,id_R):
+    reserva = get_object_or_404(Reservas, pk=id_R)
+    reserva.delete()
+    return redirect('polireserva:misreservas')
+
+
+@login_required(login_url='login/')
 @has_permission_decorator('can_add_recurso')
 def recursofill(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)

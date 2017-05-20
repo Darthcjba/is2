@@ -17,7 +17,7 @@
                                             <br/>{{ reserva.date_i }}<br/> a <br/>{{ reserva.date_f }}</a>
                                     </th>
                                     <th style="width:10%">
-                                        <a class="btn btn-danger btn-block " href="#">Eliminar</a>
+                                        <a class="btn btn-danger btn-block " href="{% url 'polireserva:deletereserva' reserva.id_R %}">Eliminar</a>
                                         <a class="btn btn-danger btn-block " href="#">Modificar Reserva</a>
                                     </th>
                                 </tr>
