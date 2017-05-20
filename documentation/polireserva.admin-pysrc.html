@@ -53,156 +53,296 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="polireserva.admin-module.html">Module polireserva.admin</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"> </tt>
-<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Register your models here.</tt> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module polireserva.admin=polireserva.admin-module.html"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-0', 'admin', 'link-0');">admin</a></tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module polireserva.models=polireserva.models-module.html"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-1', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class polireserva.models.Usuario=polireserva.models.Usuario-class.html"><a title="polireserva.models.Usuario" class="py-name" href="#" onclick="return doclink('link-2', 'Usuario', 'link-2');">Usuario</a></tt> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-3', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class polireserva.models.TdRecurso=polireserva.models.TdRecurso-class.html"><a title="polireserva.models.TdRecurso" class="py-name" href="#" onclick="return doclink('link-4', 'TdRecurso', 'link-4');">TdRecurso</a></tt> </tt>
-<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-5', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Class polireserva.models.Recurso=polireserva.models.Recurso-class.html"><a title="polireserva.models.Recurso" class="py-name" href="#" onclick="return doclink('link-6', 'Recurso', 'link-6');">Recurso</a></tt> </tt>
-<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-7', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Class polireserva.models.Reservas=polireserva.models.Reservas-class.html"><a title="polireserva.models.Reservas" class="py-name" href="#" onclick="return doclink('link-8', 'Reservas', 'link-8');">Reservas</a></tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Module polireserva.forms=polireserva.forms-module.html"><a title="polireserva.forms" class="py-name" href="#" onclick="return doclink('link-9', 'forms', 'link-9');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-10" class="py-name" targets="Class polireserva.forms.TdRecursoForm=polireserva.forms.TdRecursoForm-class.html"><a title="polireserva.forms.TdRecursoForm" class="py-name" href="#" onclick="return doclink('link-10', 'TdRecursoForm', 'link-10');">TdRecursoForm</a></tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="polireserva.forms" class="py-name" href="#" onclick="return doclink('link-11', 'forms', 'link-9');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-12" class="py-name" targets="Class polireserva.forms.RecursoForm=polireserva.forms.RecursoForm-class.html"><a title="polireserva.forms.RecursoForm" class="py-name" href="#" onclick="return doclink('link-12', 'RecursoForm', 'link-12');">RecursoForm</a></tt> </tt>
-<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="polireserva.forms" class="py-name" href="#" onclick="return doclink('link-13', 'forms', 'link-9');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name" targets="Class polireserva.forms.ReservasForm=polireserva.forms.ReservasForm-class.html"><a title="polireserva.forms.ReservasForm" class="py-name" href="#" onclick="return doclink('link-14', 'ReservasForm', 'link-14');">ReservasForm</a></tt> </tt>
-<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
-<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
-<a name="UsuarioAdmin"></a><div id="UsuarioAdmin-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="UsuarioAdmin-toggle" onclick="return toggle('UsuarioAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.UsuarioAdmin-class.html">UsuarioAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="UsuarioAdmin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="UsuarioAdmin-expanded"><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt id="link-15" class="py-name" targets="Variable polireserva.admin.RecursoAdmin.fieldsets=polireserva.admin.RecursoAdmin-class.html#fieldsets,Variable polireserva.admin.ReservasAdmin.fieldsets=polireserva.admin.ReservasAdmin-class.html#fieldsets,Variable polireserva.admin.UsuarioAdmin.fieldsets=polireserva.admin.UsuarioAdmin-class.html#fieldsets"><a title="polireserva.admin.RecursoAdmin.fieldsets
-polireserva.admin.ReservasAdmin.fieldsets
-polireserva.admin.UsuarioAdmin.fieldsets" class="py-name" href="#" onclick="return doclink('link-15', 'fieldsets', 'link-15');">fieldsets</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> </tt>
-<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'fields'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'cin'</tt><tt class="py-op">,</tt> <tt class="py-string">'ladder'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-comment">#fields = ('cin', 'ladder', 'user')</tt> </tt>
-<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt id="link-16" class="py-name" targets="Variable polireserva.admin.RecursoAdmin.form=polireserva.admin.RecursoAdmin-class.html#form,Variable polireserva.admin.ReservasAdmin.form=polireserva.admin.ReservasAdmin-class.html#form,Variable polireserva.admin.TdRecursoAdmin.form=polireserva.admin.TdRecursoAdmin-class.html#form,Variable polireserva.admin.UsuarioAdmin.form=polireserva.admin.UsuarioAdmin-class.html#form"><a title="polireserva.admin.RecursoAdmin.form
-polireserva.admin.ReservasAdmin.form
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># Register your models here.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module polireserva.admin=polireserva.admin-module.html"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-0', 'admin', 'link-0');">admin</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module polireserva.models=polireserva.models-module.html"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-1', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class polireserva.models.Usuario=polireserva.models.Usuario-class.html"><a title="polireserva.models.Usuario" class="py-name" href="#" onclick="return doclink('link-2', 'Usuario', 'link-2');">Usuario</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-3', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class polireserva.models.TdRecurso=polireserva.models.TdRecurso-class.html"><a title="polireserva.models.TdRecurso" class="py-name" href="#" onclick="return doclink('link-4', 'TdRecurso', 'link-4');">TdRecurso</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-5', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Class polireserva.models.Recurso=polireserva.models.Recurso-class.html"><a title="polireserva.models.Recurso" class="py-name" href="#" onclick="return doclink('link-6', 'Recurso', 'link-6');">Recurso</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-7', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Class polireserva.models.Reserva=polireserva.models.Reserva-class.html"><a title="polireserva.models.Reserva" class="py-name" href="#" onclick="return doclink('link-8', 'Reserva', 'link-8');">Reserva</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-9', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-10" class="py-name" targets="Class polireserva.models.Mantenimiento=polireserva.models.Mantenimiento-class.html"><a title="polireserva.models.Mantenimiento" class="py-name" href="#" onclick="return doclink('link-10', 'Mantenimiento', 'link-10');">Mantenimiento</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="polireserva.models" class="py-name" href="#" onclick="return doclink('link-11', 'models', 'link-1');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-12" class="py-name" targets="Class polireserva.models.RecursoReserva=polireserva.models.RecursoReserva-class.html"><a title="polireserva.models.RecursoReserva" class="py-name" href="#" onclick="return doclink('link-12', 'RecursoReserva', 'link-12');">RecursoReserva</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Module polireserva.forms=polireserva.forms-module.html"><a title="polireserva.forms" class="py-name" href="#" onclick="return doclink('link-13', 'forms', 'link-13');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name" targets="Class polireserva.forms.TdRecursoForm=polireserva.forms.TdRecursoForm-class.html"><a title="polireserva.forms.TdRecursoForm" class="py-name" href="#" onclick="return doclink('link-14', 'TdRecursoForm', 'link-14');">TdRecursoForm</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="polireserva.forms" class="py-name" href="#" onclick="return doclink('link-15', 'forms', 'link-13');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-16" class="py-name" targets="Class polireserva.forms.RecursoForm=polireserva.forms.RecursoForm-class.html"><a title="polireserva.forms.RecursoForm" class="py-name" href="#" onclick="return doclink('link-16', 'RecursoForm', 'link-16');">RecursoForm</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="polireserva.forms" class="py-name" href="#" onclick="return doclink('link-17', 'forms', 'link-13');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-18" class="py-name" targets="Class polireserva.forms.ReservaForm=polireserva.forms.ReservaForm-class.html"><a title="polireserva.forms.ReservaForm" class="py-name" href="#" onclick="return doclink('link-18', 'ReservaForm', 'link-18');">ReservaForm</a></tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="polireserva.forms" class="py-name" href="#" onclick="return doclink('link-19', 'forms', 'link-13');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-20" class="py-name"><a title="polireserva.models.RecursoReserva" class="py-name" href="#" onclick="return doclink('link-20', 'RecursoReserva', 'link-12');">RecursoReserva</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="polireserva.forms" class="py-name" href="#" onclick="return doclink('link-21', 'forms', 'link-13');">forms</a></tt> <tt class="py-keyword">import</tt> <tt id="link-22" class="py-name" targets="Class polireserva.forms.MantenimientoForm=polireserva.forms.MantenimientoForm-class.html"><a title="polireserva.forms.MantenimientoForm" class="py-name" href="#" onclick="return doclink('link-22', 'MantenimientoForm', 'link-22');">MantenimientoForm</a></tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="UsuarioAdmin"></a><div id="UsuarioAdmin-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="UsuarioAdmin-toggle" onclick="return toggle('UsuarioAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.UsuarioAdmin-class.html">UsuarioAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UsuarioAdmin-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="UsuarioAdmin-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">    <tt id="link-23" class="py-name" targets="Variable polireserva.admin.MantenimientoAdmin.fieldsets=polireserva.admin.MantenimientoAdmin-class.html#fieldsets,Variable polireserva.admin.RecursoAdmin.fieldsets=polireserva.admin.RecursoAdmin-class.html#fieldsets,Variable polireserva.admin.RecursoReservaAdmin.fieldsets=polireserva.admin.RecursoReservaAdmin-class.html#fieldsets,Variable polireserva.admin.ReservaAdmin.fieldsets=polireserva.admin.ReservaAdmin-class.html#fieldsets,Variable polireserva.admin.UsuarioAdmin.fieldsets=polireserva.admin.UsuarioAdmin-class.html#fieldsets"><a title="polireserva.admin.MantenimientoAdmin.fieldsets
+polireserva.admin.RecursoAdmin.fieldsets
+polireserva.admin.RecursoReservaAdmin.fieldsets
+polireserva.admin.ReservaAdmin.fieldsets
+polireserva.admin.UsuarioAdmin.fieldsets" class="py-name" href="#" onclick="return doclink('link-23', 'fieldsets', 'link-23');">fieldsets</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'fields'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'cin'</tt><tt class="py-op">,</tt> <tt class="py-string">'ladder'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt class="py-comment">#fields = ('cin', 'ladder', 'user')</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt id="link-24" class="py-name" targets="Variable polireserva.admin.MantenimientoAdmin.form=polireserva.admin.MantenimientoAdmin-class.html#form,Variable polireserva.admin.RecursoAdmin.form=polireserva.admin.RecursoAdmin-class.html#form,Variable polireserva.admin.RecursoReservaAdmin.form=polireserva.admin.RecursoReservaAdmin-class.html#form,Variable polireserva.admin.ReservaAdmin.form=polireserva.admin.ReservaAdmin-class.html#form,Variable polireserva.admin.TdRecursoAdmin.form=polireserva.admin.TdRecursoAdmin-class.html#form,Variable polireserva.admin.UsuarioAdmin.form=polireserva.admin.UsuarioAdmin-class.html#form"><a title="polireserva.admin.MantenimientoAdmin.form
+polireserva.admin.RecursoAdmin.form
+polireserva.admin.RecursoReservaAdmin.form
+polireserva.admin.ReservaAdmin.form
 polireserva.admin.TdRecursoAdmin.form
-polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-16', 'form', 'link-16');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name"><a title="polireserva.forms.TdRecursoForm" class="py-name" href="#" onclick="return doclink('link-17', 'TdRecursoForm', 'link-10');">TdRecursoForm</a></tt> </tt>
-<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
-<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt id="link-18" class="py-name" targets="Variable polireserva.admin.RecursoAdmin.list_display=polireserva.admin.RecursoAdmin-class.html#list_display,Variable polireserva.admin.ReservasAdmin.list_display=polireserva.admin.ReservasAdmin-class.html#list_display,Variable polireserva.admin.TdRecursoAdmin.list_display=polireserva.admin.TdRecursoAdmin-class.html#list_display,Variable polireserva.admin.UsuarioAdmin.list_display=polireserva.admin.UsuarioAdmin-class.html#list_display"><a title="polireserva.admin.RecursoAdmin.list_display
-polireserva.admin.ReservasAdmin.list_display
+polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-24', 'form', 'link-24');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="polireserva.forms.TdRecursoForm" class="py-name" href="#" onclick="return doclink('link-25', 'TdRecursoForm', 'link-14');">TdRecursoForm</a></tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt id="link-26" class="py-name" targets="Variable polireserva.admin.MantenimientoAdmin.list_display=polireserva.admin.MantenimientoAdmin-class.html#list_display,Variable polireserva.admin.RecursoAdmin.list_display=polireserva.admin.RecursoAdmin-class.html#list_display,Variable polireserva.admin.RecursoReservaAdmin.list_display=polireserva.admin.RecursoReservaAdmin-class.html#list_display,Variable polireserva.admin.ReservaAdmin.list_display=polireserva.admin.ReservaAdmin-class.html#list_display,Variable polireserva.admin.TdRecursoAdmin.list_display=polireserva.admin.TdRecursoAdmin-class.html#list_display,Variable polireserva.admin.UsuarioAdmin.list_display=polireserva.admin.UsuarioAdmin-class.html#list_display"><a title="polireserva.admin.MantenimientoAdmin.list_display
+polireserva.admin.RecursoAdmin.list_display
+polireserva.admin.RecursoReservaAdmin.list_display
+polireserva.admin.ReservaAdmin.list_display
 polireserva.admin.TdRecursoAdmin.list_display
-polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-18', 'list_display', 'link-18');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'cin'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt id="link-19" class="py-name" targets="Variable polireserva.admin.RecursoAdmin.list_filter=polireserva.admin.RecursoAdmin-class.html#list_filter,Variable polireserva.admin.ReservasAdmin.list_filter=polireserva.admin.ReservasAdmin-class.html#list_filter,Variable polireserva.admin.TdRecursoAdmin.list_filter=polireserva.admin.TdRecursoAdmin-class.html#list_filter,Variable polireserva.admin.UsuarioAdmin.list_filter=polireserva.admin.UsuarioAdmin-class.html#list_filter"><a title="polireserva.admin.RecursoAdmin.list_filter
-polireserva.admin.ReservasAdmin.list_filter
+polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-26', 'list_display', 'link-26');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'cin'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt id="link-27" class="py-name" targets="Variable polireserva.admin.MantenimientoAdmin.list_filter=polireserva.admin.MantenimientoAdmin-class.html#list_filter,Variable polireserva.admin.RecursoAdmin.list_filter=polireserva.admin.RecursoAdmin-class.html#list_filter,Variable polireserva.admin.RecursoReservaAdmin.list_filter=polireserva.admin.RecursoReservaAdmin-class.html#list_filter,Variable polireserva.admin.ReservaAdmin.list_filter=polireserva.admin.ReservaAdmin-class.html#list_filter,Variable polireserva.admin.TdRecursoAdmin.list_filter=polireserva.admin.TdRecursoAdmin-class.html#list_filter,Variable polireserva.admin.UsuarioAdmin.list_filter=polireserva.admin.UsuarioAdmin-class.html#list_filter"><a title="polireserva.admin.MantenimientoAdmin.list_filter
+polireserva.admin.RecursoAdmin.list_filter
+polireserva.admin.RecursoReservaAdmin.list_filter
+polireserva.admin.ReservaAdmin.list_filter
 polireserva.admin.TdRecursoAdmin.list_filter
-polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-19', 'list_filter', 'link-19');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'cin'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt id="link-20" class="py-name" targets="Variable polireserva.admin.RecursoAdmin.search_fields=polireserva.admin.RecursoAdmin-class.html#search_fields,Variable polireserva.admin.ReservasAdmin.search_fields=polireserva.admin.ReservasAdmin-class.html#search_fields,Variable polireserva.admin.TdRecursoAdmin.search_fields=polireserva.admin.TdRecursoAdmin-class.html#search_fields,Variable polireserva.admin.UsuarioAdmin.search_fields=polireserva.admin.UsuarioAdmin-class.html#search_fields"><a title="polireserva.admin.RecursoAdmin.search_fields
-polireserva.admin.ReservasAdmin.search_fields
+polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-27', 'list_filter', 'link-27');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'cin'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt id="link-28" class="py-name" targets="Variable polireserva.admin.MantenimientoAdmin.search_fields=polireserva.admin.MantenimientoAdmin-class.html#search_fields,Variable polireserva.admin.RecursoAdmin.search_fields=polireserva.admin.RecursoAdmin-class.html#search_fields,Variable polireserva.admin.RecursoReservaAdmin.search_fields=polireserva.admin.RecursoReservaAdmin-class.html#search_fields,Variable polireserva.admin.ReservaAdmin.search_fields=polireserva.admin.ReservaAdmin-class.html#search_fields,Variable polireserva.admin.TdRecursoAdmin.search_fields=polireserva.admin.TdRecursoAdmin-class.html#search_fields,Variable polireserva.admin.UsuarioAdmin.search_fields=polireserva.admin.UsuarioAdmin-class.html#search_fields"><a title="polireserva.admin.MantenimientoAdmin.search_fields
+polireserva.admin.RecursoAdmin.search_fields
+polireserva.admin.RecursoReservaAdmin.search_fields
+polireserva.admin.ReservaAdmin.search_fields
 polireserva.admin.TdRecursoAdmin.search_fields
-polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-20', 'search_fields', 'link-20');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'name'</tt><tt class="py-op">,</tt> <tt class="py-string">'lastname'</tt><tt class="py-op">)</tt> </tt>
-<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt id="link-21" class="py-name" targets="Variable polireserva.admin.RecursoAdmin.ordering=polireserva.admin.RecursoAdmin-class.html#ordering,Variable polireserva.admin.ReservasAdmin.ordering=polireserva.admin.ReservasAdmin-class.html#ordering,Variable polireserva.admin.TdRecursoAdmin.ordering=polireserva.admin.TdRecursoAdmin-class.html#ordering,Variable polireserva.admin.UsuarioAdmin.ordering=polireserva.admin.UsuarioAdmin-class.html#ordering"><a title="polireserva.admin.RecursoAdmin.ordering
-polireserva.admin.ReservasAdmin.ordering
+polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-28', 'search_fields', 'link-28');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'name'</tt><tt class="py-op">,</tt> <tt class="py-string">'lastname'</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt id="link-29" class="py-name" targets="Variable polireserva.admin.MantenimientoAdmin.ordering=polireserva.admin.MantenimientoAdmin-class.html#ordering,Variable polireserva.admin.RecursoAdmin.ordering=polireserva.admin.RecursoAdmin-class.html#ordering,Variable polireserva.admin.RecursoReservaAdmin.ordering=polireserva.admin.RecursoReservaAdmin-class.html#ordering,Variable polireserva.admin.ReservaAdmin.ordering=polireserva.admin.ReservaAdmin-class.html#ordering,Variable polireserva.admin.TdRecursoAdmin.ordering=polireserva.admin.TdRecursoAdmin-class.html#ordering,Variable polireserva.admin.UsuarioAdmin.ordering=polireserva.admin.UsuarioAdmin-class.html#ordering"><a title="polireserva.admin.MantenimientoAdmin.ordering
+polireserva.admin.RecursoAdmin.ordering
+polireserva.admin.RecursoReservaAdmin.ordering
+polireserva.admin.ReservaAdmin.ordering
 polireserva.admin.TdRecursoAdmin.ordering
-polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-21', 'ordering', 'link-21');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'cin'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
-<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
-<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt id="link-22" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-22', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="polireserva.models.Usuario" class="py-name" href="#" onclick="return doclink('link-23', 'Usuario', 'link-2');">Usuario</a></tt><tt class="py-op">,</tt> <tt id="link-24" class="py-name" targets="Class polireserva.admin.UsuarioAdmin=polireserva.admin.UsuarioAdmin-class.html"><a title="polireserva.admin.UsuarioAdmin" class="py-name" href="#" onclick="return doclink('link-24', 'UsuarioAdmin', 'link-24');">UsuarioAdmin</a></tt><tt class="py-op">)</tt> </tt>
-<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
-<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
-<a name="TdRecursoAdmin"></a><div id="TdRecursoAdmin-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="TdRecursoAdmin-toggle" onclick="return toggle('TdRecursoAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.TdRecursoAdmin-class.html">TdRecursoAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="TdRecursoAdmin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TdRecursoAdmin-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
-<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">    actions over admin</tt> </tt>
-<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
-<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt id="link-25" class="py-name" targets="Variable polireserva.admin.TdRecursoAdmin.fields=polireserva.admin.TdRecursoAdmin-class.html#fields,Variable polireserva.forms.RecursoForm.Meta.fields=polireserva.forms.RecursoForm.Meta-class.html#fields,Variable polireserva.forms.ReservasForm.Meta.fields=polireserva.forms.ReservasForm.Meta-class.html#fields,Variable polireserva.forms.TdRecursoForm.Meta.fields=polireserva.forms.TdRecursoForm.Meta-class.html#fields,Variable polireserva.forms.UsuarioForm.Meta.fields=polireserva.forms.UsuarioForm.Meta-class.html#fields"><a title="polireserva.admin.TdRecursoAdmin.fields
+polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-29', 'ordering', 'link-29');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'cin'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt id="link-30" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-30', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-31" class="py-name"><a title="polireserva.models.Usuario" class="py-name" href="#" onclick="return doclink('link-31', 'Usuario', 'link-2');">Usuario</a></tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name" targets="Class polireserva.admin.UsuarioAdmin=polireserva.admin.UsuarioAdmin-class.html"><a title="polireserva.admin.UsuarioAdmin" class="py-name" href="#" onclick="return doclink('link-32', 'UsuarioAdmin', 'link-32');">UsuarioAdmin</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="TdRecursoAdmin"></a><div id="TdRecursoAdmin-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="TdRecursoAdmin-toggle" onclick="return toggle('TdRecursoAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.TdRecursoAdmin-class.html">TdRecursoAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TdRecursoAdmin-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TdRecursoAdmin-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">    actions over admin</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt id="link-33" class="py-name" targets="Variable polireserva.admin.TdRecursoAdmin.fields=polireserva.admin.TdRecursoAdmin-class.html#fields,Variable polireserva.forms.MantenimientoForm.Meta.fields=polireserva.forms.MantenimientoForm.Meta-class.html#fields,Variable polireserva.forms.RecursoForm.Meta.fields=polireserva.forms.RecursoForm.Meta-class.html#fields,Variable polireserva.forms.RecursoReservaForm.Meta.fields=polireserva.forms.RecursoReservaForm.Meta-class.html#fields,Variable polireserva.forms.ReservaForm.Meta.fields=polireserva.forms.ReservaForm.Meta-class.html#fields,Variable polireserva.forms.TdRecursoForm.Meta.fields=polireserva.forms.TdRecursoForm.Meta-class.html#fields,Variable polireserva.forms.UsuarioForm.Meta.fields=polireserva.forms.UsuarioForm.Meta-class.html#fields"><a title="polireserva.admin.TdRecursoAdmin.fields
+polireserva.forms.MantenimientoForm.Meta.fields
 polireserva.forms.RecursoForm.Meta.fields
-polireserva.forms.ReservasForm.Meta.fields
+polireserva.forms.RecursoReservaForm.Meta.fields
+polireserva.forms.ReservaForm.Meta.fields
 polireserva.forms.TdRecursoForm.Meta.fields
-polireserva.forms.UsuarioForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-25', 'fields', 'link-25');">fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'description'</tt><tt class="py-op">)</tt> </tt>
-<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-comment">##query result for cont</tt> </tt>
-<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
-<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
-<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
-<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt id="link-26" class="py-name"><a title="polireserva.admin.RecursoAdmin.form
-polireserva.admin.ReservasAdmin.form
+polireserva.forms.UsuarioForm.Meta.fields" class="py-name" href="#" onclick="return doclink('link-33', 'fields', 'link-33');">fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'description'</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-comment">##query result for cont</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt id="link-34" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.form
+polireserva.admin.RecursoAdmin.form
+polireserva.admin.RecursoReservaAdmin.form
+polireserva.admin.ReservaAdmin.form
 polireserva.admin.TdRecursoAdmin.form
-polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-26', 'form', 'link-16');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-27" class="py-name"><a title="polireserva.forms.TdRecursoForm" class="py-name" href="#" onclick="return doclink('link-27', 'TdRecursoForm', 'link-10');">TdRecursoForm</a></tt> </tt>
-<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
-<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt id="link-28" class="py-name"><a title="polireserva.admin.RecursoAdmin.list_display
-polireserva.admin.ReservasAdmin.list_display
+polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-34', 'form', 'link-24');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-35" class="py-name"><a title="polireserva.forms.TdRecursoForm" class="py-name" href="#" onclick="return doclink('link-35', 'TdRecursoForm', 'link-14');">TdRecursoForm</a></tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt id="link-36" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_display
+polireserva.admin.RecursoAdmin.list_display
+polireserva.admin.RecursoReservaAdmin.list_display
+polireserva.admin.ReservaAdmin.list_display
 polireserva.admin.TdRecursoAdmin.list_display
-polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-28', 'list_display', 'link-18');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'description'</tt><tt class="py-op">)</tt> </tt>
-<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt id="link-29" class="py-name"><a title="polireserva.admin.RecursoAdmin.list_filter
-polireserva.admin.ReservasAdmin.list_filter
+polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-36', 'list_display', 'link-26');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'description'</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt id="link-37" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_filter
+polireserva.admin.RecursoAdmin.list_filter
+polireserva.admin.RecursoReservaAdmin.list_filter
+polireserva.admin.ReservaAdmin.list_filter
 polireserva.admin.TdRecursoAdmin.list_filter
-polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-29', 'list_filter', 'link-19');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'description'</tt><tt class="py-op">)</tt> </tt>
-<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">    <tt id="link-30" class="py-name"><a title="polireserva.admin.RecursoAdmin.search_fields
-polireserva.admin.ReservasAdmin.search_fields
+polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-37', 'list_filter', 'link-27');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'description'</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">    <tt id="link-38" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.search_fields
+polireserva.admin.RecursoAdmin.search_fields
+polireserva.admin.RecursoReservaAdmin.search_fields
+polireserva.admin.ReservaAdmin.search_fields
 polireserva.admin.TdRecursoAdmin.search_fields
-polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-30', 'search_fields', 'link-20');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'description'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">    <tt id="link-31" class="py-name"><a title="polireserva.admin.RecursoAdmin.ordering
-polireserva.admin.ReservasAdmin.ordering
+polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-38', 'search_fields', 'link-28');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'description'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt id="link-39" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.ordering
+polireserva.admin.RecursoAdmin.ordering
+polireserva.admin.RecursoReservaAdmin.ordering
+polireserva.admin.ReservaAdmin.ordering
 polireserva.admin.TdRecursoAdmin.ordering
-polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-31', 'ordering', 'link-21');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"> </tt>
-<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt>
-<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt id="link-32" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-32', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-33" class="py-name"><a title="polireserva.models.TdRecurso" class="py-name" href="#" onclick="return doclink('link-33', 'TdRecurso', 'link-4');">TdRecurso</a></tt><tt class="py-op">,</tt> <tt id="link-34" class="py-name" targets="Class polireserva.admin.TdRecursoAdmin=polireserva.admin.TdRecursoAdmin-class.html"><a title="polireserva.admin.TdRecursoAdmin" class="py-name" href="#" onclick="return doclink('link-34', 'TdRecursoAdmin', 'link-34');">TdRecursoAdmin</a></tt><tt class="py-op">)</tt> </tt>
-<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
-<a name="RecursoAdmin"></a><div id="RecursoAdmin-def"><a name="L49"></a><tt class="py-lineno">49</tt> <a class="py-toggle" href="#" id="RecursoAdmin-toggle" onclick="return toggle('RecursoAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.RecursoAdmin-class.html">RecursoAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="RecursoAdmin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="RecursoAdmin-expanded"><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
-<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring">    actions over admin</tt> </tt>
-<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
-<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">     </tt>
-<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">    <tt id="link-35" class="py-name"><a title="polireserva.admin.RecursoAdmin.fieldsets
-polireserva.admin.ReservasAdmin.fieldsets
-polireserva.admin.UsuarioAdmin.fieldsets" class="py-name" href="#" onclick="return doclink('link-35', 'fieldsets', 'link-15');">fieldsets</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'fields'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'id_r'</tt><tt class="py-op">,</tt> <tt class="py-string">'name_r'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'description'</tt><tt class="py-op">,</tt> <tt class="py-string">'status'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_c'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_m'</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"> </tt>
-<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">    <tt id="link-36" class="py-name"><a title="polireserva.admin.RecursoAdmin.form
-polireserva.admin.ReservasAdmin.form
+polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-39', 'ordering', 'link-29');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt id="link-40" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-40', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-41" class="py-name"><a title="polireserva.models.TdRecurso" class="py-name" href="#" onclick="return doclink('link-41', 'TdRecurso', 'link-4');">TdRecurso</a></tt><tt class="py-op">,</tt> <tt id="link-42" class="py-name" targets="Class polireserva.admin.TdRecursoAdmin=polireserva.admin.TdRecursoAdmin-class.html"><a title="polireserva.admin.TdRecursoAdmin" class="py-name" href="#" onclick="return doclink('link-42', 'TdRecursoAdmin', 'link-42');">TdRecursoAdmin</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="RecursoAdmin"></a><div id="RecursoAdmin-def"><a name="L54"></a><tt class="py-lineno"> 54</tt> <a class="py-toggle" href="#" id="RecursoAdmin-toggle" onclick="return toggle('RecursoAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.RecursoAdmin-class.html">RecursoAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RecursoAdmin-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="RecursoAdmin-expanded"><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">    actions over admin</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">     </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt id="link-43" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.fieldsets
+polireserva.admin.RecursoAdmin.fieldsets
+polireserva.admin.RecursoReservaAdmin.fieldsets
+polireserva.admin.ReservaAdmin.fieldsets
+polireserva.admin.UsuarioAdmin.fieldsets" class="py-name" href="#" onclick="return doclink('link-43', 'fieldsets', 'link-23');">fieldsets</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'fields'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'id_r'</tt><tt class="py-op">,</tt> <tt class="py-string">'name_r'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'description'</tt><tt class="py-op">,</tt> <tt class="py-string">'status'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_c'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_m'</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt id="link-44" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.form
+polireserva.admin.RecursoAdmin.form
+polireserva.admin.RecursoReservaAdmin.form
+polireserva.admin.ReservaAdmin.form
 polireserva.admin.TdRecursoAdmin.form
-polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-36', 'form', 'link-16');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-37" class="py-name"><a title="polireserva.forms.RecursoForm" class="py-name" href="#" onclick="return doclink('link-37', 'RecursoForm', 'link-12');">RecursoForm</a></tt> </tt>
-<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"> </tt>
-<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">    <tt id="link-38" class="py-name"><a title="polireserva.admin.RecursoAdmin.list_display
-polireserva.admin.ReservasAdmin.list_display
+polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-44', 'form', 'link-24');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-45" class="py-name"><a title="polireserva.forms.RecursoForm" class="py-name" href="#" onclick="return doclink('link-45', 'RecursoForm', 'link-16');">RecursoForm</a></tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt id="link-46" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_display
+polireserva.admin.RecursoAdmin.list_display
+polireserva.admin.RecursoReservaAdmin.list_display
+polireserva.admin.ReservaAdmin.list_display
 polireserva.admin.TdRecursoAdmin.list_display
-polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-38', 'list_display', 'link-18');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_r'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'name_r'</tt><tt class="py-op">)</tt> </tt>
-<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">    <tt id="link-39" class="py-name"><a title="polireserva.admin.RecursoAdmin.list_filter
-polireserva.admin.ReservasAdmin.list_filter
+polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-46', 'list_display', 'link-26');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_r'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'name_r'</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt id="link-47" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_filter
+polireserva.admin.RecursoAdmin.list_filter
+polireserva.admin.RecursoReservaAdmin.list_filter
+polireserva.admin.ReservaAdmin.list_filter
 polireserva.admin.TdRecursoAdmin.list_filter
-polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-39', 'list_filter', 'link-19');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_r'</tt><tt class="py-op">)</tt> </tt>
-<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">    <tt id="link-40" class="py-name"><a title="polireserva.admin.RecursoAdmin.search_fields
-polireserva.admin.ReservasAdmin.search_fields
+polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-47', 'list_filter', 'link-27');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_r'</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt id="link-48" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.search_fields
+polireserva.admin.RecursoAdmin.search_fields
+polireserva.admin.RecursoReservaAdmin.search_fields
+polireserva.admin.ReservaAdmin.search_fields
 polireserva.admin.TdRecursoAdmin.search_fields
-polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-40', 'search_fields', 'link-20');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'name_r'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">    <tt id="link-41" class="py-name"><a title="polireserva.admin.RecursoAdmin.ordering
-polireserva.admin.ReservasAdmin.ordering
+polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-48', 'search_fields', 'link-28');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'name_r'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt id="link-49" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.ordering
+polireserva.admin.RecursoAdmin.ordering
+polireserva.admin.RecursoReservaAdmin.ordering
+polireserva.admin.ReservaAdmin.ordering
 polireserva.admin.TdRecursoAdmin.ordering
-polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-41', 'ordering', 'link-21');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"> </tt>
-<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"> </tt>
-<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt id="link-42" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-42', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-43" class="py-name"><a title="polireserva.models.Recurso" class="py-name" href="#" onclick="return doclink('link-43', 'Recurso', 'link-6');">Recurso</a></tt><tt class="py-op">,</tt> <tt id="link-44" class="py-name" targets="Class polireserva.admin.RecursoAdmin=polireserva.admin.RecursoAdmin-class.html"><a title="polireserva.admin.RecursoAdmin" class="py-name" href="#" onclick="return doclink('link-44', 'RecursoAdmin', 'link-44');">RecursoAdmin</a></tt><tt class="py-op">)</tt> </tt>
-<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt>
-<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"> </tt>
-<a name="ReservasAdmin"></a><div id="ReservasAdmin-def"><a name="L67"></a><tt class="py-lineno">67</tt> <a class="py-toggle" href="#" id="ReservasAdmin-toggle" onclick="return toggle('ReservasAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.ReservasAdmin-class.html">ReservasAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ReservasAdmin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="ReservasAdmin-expanded"><a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"> </tt>
-<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">    <tt id="link-45" class="py-name"><a title="polireserva.admin.RecursoAdmin.fieldsets
-polireserva.admin.ReservasAdmin.fieldsets
-polireserva.admin.UsuarioAdmin.fieldsets" class="py-name" href="#" onclick="return doclink('link-45', 'fieldsets', 'link-15');">fieldsets</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'fields'</tt> <tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'id_R'</tt><tt class="py-op">,</tt> <tt class="py-string">'tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt> <tt class="py-string">'recursos'</tt><tt class="py-op">,</tt> <tt class="py-string">'status'</tt><tt class="py-op">,</tt> <tt class="py-string">'obs'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_i'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_f'</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
-<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"> </tt>
-<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">    <tt id="link-46" class="py-name"><a title="polireserva.admin.RecursoAdmin.form
-polireserva.admin.ReservasAdmin.form
+polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-49', 'ordering', 'link-29');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_tdr'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt id="link-50" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-50', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-51" class="py-name"><a title="polireserva.models.Recurso" class="py-name" href="#" onclick="return doclink('link-51', 'Recurso', 'link-6');">Recurso</a></tt><tt class="py-op">,</tt> <tt id="link-52" class="py-name" targets="Class polireserva.admin.RecursoAdmin=polireserva.admin.RecursoAdmin-class.html"><a title="polireserva.admin.RecursoAdmin" class="py-name" href="#" onclick="return doclink('link-52', 'RecursoAdmin', 'link-52');">RecursoAdmin</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="ReservaAdmin"></a><div id="ReservaAdmin-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="ReservaAdmin-toggle" onclick="return toggle('ReservaAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.ReservaAdmin-class.html">ReservaAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ReservaAdmin-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ReservaAdmin-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt id="link-53" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.fieldsets
+polireserva.admin.RecursoAdmin.fieldsets
+polireserva.admin.RecursoReservaAdmin.fieldsets
+polireserva.admin.ReservaAdmin.fieldsets
+polireserva.admin.UsuarioAdmin.fieldsets" class="py-name" href="#" onclick="return doclink('link-53', 'fieldsets', 'link-23');">fieldsets</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'fields'</tt> <tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'id_R'</tt><tt class="py-op">,</tt> <tt class="py-string">'tdr'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt> <tt class="py-string">'status'</tt><tt class="py-op">,</tt> <tt class="py-string">'obs'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_i'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_f'</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt id="link-54" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.form
+polireserva.admin.RecursoAdmin.form
+polireserva.admin.RecursoReservaAdmin.form
+polireserva.admin.ReservaAdmin.form
 polireserva.admin.TdRecursoAdmin.form
-polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-46', 'form', 'link-16');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-47" class="py-name"><a title="polireserva.forms.ReservasForm" class="py-name" href="#" onclick="return doclink('link-47', 'ReservasForm', 'link-14');">ReservasForm</a></tt> </tt>
-<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"> </tt>
-<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">    <tt id="link-48" class="py-name"><a title="polireserva.admin.RecursoAdmin.list_display
-polireserva.admin.ReservasAdmin.list_display
+polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-54', 'form', 'link-24');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-55" class="py-name"><a title="polireserva.forms.ReservaForm" class="py-name" href="#" onclick="return doclink('link-55', 'ReservaForm', 'link-18');">ReservaForm</a></tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt id="link-56" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_display
+polireserva.admin.RecursoAdmin.list_display
+polireserva.admin.RecursoReservaAdmin.list_display
+polireserva.admin.ReservaAdmin.list_display
 polireserva.admin.TdRecursoAdmin.list_display
-polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-48', 'list_display', 'link-18');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_R'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt> <tt class="py-string">'status'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">    <tt id="link-49" class="py-name"><a title="polireserva.admin.RecursoAdmin.list_filter
-polireserva.admin.ReservasAdmin.list_filter
+polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-56', 'list_display', 'link-26');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_R'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt> <tt class="py-string">'status'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt id="link-57" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_filter
+polireserva.admin.RecursoAdmin.list_filter
+polireserva.admin.RecursoReservaAdmin.list_filter
+polireserva.admin.ReservaAdmin.list_filter
 polireserva.admin.TdRecursoAdmin.list_filter
-polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-49', 'list_filter', 'link-19');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'status'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">    <tt id="link-50" class="py-name"><a title="polireserva.admin.RecursoAdmin.search_fields
-polireserva.admin.ReservasAdmin.search_fields
+polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-57', 'list_filter', 'link-27');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'status'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt id="link-58" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.search_fields
+polireserva.admin.RecursoAdmin.search_fields
+polireserva.admin.RecursoReservaAdmin.search_fields
+polireserva.admin.ReservaAdmin.search_fields
 polireserva.admin.TdRecursoAdmin.search_fields
-polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-50', 'search_fields', 'link-20');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_R'</tt><tt class="py-op">,</tt> <tt class="py-string">'status'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">    <tt id="link-51" class="py-name"><a title="polireserva.admin.RecursoAdmin.ordering
-polireserva.admin.ReservasAdmin.ordering
+polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-58', 'search_fields', 'link-28');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_R'</tt><tt class="py-op">,</tt> <tt class="py-string">'status'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt id="link-59" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.ordering
+polireserva.admin.RecursoAdmin.ordering
+polireserva.admin.RecursoReservaAdmin.ordering
+polireserva.admin.ReservaAdmin.ordering
 polireserva.admin.TdRecursoAdmin.ordering
-polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-51', 'ordering', 'link-21');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_R'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line"> </tt>
-<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line"><tt id="link-52" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-52', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-53" class="py-name"><a title="polireserva.models.Reservas" class="py-name" href="#" onclick="return doclink('link-53', 'Reservas', 'link-8');">Reservas</a></tt><tt class="py-op">,</tt> <tt id="link-54" class="py-name" targets="Class polireserva.admin.ReservasAdmin=polireserva.admin.ReservasAdmin-class.html"><a title="polireserva.admin.ReservasAdmin" class="py-name" href="#" onclick="return doclink('link-54', 'ReservasAdmin', 'link-54');">ReservasAdmin</a></tt><tt class="py-op">)</tt> </tt>
-<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-59', 'ordering', 'link-29');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_R'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt id="link-60" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-60', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-61" class="py-name"><a title="polireserva.models.Reserva" class="py-name" href="#" onclick="return doclink('link-61', 'Reserva', 'link-8');">Reserva</a></tt><tt class="py-op">,</tt> <tt id="link-62" class="py-name" targets="Class polireserva.admin.ReservaAdmin=polireserva.admin.ReservaAdmin-class.html"><a title="polireserva.admin.ReservaAdmin" class="py-name" href="#" onclick="return doclink('link-62', 'ReservaAdmin', 'link-62');">ReservaAdmin</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="RecursoReservaAdmin"></a><div id="RecursoReservaAdmin-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="RecursoReservaAdmin-toggle" onclick="return toggle('RecursoReservaAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.RecursoReservaAdmin-class.html">RecursoReservaAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RecursoReservaAdmin-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="RecursoReservaAdmin-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt id="link-63" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.fieldsets
+polireserva.admin.RecursoAdmin.fieldsets
+polireserva.admin.RecursoReservaAdmin.fieldsets
+polireserva.admin.ReservaAdmin.fieldsets
+polireserva.admin.UsuarioAdmin.fieldsets" class="py-name" href="#" onclick="return doclink('link-63', 'fieldsets', 'link-23');">fieldsets</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'fields'</tt> <tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'id_RR'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_reserva'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_recurso'</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt id="link-64" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.form
+polireserva.admin.RecursoAdmin.form
+polireserva.admin.RecursoReservaAdmin.form
+polireserva.admin.ReservaAdmin.form
+polireserva.admin.TdRecursoAdmin.form
+polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-64', 'form', 'link-24');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-65" class="py-name"><a title="polireserva.forms.ReservaForm" class="py-name" href="#" onclick="return doclink('link-65', 'ReservaForm', 'link-18');">ReservaForm</a></tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt id="link-66" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_display
+polireserva.admin.RecursoAdmin.list_display
+polireserva.admin.RecursoReservaAdmin.list_display
+polireserva.admin.ReservaAdmin.list_display
+polireserva.admin.TdRecursoAdmin.list_display
+polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-66', 'list_display', 'link-26');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_RR'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_reserva'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_recurso'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt id="link-67" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_filter
+polireserva.admin.RecursoAdmin.list_filter
+polireserva.admin.RecursoReservaAdmin.list_filter
+polireserva.admin.ReservaAdmin.list_filter
+polireserva.admin.TdRecursoAdmin.list_filter
+polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-67', 'list_filter', 'link-27');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_reserva'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt id="link-68" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.search_fields
+polireserva.admin.RecursoAdmin.search_fields
+polireserva.admin.RecursoReservaAdmin.search_fields
+polireserva.admin.ReservaAdmin.search_fields
+polireserva.admin.TdRecursoAdmin.search_fields
+polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-68', 'search_fields', 'link-28');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_reserva'</tt><tt class="py-op">,</tt> <tt class="py-string">'id_recurso'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt id="link-69" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.ordering
+polireserva.admin.RecursoAdmin.ordering
+polireserva.admin.RecursoReservaAdmin.ordering
+polireserva.admin.ReservaAdmin.ordering
+polireserva.admin.TdRecursoAdmin.ordering
+polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-69', 'ordering', 'link-29');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_RR'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt id="link-70" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-70', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-71" class="py-name"><a title="polireserva.models.RecursoReserva" class="py-name" href="#" onclick="return doclink('link-71', 'RecursoReserva', 'link-12');">RecursoReserva</a></tt><tt class="py-op">,</tt> <tt id="link-72" class="py-name" targets="Class polireserva.admin.RecursoReservaAdmin=polireserva.admin.RecursoReservaAdmin-class.html"><a title="polireserva.admin.RecursoReservaAdmin" class="py-name" href="#" onclick="return doclink('link-72', 'RecursoReservaAdmin', 'link-72');">RecursoReservaAdmin</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="MantenimientoAdmin"></a><div id="MantenimientoAdmin-def"><a name="L101"></a><tt class="py-lineno">101</tt> <a class="py-toggle" href="#" id="MantenimientoAdmin-toggle" onclick="return toggle('MantenimientoAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="polireserva.admin.MantenimientoAdmin-class.html">MantenimientoAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MantenimientoAdmin-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MantenimientoAdmin-expanded"><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt id="link-73" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.fieldsets
+polireserva.admin.RecursoAdmin.fieldsets
+polireserva.admin.RecursoReservaAdmin.fieldsets
+polireserva.admin.ReservaAdmin.fieldsets
+polireserva.admin.UsuarioAdmin.fieldsets" class="py-name" href="#" onclick="return doclink('link-73', 'fieldsets', 'link-23');">fieldsets</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'fields'</tt> <tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'id_M'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt> <tt class="py-string">'recurso'</tt><tt class="py-op">,</tt> <tt class="py-string">'kindM'</tt><tt class="py-op">,</tt> <tt class="py-string">'reason'</tt><tt class="py-op">,</tt> <tt class="py-string">'report'</tt><tt class="py-op">,</tt> <tt class="py-string">'date_c'</tt><tt class="py-op">)</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">    <tt id="link-74" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.form
+polireserva.admin.RecursoAdmin.form
+polireserva.admin.RecursoReservaAdmin.form
+polireserva.admin.ReservaAdmin.form
+polireserva.admin.TdRecursoAdmin.form
+polireserva.admin.UsuarioAdmin.form" class="py-name" href="#" onclick="return doclink('link-74', 'form', 'link-24');">form</a></tt> <tt class="py-op">=</tt> <tt id="link-75" class="py-name"><a title="polireserva.forms.MantenimientoForm" class="py-name" href="#" onclick="return doclink('link-75', 'MantenimientoForm', 'link-22');">MantenimientoForm</a></tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt id="link-76" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_display
+polireserva.admin.RecursoAdmin.list_display
+polireserva.admin.RecursoReservaAdmin.list_display
+polireserva.admin.ReservaAdmin.list_display
+polireserva.admin.TdRecursoAdmin.list_display
+polireserva.admin.UsuarioAdmin.list_display" class="py-name" href="#" onclick="return doclink('link-76', 'list_display', 'link-26');">list_display</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_M'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt id="link-77" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.list_filter
+polireserva.admin.RecursoAdmin.list_filter
+polireserva.admin.RecursoReservaAdmin.list_filter
+polireserva.admin.ReservaAdmin.list_filter
+polireserva.admin.TdRecursoAdmin.list_filter
+polireserva.admin.UsuarioAdmin.list_filter" class="py-name" href="#" onclick="return doclink('link-77', 'list_filter', 'link-27');">list_filter</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'reason'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt id="link-78" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.search_fields
+polireserva.admin.RecursoAdmin.search_fields
+polireserva.admin.RecursoReservaAdmin.search_fields
+polireserva.admin.ReservaAdmin.search_fields
+polireserva.admin.TdRecursoAdmin.search_fields
+polireserva.admin.UsuarioAdmin.search_fields" class="py-name" href="#" onclick="return doclink('link-78', 'search_fields', 'link-28');">search_fields</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_M'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt id="link-79" class="py-name"><a title="polireserva.admin.MantenimientoAdmin.ordering
+polireserva.admin.RecursoAdmin.ordering
+polireserva.admin.RecursoReservaAdmin.ordering
+polireserva.admin.ReservaAdmin.ordering
+polireserva.admin.TdRecursoAdmin.ordering
+polireserva.admin.UsuarioAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-79', 'ordering', 'link-29');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'id_M'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt id="link-80" class="py-name"><a title="polireserva.admin" class="py-name" href="#" onclick="return doclink('link-80', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-81" class="py-name"><a title="polireserva.models.Mantenimiento" class="py-name" href="#" onclick="return doclink('link-81', 'Mantenimiento', 'link-10');">Mantenimiento</a></tt><tt class="py-op">,</tt> <tt id="link-82" class="py-name" targets="Class polireserva.admin.MantenimientoAdmin=polireserva.admin.MantenimientoAdmin-class.html"><a title="polireserva.admin.MantenimientoAdmin" class="py-name" href="#" onclick="return doclink('link-82', 'MantenimientoAdmin', 'link-82');">MantenimientoAdmin</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -232,7 +372,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Thu Apr 27 15:37:13 2017
+    Generated by Epydoc 3.0.1 on Fri May 19 21:04:34 2017
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

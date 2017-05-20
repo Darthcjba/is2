@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>polireserva.models</title>
+  <title>polireserva.models.RecursoReserva</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -35,7 +35,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         Package&nbsp;polireserva ::
-        Module&nbsp;models
+        <a href="polireserva.models-module.html">Module&nbsp;models</a> ::
+        Class&nbsp;RecursoReserva
       </span>
     </td>
     <td>
@@ -45,25 +46,32 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="polireserva.models-module.html"
+            >]&nbsp;|&nbsp;<a href="polireserva.models.RecursoReserva-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
-<!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module models</h1><p class="nomargin-top"><span class="codelink"><a href="polireserva.models-pysrc.html">source&nbsp;code</a></span></p>
-<!-- ==================== CLASSES ==================== -->
-<a name="section-Classes"></a>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class RecursoReserva</h1><p class="nomargin-top"><span class="codelink"><a href="polireserva.models-pysrc.html#RecursoReserva">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+django.db.models.Model --+
+                         |
+                        <strong class="uidshort">RecursoReserva</strong>
+</pre>
+
+<hr />
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="left"><span class="table-header">Class Variables</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Classes"
+         ><span class="options">[<a href="#section-ClassVariables"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -74,42 +82,21 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.Usuario-class.html" class="summary-name">Usuario</a>
+        <a name="id_RR"></a><span class="summary-name">id_RR</span> = <code title="models.IntegerField(primary_key= True)">models.IntegerField(primary_key= True)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.TdRecurso-class.html" class="summary-name">TdRecurso</a>
+        <a name="id_reserva"></a><span class="summary-name">id_reserva</span> = <code title="models.ForeignKey(Reserva)">models.ForeignKey(Reserva)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.Recurso-class.html" class="summary-name">Recurso</a>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="polireserva.models.Reserva-class.html" class="summary-name">Reserva</a>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="polireserva.models.RecursoReserva-class.html" class="summary-name">RecursoReserva</a>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="polireserva.models.Mantenimiento-class.html" class="summary-name">Mantenimiento</a>
+        <a name="id_recurso"></a><span class="summary-name">id_recurso</span> = <code title="models.ForeignKey(Recurso)">models.ForeignKey(Recurso)</code>
     </td>
   </tr>
 </table>

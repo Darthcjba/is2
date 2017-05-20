@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>polireserva.models.Recurso</title>
+  <title>polireserva.models.Mantenimiento</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -36,7 +36,7 @@
       <span class="breadcrumbs">
         Package&nbsp;polireserva ::
         <a href="polireserva.models-module.html">Module&nbsp;models</a> ::
-        Class&nbsp;Recurso
+        Class&nbsp;Mantenimiento
       </span>
     </td>
     <td>
@@ -46,18 +46,18 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="polireserva.models.Recurso-class.html"
+            >]&nbsp;|&nbsp;<a href="polireserva.models.Mantenimiento-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class Recurso</h1><p class="nomargin-top"><span class="codelink"><a href="polireserva.models-pysrc.html#Recurso">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class Mantenimiento</h1><p class="nomargin-top"><span class="codelink"><a href="polireserva.models-pysrc.html#Mantenimiento">source&nbsp;code</a></span></p>
 <pre class="base-tree">
 django.db.models.Model --+
                          |
-                        <strong class="uidshort">Recurso</strong>
+                        <strong class="uidshort">Mantenimiento</strong>
 </pre>
 
 <hr />
@@ -84,9 +84,10 @@ django.db.models.Model --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="get_report"></a><span class="summary-sig-name">get_report</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      get reporte :return: reporte</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="polireserva.models-pysrc.html#Recurso.__unicode__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="polireserva.models-pysrc.html#Mantenimiento.get_report">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -100,11 +101,10 @@ django.db.models.Model --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="set_name_r"></a><span class="summary-sig-name">set_name_r</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">name</span>)</span><br />
-      :param name: :return: self.name_r</td>
+          <td><span class="summary-sig"><a name="get_reason"></a><span class="summary-sig-name">get_reason</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      get razon :return: razon</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="polireserva.models-pysrc.html#Recurso.set_name_r">source&nbsp;code</a></span>
+            <span class="codelink"><a href="polireserva.models-pysrc.html#Mantenimiento.get_reason">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -118,11 +118,10 @@ django.db.models.Model --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="set_descripton"></a><span class="summary-sig-name">set_descripton</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">description</span>)</span><br />
-      :param description: :return:</td>
+          <td><span class="summary-sig"><a name="get_date_c"></a><span class="summary-sig-name">get_date_c</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      get fecha :return: fecha</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="polireserva.models-pysrc.html#Recurso.set_descripton">source&nbsp;code</a></span>
+            <span class="codelink"><a href="polireserva.models-pysrc.html#Mantenimiento.get_date_c">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -136,10 +135,11 @@ django.db.models.Model --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_name_r"></a><span class="summary-sig-name">get_name_r</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      :return:</td>
+          <td><span class="summary-sig"><a name="set_report"></a><span class="summary-sig-name">set_report</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      set reporte :param args: :return:</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="polireserva.models-pysrc.html#Recurso.get_name_r">source&nbsp;code</a></span>
+            <span class="codelink"><a href="polireserva.models-pysrc.html#Mantenimiento.set_report">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -153,10 +153,29 @@ django.db.models.Model --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_description"></a><span class="summary-sig-name">get_description</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      :return:</td>
+          <td><span class="summary-sig"><a name="set_date_c"></a><span class="summary-sig-name">set_date_c</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">date</span>)</span><br />
+      set fecha :param date: :return:</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="polireserva.models-pysrc.html#Recurso.get_description">source&nbsp;code</a></span>
+            <span class="codelink"><a href="polireserva.models-pysrc.html#Mantenimiento.set_date_c">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_reason"></a><span class="summary-sig-name">set_reason</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">reason</span>)</span><br />
+      set razon :param reason: :return:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="polireserva.models-pysrc.html#Mantenimiento.set_reason">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -186,44 +205,28 @@ django.db.models.Model --+
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="polireserva.models.Recurso-class.html#STATUS_CHOICES" class="summary-name">STATUS_CHOICES</a> = <code title="'Disponible', 'Disponible', ('EnUso', 'EnUso'), ('NoDisponible', 'NoDi\
-sponible'), ('Mantenimiento', 'Mantenimiento')">'Disponible', 'Disponible', ('EnUso', 'EnUso'<code class="variable-ellipsis">...</code></code>
+        <a name="KIND_CHOICES"></a><span class="summary-name">KIND_CHOICES</span> = <code title="'PRE', 'Preventivo', ('COR', 'Correctivo')">'PRE', 'Preventivo', ('COR', 'Correctivo')</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="id_r"></a><span class="summary-name">id_r</span> = <code title="models.IntegerField(&quot;Codigo del item&quot;, primary_key= True)">models.IntegerField(&quot;Codigo del item&quot;, primary_key= True)</code>
+        <a name="id_M"></a><span class="summary-name">id_M</span> = <code title="models.IntegerField(primary_key= True)">models.IntegerField(primary_key= True)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="id_tdr"></a><span class="summary-name">id_tdr</span> = <code title="models.ForeignKey(TdRecurso)">models.ForeignKey(TdRecurso)</code>
+        <a name="user"></a><span class="summary-name">user</span> = <code title="models.ForeignKey(Usuario)">models.ForeignKey(Usuario)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="name_r"></a><span class="summary-name">name_r</span> = <code title="models.CharField(&quot;Nombre del item&quot;, max_length= 30)">models.CharField(&quot;Nombre del item&quot;, max_length= 30)</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="polireserva.models.Recurso-class.html#description" class="summary-name">description</a> = <code title="models.CharField(&quot;Descripcion del item&quot;, max_length= 50)">models.CharField(&quot;Descripcion del item&quot;, max_len<code class="variable-ellipsis">...</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="polireserva.models.Recurso-class.html#status" class="summary-name">status</a> = <code title="models.CharField(&quot;Estado&quot;, choices= STATUS_CHOICES, default= 'Disponib\
-le', max_length= 13)">models.CharField(&quot;Estado&quot;, choices= STATUS_CHOICES, d<code class="variable-ellipsis">...</code></code>
+        <a name="recurso"></a><span class="summary-name">recurso</span> = <code title="models.ForeignKey(Recurso)">models.ForeignKey(Recurso)</code>
     </td>
   </tr>
 <tr>
@@ -237,7 +240,22 @@ le', max_length= 13)">models.CharField(&quot;Estado&quot;, choices= STATUS_CHOIC
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="date_m"></a><span class="summary-name">date_m</span> = <code title="models.DateField(&quot;Fecha de alteracion&quot;)">models.DateField(&quot;Fecha de alteracion&quot;)</code>
+        <a href="polireserva.models.Mantenimiento-class.html#kindM" class="summary-name">kindM</a> = <code title="models.CharField(&quot;Tipo de mantenimiento realizado&quot;, choices= KIND_CHOI\
+CES, default= 'Preventivo', max_length= 10)">models.CharField(&quot;Tipo de mantenimiento realizado&quot;, ch<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="polireserva.models.Mantenimiento-class.html#reason" class="summary-name">reason</a> = <code title="models.CharField(&quot;Razon del mantenimiento&quot;, max_length= 200)">models.CharField(&quot;Razon del mantenimiento&quot;, max_lengt<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="polireserva.models.Mantenimiento-class.html#report" class="summary-name">report</a> = <code title="models.CharField(&quot;Reporte de finalizacion&quot;, max_length= 100)">models.CharField(&quot;Reporte de finalizacion&quot;, max_lengt<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 </table>
@@ -259,57 +277,56 @@ le', max_length= 13)">models.CharField(&quot;Estado&quot;, choices= STATUS_CHOIC
   </td>
 </tr>
 </table>
-<a name="STATUS_CHOICES"></a>
+<a name="kindM"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">STATUS_CHOICES</h3>
+  <h3 class="epydoc">kindM</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-'Disponible', 'Disponible', ('EnUso', 'EnUso'), ('NoDisponible', 'NoDi<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-sponible'), ('Mantenimiento', 'Mantenimiento')
+models.CharField(&quot;Tipo de mantenimiento realizado&quot;, choices= KIND_CHOI<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+CES, default= 'Preventivo', max_length= 10)
 </pre></td></tr></table>
 </dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="description"></a>
+<a name="reason"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">description</h3>
+  <h3 class="epydoc">reason</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-models.CharField(&quot;Descripcion del item&quot;, max_length= 50)
+models.CharField(&quot;Razon del mantenimiento&quot;, max_length= 200)
 </pre></td></tr></table>
 </dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="status"></a>
+<a name="report"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">status</h3>
+  <h3 class="epydoc">report</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-models.CharField(&quot;Estado&quot;, choices= STATUS_CHOICES, default= 'Disponib<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-le', max_length= 13)
+models.CharField(&quot;Reporte de finalizacion&quot;, max_length= 100)
 </pre></td></tr></table>
 </dd>
   </dl>
