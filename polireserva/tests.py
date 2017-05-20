@@ -6,8 +6,6 @@ from polireserva.models import TdRecurso,Recurso
 from django.contrib.auth.models import User
 from rolepermissions.roles import assign_role
 from rolepermissions.checkers import has_permission,has_role
-from polireserva.models import Mantenimiento
-from django.shortcuts import get_object_or_404
 
 class LoginTest(TestCase):
     def setUp(self):
@@ -71,7 +69,7 @@ class userTestCase(TestCase):
     def test_has_permission(self):
         usertest=User.objects.get(id=1)
         usertest2=User.objects.get(id=2)
-        self.assertIs(has_permission(usertest,'can_access_admin'),True)
+        self.assertIs(has_permission(usertest,'can_access_admin'), True)
         self.assertIs(has_permission(usertest2, 'can_access_admin'), False)
 
     def test_has_role(self):
@@ -79,20 +77,6 @@ class userTestCase(TestCase):
         self.assertIs(has_role(usertest,'tecnico'),False)
 
 
-class mantenimientoTestCase(TestCase):
-    def setUp(self):
-        user=User.objects.create_user('test', 'test@test.com', 'test')
-        a1 = TdRecurso.objects.create(description="Aula")
-        recurso=Recurso.objects.create(name_r="A50", id_tdr=a1, description="objeto de prueba 1", date_c="2017-05-05",date_m="2017-05-05")
-        man=Mantenimiento.objects.create(user=user,recurso=recurso,date_c="2017-05-05",kindM='Preventivo',reason="RAZONES VARIAS RAZANOS",report="sbdadsakjndasndkj",encurso=True)
-        man.recurso.status='Mantenimiento'
-        man.save(force_update=recurso.status)
-
-    def test_is_encurso(self):
-        man=get_object_or_404(Mantenimiento,id_M=1)
-        recurso=man.recurso
-        self.assertEqual(man.encurso,True)
-        self.assertEqual(recurso.status,'Disponible')
 
 
 
