@@ -15,7 +15,7 @@ urlpatterns = [
     # /polireserva/dashboard/ --Modulo de Dashboard
     url(r'^dashboard/$', views.modulo_dashboard, name='modulo_dashboard'),
     #/polireserva/tdr/ --Lista Tipos de Recursos
-    url(r'^tdr/$', views.tdrlist, name= 'tdrlist'),
+    url(r'^administracion/recursos/$', views.tdrlist, name= 'tdrlist'),
     # /polireserva/tdr/<id_tdr>/ --Detalles Tipo de Recurso
     url(r'^tdr/(?P<id_tdr>[0-9]+)/$', views.tdrdetail, name= 'tdrdetail'),
     # /polireserva/tdr/new/ --Crear Tipo de Recurso
@@ -31,7 +31,7 @@ urlpatterns = [
     # /polireserva/tdr/<id_tdr>/confirm/ --Confirma Eliminar TDR
     url(r'^tdr/(?P<id_tdr>[0-9]+)/confirm/$', views.deletetdrconfirm, name='confirmtdr'),
     #polireserva/usuarios/ --Listar usuarios
-    url(r'^usuarios/$', views.userlist, name= 'userlist'),
+    url(r'^administracion/usuarios/$', views.userlist, name= 'userlist'),
     #listar roles de un usuario
     url(r'^usuarios/(?P<username_id>[0-9]+)/$', views.rolelist, name= 'roleslist'),
 
@@ -43,7 +43,7 @@ urlpatterns = [
 
 
     #polireservas/reservas/list/ --Listar reservas
-    url(r'^reservas/list/$', views.reservalist, name='reservalist'),
+    url(r'^administracion/reservas/$', views.reservalist, name='reservalist'),
     # polireservas/reservas/new/ --Nueva reserva
     url(r'^reservas/new/$', views.newreserva, name='newreserva'),
     # polireservas/reservas/<id_R>/ --Detalles reserva

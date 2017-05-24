@@ -7,18 +7,16 @@
         <div class="jumbotron">
             <h2>Reserva de {{reserva.user.first_name}} {{reserva.user.last_name}}</h2>
             <h4>ID: {{reserva.id_R}}</h4>
+            <br/>
             <h4>Desde: {{reserva.date_i}}</h4>
             <h4>Hasta: {{reserva.date_f}}</h4>
-<br/>
-                    <h3><u>Lista de Recursos</u></h3>
+            <br/>
+                    <h3><u>Recurso Reservado</u></h3>
             <ul style="list-style-type:disc">
-                 {% if reserva.recursos.all %}
-                    {% for recursos in reserva.recursos.all %}
-                    <li ><h4>{{recursos.name_r}}   &nbsp&nbsp&nbsp  Descripcion: {{ recursos.description }}</h4></li>
-                    {% endfor %}
-                 {% else %}
-                    <h4>No existen Recursos registrados con esta Reserva en el sistema.</h4>
-                 {% endif %}
+                    <li ><h4>Nombre: {{recursos.name_r}}</h4></li>
+                    <li ><h4>Tipo de Recurso: {{recursos.id_tdr}}</h4></li>
+                    <li ><h4>Descripcion: {{recursos.description}}</h4></li>
+
             </ul>
         <br/>
             <h4>Observaciones: {{reserva.obs}}</h4>

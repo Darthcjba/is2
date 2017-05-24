@@ -203,7 +203,8 @@ def misreservas(request):
 @login_required(login_url='login/')
 def reservadetail(request, id_R):
     reserva = get_object_or_404(Reservas, pk=id_R)
-    return render(request, 'reservas/reservasdetail.html', {'reserva': reserva})
+    recurso = reserva.recursos
+    return render(request, 'reservas/reservasdetail.html', {'reserva': reserva, 'recursos':recurso})
 
 
 @login_required(login_url='login/')

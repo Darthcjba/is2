@@ -82,20 +82,30 @@ class ReservasForm(forms.ModelForm):
     id_R = forms.IntegerField(label="ID", max_value=1000, widget=forms.HiddenInput, required=False)
     tdr = forms.ModelChoiceField(label="Tipo de recurso", queryset=TdRecurso.objects.all().order_by('description'), required=True,
                                  widget=forms.Select(attrs={'class': 'form-control', 'name': 'tdrselect'}))
-    recursos = forms.ModelMultipleChoiceField(label="Recursos", queryset=Recurso.objects.all(), required=True,
-                                              widget=forms.SelectMultiple(
+    recursos = forms.ModelChoiceField(label="Recurso especifico (opcional)", initial=None, queryset=Recurso.objects.all(), required=False, widget=forms.Select(
                                                   attrs={'class': 'form-control', 'name': 'rselect'}))
     status = forms.ChoiceField(label="Tipo de recurso", choices=Reservas.STATUS_CHOICES, required=True, initial='',
                                widget=forms.Select(attrs={'class': 'form-control', 'name': 'statusselect'}))
-    obs = forms.CharField(max_length=25, label="Observacion",
+    obs = forms.CharField(max_length=100, label="Observacion", initial='Ninguna',
                           widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'reservaobs'}))
     date_i = forms.DateTimeField(label="Desde", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
     date_f = forms.DateTimeField(label="Hasta", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
+
 
     def clean(self):
         cleaned_data = super(ReservasForm, self).clean()
         date_i = cleaned_data.get("date_i")
         date_f = cleaned_data.get("date_f")
+        tdr = cleaned_data.get("tdr")
+        recursos = cleaned_data.get("recursos")
+
+        #asigna un recurso disponible para reservas no especificas
+        if tdr:
+            if not recursos:
+                recursos_posibles = Recurso.objects.filter(id_tdr=tdr)
+                for recurso in recursos_posibles:
+                    if recurso.status == 'Disponible':
+                        self.cleaned_data['recursos'] = recurso
 
         if date_i and date_f:
             # evita que la fecha de inicio sea fijada en el pasado

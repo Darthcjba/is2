@@ -95,7 +95,7 @@ class Reservas(models.Model):
 
     user = models.ForeignKey(User)
     tdr = models.ForeignKey(TdRecurso)
-    recursos = models.ManyToManyField(Recurso)
+    recursos = models.ForeignKey(Recurso)
 
     status = models.CharField(choices=STATUS_CHOICES, default='Activa', max_length=10)
     obs = models.CharField(max_length=100)  ##make it private possibly
