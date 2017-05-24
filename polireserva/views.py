@@ -1,12 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import redirect
+from django.shortcuts import render, get_object_or_404
 from .forms import *
 from rolepermissions.decorators import has_permission_decorator
-from log import models
 from rolepermissions.roles import get_user_roles, assign_role
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 @login_required(login_url='login/')
@@ -215,6 +214,7 @@ def newreserva(request):
             new_reserva.user = request.user
             new_reserva.save()
             form.save_m2m()
+            messages.success(request, "La reserva fue agregada exitosamente")
             return redirect('polireserva:reservadetail',new_reserva.id_R)
     else:
         form = ReservasForm()
@@ -229,6 +229,7 @@ def updatereserva(request, id_R=None):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        messages.success(request, "Los cambios se guardaron exitosamente")
         return redirect('polireserva:reservadetail', instance.id_R)
     return render(request, 'reservas/newreserva.html', {'form': form})
 
@@ -242,6 +243,7 @@ def deletereserva(request,id_R):
 def deletereservaconfirm(request,id_R):
     reserva = get_object_or_404(Reservas, pk=id_R)
     reserva.delete()
+    messages.success(request, "La reserva fue eliminada exitosamente")
     return redirect('polireserva:misreservas')
 
 
