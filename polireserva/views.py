@@ -191,13 +191,13 @@ def newtdr(request):
 @has_permission_decorator('can_list_reserva')
 def reservalist(request):
     all_reservas = Reservas.objects.all().order_by('date_i')
-    return render(request, 'reservas/listareservas.html', {'all_reservas': all_reservas})
+    return render(request, 'reservas/listareservas.html', {'all_reservas': all_reservas, 'titulo':'Reservas'})
 
 
 @login_required(login_url='login/')
 def misreservas(request):
     mis_reservas = Reservas.objects.filter(user=request.user).order_by('date_i')
-    return render(request, 'reservas/listareservas.html', {'all_reservas': mis_reservas})
+    return render(request, 'reservas/listareservas.html', {'all_reservas': mis_reservas, 'titulo':'Mis Reservas'})
 
 
 @login_required(login_url='login/')
