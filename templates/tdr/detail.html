@@ -8,9 +8,9 @@
             <h2>Tipo de Recurso: {{tdr.description}}</h2>
             <h4>ID: {{tdr.id_tdr}}</h4>
             <ul class=" media-list " role="menu">
-                 {% if tdr.recurso_set.all %}
+                 {% if all_recursos %}
                        <table class="" style="width: 100%">
-                         {% for recurso in tdr.recurso_set.all %}
+                         {% for recurso in all_recursos %}
                             <tr>
                                 <th style="width: 90%" ><a class="btn-success btn-menu btn btn-block" href="#">{{recurso.name_r}}</a></th>
                                 <th><a class="btn btn-danger btn-block " href="{% url 'polireserva:deleterecurso' tdr.id_tdr recurso.id_r %}">Eliminar</a></th>

@@ -128,7 +128,8 @@ def tdrlist(request):
 @has_permission_decorator('can_list_tdr')
 def tdrdetail(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
-    return render(request, 'tdr/detail.html', {'tdr': tdr})
+    all_recursos = Recurso.objects.filter(id_tdr=tdr).order_by('name_r')
+    return render(request, 'tdr/detail.html', {'tdr': tdr, 'all_recursos':all_recursos})
 
 
 @login_required(login_url='login/')
@@ -150,6 +151,7 @@ def deleterecursonconfirm(request,id_tdr,id_r):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     recurso = get_object_or_404(Recurso, pk=id_r)
     recurso.delete()
+    messages.success(request, "El recurso fue eliminado exitosamente")
     return redirect('polireserva:tdrdetail', tdr.id_tdr)
 
 
@@ -165,20 +167,20 @@ def deletetdr(request,id_tdr):
 def deletetdrconfirm(request,id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
     tdr.delete()
+    messages.success(request, "El tipo de recurso fue eliminado exitosamente")
     return redirect('polireserva:tdrlist')
 
 
 @login_required(login_url='login/')
 @has_permission_decorator('can_add_tdr')
-def tdrfill(request):
-    tdrflag = False
+def newtdr(request):
     if request.method == 'POST':
         form = TdRecursoFillForm(request.POST)
         if form.is_valid():
             new_tdr = form.save(commit=False)
             new_tdr.save()
-            tdrflag = True
-            return redirect('../')
+            messages.success(request, "El tipo de recurso fue agregado exitosamente")
+            return redirect('polireserva:tdrlist')
     else:
         form = TdRecursoFillForm()
     return render(request, 'tdr/tdrfill.html', {'form': form})
@@ -249,16 +251,15 @@ def deletereservaconfirm(request,id_R):
 
 @login_required(login_url='login/')
 @has_permission_decorator('can_add_recurso')
-def recursofill(request, id_tdr):
+def newrecurso(request, id_tdr):
     tdr = get_object_or_404(TdRecurso, pk=id_tdr)
-    recursoflag = False
     if request.method == 'POST':
         form = RecursoFillForm(request.POST)
         if form.is_valid():
             new_r = form.save(commit=False)
             new_r.id_tdr = tdr
             new_r.save()
-            recursoflag = True
+            messages.success(request, "El recurso fue agregado exitosamente")
             return redirect('../')
     else:
         form = RecursoFillForm()

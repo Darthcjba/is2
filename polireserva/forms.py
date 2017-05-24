@@ -63,7 +63,7 @@ class RecursoFillForm(forms.ModelForm):
     status = forms.ChoiceField(choices=STATUS_CHOICES, label="Estado",
                                widget=forms.Select(attrs={'class': 'form-control'}))
     date_c = forms.DateField(label="Fecha de submision", widget=DateWidget(usel10n= False,attrs={'id': "date_c", 'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
-    date_m = forms.DateField(label="Fecha de modificacion", widget=DateWidget(usel10n=False,attrs={'id': "date_m", 'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
+    date_m = forms.DateField(label="Fecha de modificacion", initial=timezone.now(), disabled=True, widget=DateWidget(usel10n=False,attrs={'id': "date_m", 'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
     description = forms.CharField(label="Descripcion del item", max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:

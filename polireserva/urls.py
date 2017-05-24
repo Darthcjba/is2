@@ -19,9 +19,9 @@ urlpatterns = [
     # /polireserva/tdr/<id_tdr>/ --Detalles Tipo de Recurso
     url(r'^tdr/(?P<id_tdr>[0-9]+)/$', views.tdrdetail, name= 'tdrdetail'),
     # /polireserva/tdr/new/ --Crear Tipo de Recurso
-    url(r'^tdr/new/$',views.tdrfill,name='tdrfill'),
+    url(r'^tdr/new/$',views.newtdr,name='tdrfill'),
     # /polireserva/tdr/<id_tdr>/new/ --Nuevo Recurso
-    url(r'^tdr/(?P<id_tdr>[0-9]+)/new/$', views.recursofill, name='recursofill'),
+    url(r'^tdr/(?P<id_tdr>[0-9]+)/new/$', views.newrecurso, name='recursofill'),
     #/polireserva/tdr/<id_tdr>/<id_r>/delete/ --Eliminar recursos
     url(r'^tdr/(?P<id_tdr>[0-9]+)/(?P<id_r>[0-9]+)/delete/$', views.deleterecurso, name='deleterecurso'),
     #/polireserva/tdr/<id_tdr>/<id_r>/confirm/ --Confirma Eliminar recursos
