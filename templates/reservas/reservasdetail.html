@@ -23,9 +23,9 @@
         <br/>
             <h4>Observaciones: {{reserva.obs}}</h4>
 <br/>
-           <a class="btn btn-success btn-sm" href="../">Atras</a>
-            <a class="btn btn-success btn-sm" href="#">Modificar reserva</a>
-
+            <a class="btn btn-success btn-sm" href="../">Atras</a>
+            <a class="btn btn-success btn-sm" href="{% url 'polireserva:updatereserva' reserva.id_R %}">Modificar</a>
+            <a class="btn btn-success btn-sm" href="{% url 'polireserva:deletereserva' reserva.id_R %}">Eliminar</a>
         </div>
     </div>
 </div>

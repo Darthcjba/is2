@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .forms import *
 from rolepermissions.decorators import has_permission_decorator
@@ -208,7 +208,6 @@ def reservadetail(request, id_R):
 @login_required(login_url='login/')
 @has_permission_decorator('can_add_reserva')
 def newreserva(request):
-    reservaflag = False
     if request.method == 'POST':
         form = ReservasForm(request.POST)
         if form.is_valid():
@@ -216,10 +215,21 @@ def newreserva(request):
             new_reserva.user = request.user
             new_reserva.save()
             form.save_m2m()
-            reservaflag = True
             return redirect('polireserva:reservadetail',new_reserva.id_R)
     else:
         form = ReservasForm()
+    return render(request, 'reservas/newreserva.html', {'form': form})
+
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_modify_reserva')
+def updatereserva(request, id_R=None):
+    instance = get_object_or_404(Reservas, pk=id_R)
+    form = ReservasForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect('polireserva:reservadetail', instance.id_R)
     return render(request, 'reservas/newreserva.html', {'form': form})
 
 

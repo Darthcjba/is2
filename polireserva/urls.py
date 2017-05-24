@@ -48,6 +48,8 @@ urlpatterns = [
     url(r'^reservas/new/$', views.newreserva, name='newreserva'),
     # polireservas/reservas/<id_R>/ --Detalles reserva
     url(r'^reservas/(?P<id_R>[0-9]+)/$', views.reservadetail, name='reservadetail'),
+    # polireservas/reservas/<id_R>/edit--Modificar reserva
+    url(r'^reservas/(?P<id_R>[0-9]+)/edit/$', views.updatereserva, name='updatereserva'),
     #polireservas/reservas/misreservas/ --Listar mis reservas
     url(r'^reservas/misreservas/$', views.misreservas, name='misreservas'),
     # /polireserva/reservas/<id_R>/delete/ --Eliminar reserva
