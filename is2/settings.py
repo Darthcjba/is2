@@ -127,10 +127,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-EMAIL_HOST = 'mail.tellezyasociados.com.py'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = 'm.rivas@tellezyasociados.com.py'
-EMAIL_HOST_PASSWORD = '4716567'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'polireservais2@gmail.com'
+EMAIL_HOST_PASSWORD = 'DsaQwe123'
 EMAIL_USE_TLS = True
 
 

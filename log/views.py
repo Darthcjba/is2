@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from log import forms
 from django.contrib.auth import login, authenticate
-
+from django.core.mail import send_mail
 
 # Create your views here.
 # this login required decorator is to not allow to any
@@ -27,9 +27,18 @@ def register(request):
             # write to database
             new_extended_obj.save()
             username = form.cleaned_data.get('username')
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            send_mail(
+                'Notificacion de Polireserva',
+                'Enhorabuena ' + first_name + ' ' + last_name + '! te registraste exitosamente al sistema.',
+                'polireservais2@gmail.com',
+                [form.cleaned_data.get('email')],
+                fail_silently=False,
+            )
             return redirect('home')
     else:
         form = forms.SignUpForm()
