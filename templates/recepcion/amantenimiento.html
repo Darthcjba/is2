@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h2>Reporte de recurso a Mantenimiento</h2>
+            <h4>Recurso: {{reserva.recursos}}</h4>
+            <br/>
+            <h4>Fecha: {{date}}</h4>
+            <br/>
+            <h4>Mantenimiento tipo Correctivo</h4>
+            <br/>
+            <h4>Observaciones: {{reserva.obs}}</h4>
+            <form action="." method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                     <button class="btn btn-success btn-sm" type="submit">Enviar a mantenimiento</button>
+                    <a class="btn btn-success btn-sm" href="../../">Atras</a>
+            </form>
+            <br/>
+        </div>
+    </div>
+</div>
+{% endblock %}

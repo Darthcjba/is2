@@ -32,7 +32,7 @@
                                 <tr>
                                     <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
                                        href="#">{{ res.recursos.name_r }}</a></th>
-                                    <th><a class="btn btn-danger btn-block" href="#">Devolver</a></th>
+                                    <th><a class="btn btn-danger btn-block" href="{% url 'polireserva:devolucion' res.id_R %}">Devolver</a></th>
                                 </tr>
                                 {% endif %}
                             {% endfor %}

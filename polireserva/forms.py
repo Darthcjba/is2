@@ -161,3 +161,16 @@ class MantenimientoFinForm(forms.ModelForm):
     class Meta:
         model=Mantenimiento
         fields = { 'report'}
+
+class DevolucionForm(forms.Form):
+
+    man=forms.BooleanField(label="Enviar a mantenimiento",required=False)
+
+
+class DevMantenimientoForm(forms.ModelForm):
+
+    reason = forms.CharField(label="Razon del mantenimiento", max_length=200)
+
+    class Meta:
+        model=Mantenimiento
+        fields = {'reason'}

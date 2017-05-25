@@ -158,6 +158,56 @@ def recepcionconfirm(request,id_R):
     reserva.save()
     return redirect('polireserva:recepcionlist')
 
+def devolucion(request,id_R):
+    reserva=get_object_or_404(Reservas,pk=id_R)
+    date=datetime.now()
+    if request.method == 'POST':
+        form = DevolucionForm(request.POST)
+        if form.is_valid():
+          a=form.cleaned_data.get("man")
+          if(a):
+              recurso = reserva.recursos
+              reserva.status = 'FIN'
+              recurso.status = 'Disponible'
+              reserva.save()
+              recurso.save()
+              return redirect('polireserva:devaman',reserva.id_R)
+          else:
+              recurso=reserva.recursos
+              reserva.status='FIN'
+              recurso.status='Disponible'
+              reserva.save()
+              recurso.save()
+        return redirect('../../')
+    else:
+        form = DevolucionForm()
+    return render(request,'recepcion/devolucion.html',{'reserva':reserva,
+                                                     'form':form,
+                                                     'date':date})
+
+
+
+def devaman(request,id_R):
+    reserva=get_object_or_404(Reservas,pk=id_R)
+    date=datetime.now()
+    if request.method == 'POST':
+        form = DevMantenimientoForm(request.POST)
+        if form.is_valid():
+          new_man=form.save(commit=False)
+          new_man.date_c=date.date()
+          new_man.kindM='COR'
+          new_man.recurso=reserva.recursos
+          new_man.estado='Enespera'
+          new_man.user=request.user
+          new_man.date_c=date.date()
+          new_man.save()
+        return redirect('../../')
+    else:
+        form = DevMantenimientoForm()
+    return render(request,'recepcion/amantenimiento.html',{'reserva':reserva,
+                                                     'form':form,
+                                                     'date':date})
+
 
 
 @login_required(login_url='login/')
