@@ -93,6 +93,22 @@ class ReservasForm(forms.ModelForm):
     date_f = forms.DateTimeField(label="Hasta", widget=DateTimeWidget(usel10n=False, attrs={'class': 'form-control'}, bootstrap_version=3, options=dateTimeOptions))
 
 
+
+    def __init__(self, *args, **kwargs):
+        forms.ModelForm.__init__(self, *args, **kwargs)
+        all_tdr = TdRecurso.objects.all()
+        if len(all_tdr) == 1:
+            self.fields['tdr'].initial = all_tdr[0]
+
+        parent = self.fields['tdr'].widget.value_from_datadict(
+    self.data, self.files, self.add_prefix('tdr')
+)
+
+        if parent:
+            # parent is known. Now I can display the matching children.
+            self.fields['recursos'].queryset = Recurso.objects.filter(id_tdr=parent)
+
+
     def clean(self):
         cleaned_data = super(ReservasForm, self).clean()
         date_i = cleaned_data.get("date_i")
@@ -145,7 +161,7 @@ class MantenimientoNewForm(forms.ModelForm):
 
     recurso = forms.ModelChoiceField(label="Recursos", queryset=Recurso.objects.filter(status='Disponible'), required=True,
                                               widget=forms.Select(attrs={'class': 'form-control', 'name': 'rselect'}))
-    date_c = forms.DateField(label="Fecha de submision",widget=DateWidget(usel10n=False, attrs={'id': "date_c", 'class': 'form-control'},bootstrap_version=3, options=dateTimeOptions))
+    date_c = forms.DateField(label="Fecha de submision",initial=timezone.now(),widget=DateWidget(usel10n=False, attrs={'id': "date_c", 'class': 'form-control'},bootstrap_version=3, options=dateTimeOptions))
     kindM= forms.ChoiceField(label="Fecha",choices=Mantenimiento.KIND_CHOICES,required=True,initial='')
     reason = forms.CharField(label="Razon del mantenimiento", max_length=200)
 
