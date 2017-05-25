@@ -78,8 +78,10 @@ def roleassignation(request,username_id,role_id):
     return redirect('polireserva:roleslist',username_id)
 
 def mantenimientolist(request):
-    all_man = Mantenimiento.objects.filter(encurso=True)
-    return render(request,'mantenimiento/list.html',{'all_man': all_man})
+    all_man = Mantenimiento.objects.filter(estado="Encurso")
+    all_need = Mantenimiento.objects.filter(estado="Enespera")
+    return render(request,'mantenimiento/list.html',{'all_man': all_man,
+                                                     'all_need':all_need})
 
 
 def mantenimientonew(request):
@@ -88,7 +90,7 @@ def mantenimientonew(request):
         if form.is_valid():
             new_man = form.save(commit=False)
             new_man.user=request.user
-            new_man.encurso=True
+            new_man.estado="Encurso"
             recurso=new_man.recurso
             recurso.status='Mantenimiento'
             recurso.save()
@@ -106,7 +108,7 @@ def mantenimientofin(request,id_M):
         if form.is_valid():
             new_man=form.save(commit=False)
             man.report=new_man.report
-            man.encurso=False
+            man.estado="Finalizado"
             recurso=man.recurso
             recurso.status='Disponible'
             recurso.save()
@@ -116,6 +118,23 @@ def mantenimientofin(request,id_M):
         form= MantenimientoFinForm()
     return render(request,'mantenimiento/fin.html',{'form':form,
                                                      'man':man})
+
+
+def amantenimiento(request,id_M):
+    man = get_object_or_404(Mantenimiento,pk=id_M)
+    rec = man.recurso
+    return render(request, 'mantenimiento/detail.html', {'man': man,
+                                                       'rec': rec})
+
+def enviarman(request,id_M):
+    man = get_object_or_404(Mantenimiento,pk=id_M)
+    man.estado="Encurso"
+    rec=man.recurso
+    rec.status="Mantenimiento"
+    rec.save()
+    man.save()
+    return redirect('polireserva:mantenimientolist')
+
 
 @login_required(login_url='login/')
 @has_permission_decorator('can_list_tdr')

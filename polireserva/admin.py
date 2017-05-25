@@ -66,7 +66,7 @@ admin.site.register(Reservas, ReservasAdmin)
 
 class MantenimientoAdmin(admin.ModelAdmin):
 
-    fieldsets = ((None, {'fields' : ('user', 'recurso', 'kindM', 'reason', 'report', 'date_c')}),)
+    fieldsets = ((None, {'fields' : ('user', 'recurso', 'kindM', 'reason', 'report', 'date_c','estado')}),)
 
     form = MantenimientoForm
 

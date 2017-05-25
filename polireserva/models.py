@@ -145,6 +145,12 @@ class Mantenimiento(models.Model):
         ('PRE', 'Preventivo'),
         ('COR', 'Correctivo')
     )
+    ESTADOS_CHOICES= (
+        ('Encurso','Encurso'),
+        ('Finalizado','Finalizado'),
+        ('Enespera','Enespera')
+
+    )
 
     id_M = models.AutoField(primary_key=True)
     user = models.ForeignKey(User)
@@ -153,7 +159,7 @@ class Mantenimiento(models.Model):
     kindM = models.CharField("Tipo de mantenimiento realizado", choices=KIND_CHOICES, default='Preventivo', max_length=10)
     reason = models.CharField("Razon del mantenimiento", max_length=200)
     report = models.CharField("Reporte de finalizacion", max_length=100)
-    encurso = models.BooleanField(default=True)
+    estado= models.CharField("Estado del mantenimiento",choices=ESTADOS_CHOICES,default='Encurso',max_length=10)
 
     def get_report(self):
         '''

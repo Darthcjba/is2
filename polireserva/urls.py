@@ -62,6 +62,11 @@ urlpatterns = [
     # polireservas/mantenimiento/new --agregar recurso a mantenimiento
     url(r'^mantenimiento/new/$',views.mantenimientonew,name='mantenimientonew'),
     # polireservas/mantenimiento/<id_M>/fin --finalizar mantenimiento
-    url(r'^mantenimiento/(?P<id_M>[0-9]+)/fin/$',views.mantenimientofin,name='mantenimientofin')
+    url(r'^mantenimiento/(?P<id_M>[0-9]+)/fin/$',views.mantenimientofin,name='mantenimientofin'),
+    # polireservas/mantenimiento/<id_M>/detail --detalle del mantenimiento
+    url(r'^mantenimiento/(?P<id_M>[0-9]+)/detail/$', views.amantenimiento, name='amantenimiento'),
+    # polireservas/mantenimiento/<id_M>/confirm
+    url(r'^mantenimiento/(?P<id_M>[0-9]+)/confirm/$', views.enviarman, name='enviarman')
+
 
 ]

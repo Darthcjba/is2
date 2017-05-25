@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h2>Detalle del mantenimiento</h2>
+            <h4>ID: {{man.id_M}}</h4>
+            <br/>
+            <h4>Fecha: {{man.date_c}}</h4>
+            <br/>
+                    <h3><u>Recurso a Mantenimiento :  </u> {{ rec.name_r }}</h3>
+            <ul style="list-style-type:disc">
+                    <li ><h4>Razon del mantenimiento: {{man.reason}}</h4></li>
+
+            </ul>
+        <br/>
+<br/>
+            <a class="btn btn-success btn-sm" href="../">Atras</a>
+            <a class="btn btn-success btn-sm" href="{% url 'polireserva:enviarman' man.id_M %}">A mantenimiento</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

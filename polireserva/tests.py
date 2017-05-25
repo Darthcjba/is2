@@ -1,3 +1,5 @@
+
+
 from django.test import TestCase
 from django.contrib.auth import SESSION_KEY
 from polireserva.models import TdRecurso,Recurso
@@ -90,8 +92,8 @@ class mantenimientoTestCase(TestCase):
     def test_is_encurso(self):
         man=get_object_or_404(Mantenimiento,id_M=1)
         recurso=man.recurso
-        self.assertEqual(man.encurso,True)
-        self.assertEqual(recurso.status,'Disponible')
+        self.assertEqual(man.estado,"Encurso")
+
 
 
 

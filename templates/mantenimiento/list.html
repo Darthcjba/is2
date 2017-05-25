@@ -7,6 +7,22 @@
             <div class="jumbotron">
                 <h2>Modulo de mantenimiento</h2>
                 <ul class=" media-list " role="menu">
+                    <h3>Recursos en Espera de mantenimiento</h3>
+                    {% if all_need %}
+                        <table class="" style="width: 100%">
+                            {% for need in all_need %}
+
+                                <tr>
+                                    <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
+                                       href="#">{{ need.recurso.name_r }}</a></th>
+                                    <th><a class="btn btn-danger btn-block" href="{% url 'polireserva:amantenimiento' need.id_M %}">A mantenimiento</a></th>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                    {% else %}
+                        <h4>No existen Recursos en espera.</h4>
+                    {% endif %}
                     <h3>Recursos en mantenimiento</h3>
                     {% if all_man %}
                         <table class="" style="width: 100%">
