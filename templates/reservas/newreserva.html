@@ -7,7 +7,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class=" panel panel-default">
                 <div class="panel-heading">
-            <h2>Nueva Reserva</h2>
+            <h2>{{ titulo }}</h2>
             <div class="panel-body" >
                 {% if reservaflag %}
                     <p>Reserva creada exitosamente</p>
@@ -17,7 +17,7 @@
                 <form method="post">
                     {{ form.as_p }}
                     {% csrf_token %}
-                     <button class="btn btn-success btn-sm" type="submit">Crear</button>
+                     <button class="btn btn-success btn-sm" type="submit">{{ accion }}</button>
                     <a class="btn btn-success btn-sm" href="../">Atras</a>
 
                 </form>

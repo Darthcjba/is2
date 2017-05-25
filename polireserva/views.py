@@ -267,7 +267,7 @@ def newreserva(request):
             return redirect('polireserva:reservadetail',new_reserva.id_R)
     else:
         form = ReservasForm()
-    return render(request, 'reservas/newreserva.html', {'form': form})
+    return render(request, 'reservas/newreserva.html', {'form': form, 'titulo':'Nueva Reserva', 'accion': 'Guardar'})
 
 
 @login_required(login_url='login/')
@@ -283,7 +283,7 @@ def updatereserva(request, id_R=None):
         if recurso.status == 'Mantenimiento':
             messages.warning(request, "El recurso seleccionado se encuentra actualmente en mantenimiento. Puede modificar su reserva si lo desea")
         return redirect('polireserva:reservadetail', instance.id_R)
-    return render(request, 'reservas/newreserva.html', {'form': form})
+    return render(request, 'reservas/newreserva.html', {'form': form, 'titulo':'Modificar Reserva', 'accion':'Modificar'})
 
 
 @login_required(login_url='login/')
