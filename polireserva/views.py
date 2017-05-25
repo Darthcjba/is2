@@ -145,6 +145,19 @@ def recepcionlist(request):
             res_today.append(res)
     return render(request,'recepcion/list.html',{'res_today':res_today})
 
+def recepcionentrega(request,id_R):
+    reserva=get_object_or_404(Reservas,pk=id_R)
+    return render(request,'recepcion/detail.html',{'reserva':reserva})
+
+def recepcionconfirm(request,id_R):
+    reserva=get_object_or_404(Reservas,pk=id_R)
+    reserva.status="Encurso"
+    recurso=reserva.recursos
+    recurso.status="EnUso"
+    recurso.save()
+    reserva.save()
+    return redirect('polireserva:recepcionlist')
+
 
 
 @login_required(login_url='login/')

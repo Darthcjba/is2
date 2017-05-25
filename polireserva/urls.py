@@ -67,7 +67,11 @@ urlpatterns = [
     url(r'^mantenimiento/(?P<id_M>[0-9]+)/confirm/$', views.enviarman, name='enviarman'),
 
     # polireservas/recepcion/list --listar las reservas del dia, y las reservas en uso
-    url(r'^recepcion/$', views.recepcionlist, name='recepcionlist')
+    url(r'^recepcion/$', views.recepcionlist, name='recepcionlist'),
+    # polireservas/recepcion/<id_R>/detail --muestra en detalle la reserva a entregar
+    url(r'^recepcion/(?P<id_R>[0-9]+)/detail/$', views.recepcionentrega, name='recepcionentrega'),
+    # polireservas/recepcion/<id_R>/confirm --confirma la entrega de una reserva
+    url(r'^recepcion/(?P<id_R>[0-9]+)/confirm/$', views.recepcionconfirm, name='recepcionconfirm')
 
 
 ]
