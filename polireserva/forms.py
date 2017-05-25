@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth.models import User
 from datetimewidget.widgets import DateTimeWidget, DateWidget
 from django.utils import timezone
+import datetime
 
 
 ROLES = (
@@ -111,6 +112,9 @@ class ReservasForm(forms.ModelForm):
             # evita que la fecha de inicio sea fijada en el pasado
             if date_i < timezone.now():
                 raise forms.ValidationError("La fecha de inicio de la reserva no puede ser una fecha pasada!")
+            # evita que se puedan hacer reservas con mas de una semana de anticipacion
+            if date_i > timezone.now() + datetime.timedelta(days=7):
+                raise forms.ValidationError("No se permiten realizar reservas con mas de una semana de anticipacion")
             # evita que la fecha de fin sea fijada en el pasado
             if date_f < timezone.now():
                 raise forms.ValidationError("La fecha de fin de la reserva no puede ser una fecha pasada!")
