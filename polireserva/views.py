@@ -6,7 +6,7 @@ from rolepermissions.decorators import has_permission_decorator
 from rolepermissions.roles import get_user_roles, assign_role
 from django.contrib.auth.models import User
 from django.contrib import messages
-from datetime import date
+from datetime import date,datetime
 
 
 @login_required(login_url='login/')
@@ -138,7 +138,11 @@ def enviarman(request,id_M):
 
 def recepcionlist(request):
     d=date.today()
-    res_today=Reservas.objects.filter(date_i=d)
+    res_today=[]
+    all_res=Reservas.objects.all()
+    for res in all_res:
+        if res.date_i.date() == d :
+            res_today.append(res)
     return render(request,'recepcion/list.html',{'res_today':res_today})
 
 
