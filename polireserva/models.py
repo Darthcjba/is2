@@ -88,7 +88,8 @@ class Reservas(models.Model):
     STATUS_CHOICES = (
         ('ACT', 'Activa'),
         ('CAN', 'Cancelada'),
-        ('FIN', 'Finalizada')
+        ('FIN', 'Finalizada'),
+        ('EC','Encurso')
     )
 
     id_R = models.AutoField(primary_key=True)

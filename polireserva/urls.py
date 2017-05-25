@@ -10,8 +10,6 @@ urlpatterns = [
     url(r'^administracion/$', views.modulo_admin, name='modulo_admin'),
     # /polireserva/reservas/ --Modulo de Reservas
     url(r'^reservas/$', views.modulo_reservas, name='modulo_reservas'),
-    # /polireserva/recepcion/ --Modulo de Recepcion
-    url(r'^recepcion/$', views.modulo_recepcion, name='modulo_recepcion'),
     # /polireserva/dashboard/ --Modulo de Dashboard
     url(r'^dashboard/$', views.modulo_dashboard, name='modulo_dashboard'),
     #/polireserva/tdr/ --Lista Tipos de Recursos
@@ -66,7 +64,10 @@ urlpatterns = [
     # polireservas/mantenimiento/<id_M>/detail --detalle del mantenimiento
     url(r'^mantenimiento/(?P<id_M>[0-9]+)/detail/$', views.amantenimiento, name='amantenimiento'),
     # polireservas/mantenimiento/<id_M>/confirm
-    url(r'^mantenimiento/(?P<id_M>[0-9]+)/confirm/$', views.enviarman, name='enviarman')
+    url(r'^mantenimiento/(?P<id_M>[0-9]+)/confirm/$', views.enviarman, name='enviarman'),
+
+    # polireservas/recepcion/list --listar las reservas del dia, y las reservas en uso
+    url(r'^recepcion/$', views.recepcionlist, name='recepcionlist')
 
 
 ]

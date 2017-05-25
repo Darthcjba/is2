@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h2>Modulo de Recepcion</h2>
+                <ul class=" media-list " role="menu">
+                    <h3>Reservas para el dia</h3>
+                    {% if res_today %}
+                        <table class="" style="width: 100%">
+                            {% for res in res_today %}
+                                {% if res.status == "Activa" %}
+                                <tr>
+                                    <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
+                                       href="#">{{ res.recursos.name_r }}</a></th>
+                                    <th><a class="btn btn-danger btn-block" href="#">Entregar</a></th>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                        </table>
+                    {% else %}
+                        <h4>No existen Recursos pendientes para hoy.</h4>
+                    {% endif %}
+                    <h3>Recursos en uso</h3>
+                    {% if res_today %}
+                        <table class="" style="width: 100%">
+                            {% for res in res_today %}
+                                {% if res.status == "Encurso" %}
+                                <tr>
+                                    <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
+                                       href="#">{{ res.recursos.name_r }}</a></th>
+                                    <th><a class="btn btn-danger btn-block" href="#">Devolver</a></th>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                        </table>
+                    {% else %}
+                        <h4>No existen recursos en uso</h4>
+                    {% endif %}
+                </ul>
+                <a class="btn btn-success btn-sm" href="../">Atras</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -21,7 +21,7 @@
                 {% endif %}
                 {% if user|can:'can_access_recepcion' %}
                 <li>
-                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:modulo_recepcion'%}">Modulo de Recepcion</a>
+                    <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:recepcionlist'%}">Modulo de Recepcion</a>
                 </li>
                 {% endif %}
                 {% if user|can:'can_access_mantenimiento' %}

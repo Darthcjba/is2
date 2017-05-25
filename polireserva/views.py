@@ -6,6 +6,7 @@ from rolepermissions.decorators import has_permission_decorator
 from rolepermissions.roles import get_user_roles, assign_role
 from django.contrib.auth.models import User
 from django.contrib import messages
+from datetime import date
 
 
 @login_required(login_url='login/')
@@ -134,6 +135,12 @@ def enviarman(request,id_M):
     rec.save()
     man.save()
     return redirect('polireserva:mantenimientolist')
+
+def recepcionlist(request):
+    d=date.today()
+    res_today=Reservas.objects.filter(date_i=d)
+    return render(request,'recepcion/list.html',{'res_today':res_today})
+
 
 
 @login_required(login_url='login/')
