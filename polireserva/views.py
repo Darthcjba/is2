@@ -217,7 +217,10 @@ def newreserva(request):
             new_reserva.user = request.user
             new_reserva.save()
             form.save_m2m()
+            recurso=form.cleaned_data.get('recursos')
             messages.success(request, "La reserva fue agregada exitosamente")
+            if recurso.status == 'Mantenimiento':
+                messages.warning(request, "El recurso seleccionado se encuentra actualmente en mantenimiento. Puede modificar su reserva si lo desea")
             return redirect('polireserva:reservadetail',new_reserva.id_R)
     else:
         form = ReservasForm()
@@ -232,7 +235,10 @@ def updatereserva(request, id_R=None):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        recurso=form.cleaned_data.get('recursos')
         messages.success(request, "Los cambios se guardaron exitosamente")
+        if recurso.status == 'Mantenimiento':
+            messages.warning(request, "El recurso seleccionado se encuentra actualmente en mantenimiento. Puede modificar su reserva si lo desea")
         return redirect('polireserva:reservadetail', instance.id_R)
     return render(request, 'reservas/newreserva.html', {'form': form})
 
