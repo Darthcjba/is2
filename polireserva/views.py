@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
-from .forms import *
 from rolepermissions.decorators import has_permission_decorator
 from rolepermissions.roles import get_user_roles, assign_role
+from .forms import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import date,datetime
@@ -141,7 +141,7 @@ def recepcionlist(request):
     res_today=[]
     all_res=Reservas.objects.all()
     for res in all_res:
-        if res.date_i.date() == d :
+        if res.date_i.date == d :
             res_today.append(res)
     return render(request,'recepcion/list.html',{'res_today':res_today})
 
@@ -279,7 +279,7 @@ def newtdr(request):
     return render(request, 'tdr/tdrfill.html', {'form': form})
 
 
-## METODOS DE RESERVA ##
+## METODOS DE RESERVA ## cjba
 @login_required(login_url='login/')
 @has_permission_decorator('can_list_reserva')
 def reservalist(request):
@@ -299,7 +299,7 @@ def reservadetail(request, id_R):
     recurso = reserva.recursos
     return render(request, 'reservas/reservasdetail.html', {'reserva': reserva, 'recursos':recurso})
 
-
+import datetime
 @login_required(login_url='login/')
 @has_permission_decorator('can_add_reserva')
 def newreserva(request):
@@ -308,6 +308,7 @@ def newreserva(request):
         if form.is_valid():
             new_reserva = form.save(commit=False)
             new_reserva.user = request.user
+            #reservas = Reservas.objects.filter()
             new_reserva.save()
             form.save_m2m()
             recurso=form.cleaned_data.get('recursos')
