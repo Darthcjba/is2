@@ -14,7 +14,7 @@
                                 {% if res.status == "ACT" %}
                                 <tr>
                                     <th style="width: 90%"><a class="btn btn-menu btn-success btn-block"
-                                       href="#">{{ res.recursos.name_r }} desde: {{ res.date_i.time}} hasta: {{ res.date_f.time }}</a></th>
+                                       href="#">{{ res.recursos.name_r }} desde: {{ res.date_i}} hasta: {{ res.date_f }}</a></th>
                                     <th><a class="btn btn-danger btn-block" href="{% url 'polireserva:recepcionentrega' res.id_R %}">Entregar</a></th>
                                 </tr>
                                 {% endif %}

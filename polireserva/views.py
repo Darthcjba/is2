@@ -141,7 +141,7 @@ def recepcionlist(request):
     res_today=[]
     all_res=Reservas.objects.all()
     for res in all_res:
-        if res.date_i.date == d :
+        if res.date_i.date() == d :
             res_today.append(res)
     return render(request,'recepcion/list.html',{'res_today':res_today})
 
