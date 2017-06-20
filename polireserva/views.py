@@ -66,20 +66,9 @@ def roleassing(request,username_id):
     return render(request, 'usuarios/addrole.html',{'user':user})
 
 
-def roleassignation(request,username_id,role_id):
+def roleassignation(request,username_id,string):
     user = User.objects.get(id=username_id)
-    if role_id == 1:
-        assign_role(user,'administrador')
-    elif role_id == 2:
-        assign_role(user,'usuario')
-    elif role_id == 3:
-        assign_role(user,'recepcionista')
-    elif role_id == 4:
-        assign_role(user,'tecnico')
-    elif role_id == 5:
-        assign_role(user,'invitado')
-    else:
-        redirect('polireserva:polindex')
+    assign_role(user,string)
     return redirect('polireserva:roleslist',username_id)
 
 def mantenimientolist(request):
@@ -164,7 +153,7 @@ def recepcionconfirm(request,id_R):
 
 def devolucion(request,id_R):
     reserva=get_object_or_404(Reservas,pk=id_R)
-    date=datetime.now()
+    date=timezone.now()
     if request.method == 'POST':
         form = DevolucionForm(request.POST)
         if form.is_valid():
@@ -193,7 +182,7 @@ def devolucion(request,id_R):
 
 def devaman(request,id_R):
     reserva=get_object_or_404(Reservas,pk=id_R)
-    date=datetime.now()
+    date=timezone.now()
     if request.method == 'POST':
         form = DevMantenimientoForm(request.POST)
         if form.is_valid():

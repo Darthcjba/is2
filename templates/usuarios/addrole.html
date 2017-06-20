@@ -9,19 +9,19 @@
             <p class="text-center">Roles:</p>
             <ul class=" media-list " role="menu">
                                             <li >
-                                                <a class="btn-success btn-menu btn  center-block" href="{% url 'polireserva:rolesassignation' user.id 1 %}">Aministrador</a>
+                                                <a class="btn-success btn-menu btn  center-block" href="{% url 'polireserva:rolesassignation' user.id 'administrador' %}">Aministrador</a>
                                             </li>
                                             <li>
-                                                <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:rolesassignation' user.id 2 %}">Usuario</a>
+                                                <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:rolesassignation' user.id 'usuario' %}">Usuario</a>
                                             </li>
                                              <li>
-                                                <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:rolesassignation' user.id 3 %}">Recepcionista</a>
+                                                <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:rolesassignation' user.id 'recepcionista' %}">Recepcionista</a>
                                             </li>
                                              <li>
-                                                <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:rolesassignation' user.id 4 %}">Tecnico</a>
+                                                <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:rolesassignation' user.id 'tecnico' %}">Tecnico</a>
                                             </li>
                                              <li>
-                                                <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:rolesassignation' user.id 5 %}">Invitado</a>
+                                                <a class="btn-success btn-menu btn center-block" href="{% url 'polireserva:rolesassignation' user.id 'invitado' %}">Invitado</a>
                                             </li>
                                         </ul>
         </div>

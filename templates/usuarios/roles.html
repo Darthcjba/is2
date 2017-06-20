@@ -18,7 +18,7 @@
                     <h4>No existen roles asignados a este usuario</h4>
                  {% endif %}
             </ul>
-            <a class="btn btn-success btn-sm" href="../">Atras</a>
+            <a class="btn btn-success btn-sm" href="{% url 'polireserva:userlist' %}">Atras</a>
             <a class="btn btn-success btn-sm" href="{% url 'polireserva:rolesassing' user.id %}">Agregar rol</a>
         </div>
     </div>
