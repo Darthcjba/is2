@@ -3,10 +3,14 @@ from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from rolepermissions.decorators import has_permission_decorator
 from rolepermissions.roles import get_user_roles, assign_role
+
+from log.models import Usuario
 from .forms import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import date,datetime
+from django.core.mail import send_mail
+
 
 
 @login_required(login_url='login/')
@@ -308,14 +312,72 @@ def newreserva(request):
         if form.is_valid():
             new_reserva = form.save(commit=False)
             new_reserva.user = request.user
+            rdate_i = form.cleaned_data.get("date_i")
+            rdate_f = form.cleaned_data.get("date_f")
+            rtdr = form.cleaned_data.get("tdr")
+            rrecursos = form.cleaned_data.get("recursos")
             #reservas = Reservas.objects.filter()
-            new_reserva.save()
+            reservas = Reservas.objects.filter(recursos=rrecursos, date_i__day=rdate_i.day)
+            new_reserva = Reservas(user=request.user, tdr=rtdr, recursos=rrecursos, status='Activa', obs='Ninguna', date_i=rdate_i, date_f=rdate_f)
+
+            if not reservas:
+                print 'entra en None'
+                new_reserva.save()
+            else:
+                print 'entra en el else de if not'
+                for reserva in reservas:
+                    print 'if not {} <= {} <= {}: '.format(reserva.date_i.hour,rdate_i.hour,reserva.date_f.hour)
+                    if not reserva.date_i.hour <= rdate_i.hour <= reserva.date_f.hour:
+                        print 'if not {} <= {} <= {}: '.format(reserva.date_i.hour, rdate_f.hour, reserva.date_f.hour)
+                        if not reserva.date_i.hour <= rdate_f.hour <= reserva.date_f.hour:
+                            new_reserva.save()
+                        else:
+                            print 'entra en el else 1'
+                            usuario_bd = Usuario.objects.get(username=reserva.user)
+                            usuario_rq = Usuario.objects.get(username=new_reserva.user)
+                            if usuario_rq.ladder > usuario_bd.ladder:
+                                print 'request > db'
+                                print usuario_bd.username.id
+                                Reservas.objects.get(id_R=reserva.id_R ).delete()
+                                #mandando mails
+                                print usuario_bd.username.email
+                                # send_mail(
+                                #    'Notificacion de Polireserva',
+                                #    'Aviso para' + usuario_bd.username.first_name + ' ' + usuario_bd.username.last_name + '! Te han quitado la reserva puto.',
+                                #    'polireservais2@gmail.com',
+                                #    [form.cleaned_data.get(usuario_bd.username.email)],
+                                #    fail_silently=False,
+                                # )
+                                new_reserva.save()
+
+                    else:
+                        print 'entra en el else 2'
+                        usuario_bd = Usuario.objects.get(username=reserva.user)
+                        usuario_rq = Usuario.objects.get(username=new_reserva.user)
+                        if usuario_rq.ladder > usuario_bd.ladder:
+                            print usuario_bd.username.id
+                            Reservas.objects.get(id_R=reserva.id_R).delete()
+                            #mandando mails
+                            print usuario_bd.username.email
+                            #send_mail(
+                            #    'Notificacion de Polireserva',
+                            #    'Aviso para' + usuario_bd.username.first_name + ' ' + usuario_bd.username.last_name + '! Te han quitado la reserva puto.',
+                            #    'polireservais2@gmail.com',
+                            #    [form.cleaned_data.get(usuario_bd.username.email)],
+                            #    fail_silently=False,
+                            #)
+
+                            new_reserva.save()
+                # new_reserva.save()
+
+
             form.save_m2m()
             recurso=form.cleaned_data.get('recursos')
             messages.success(request, "La reserva fue agregada exitosamente")
             if recurso.status == 'Mantenimiento':
                 messages.warning(request, "El recurso seleccionado se encuentra actualmente en mantenimiento. Puede modificar su reserva si lo desea")
             return redirect('polireserva:reservadetail',new_reserva.id_R)
+            #return redirect('/')
     else:
         form = ReservasForm()
     return render(request, 'reservas/newreserva.html', {'form': form, 'titulo':'Nueva Reserva', 'accion': 'Guardar'})

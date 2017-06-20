@@ -4,10 +4,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 LADDER_CHOICES = (
-    ('Usuario', 'Usuario normal'),
-    ('Tecnico', 'Tecnico del sistema'),
-    ('Recepcionista', 'Encargado de administrar reservas'),
-    ('Invitado', 'Invitado'),
+    ('1', 'Invitado'),
+    ('2', 'Alumno'),
+    ('3', 'Auxiliar'),
+    ('4', 'Profesor'),
+    ('5', 'Director'),
 )
 
 class Usuario (models.Model):
