@@ -48,10 +48,12 @@ def modulo_mantenimiento(request):
 def modulo_dashboard(request):
     all_tdr = TdRecurso.objects.all().order_by('description')
     all_res=Reservas.objects.all()
+    all_rec=Recurso.objects.all()
     num = len(all_tdr)
     max=len(all_res)
     sum = [None] * len(all_tdr)
     times= [0] * len(all_tdr)
+    plus=[0]*len(all_rec)
     names=[None] * len(all_tdr)
 
     for i in range(num):
@@ -67,9 +69,14 @@ def modulo_dashboard(request):
         for i in range(num):
             if (names[i]==tipoder.description):
                 times[i]=times[i]+1
+        for q in range(len(all_rec)):
+            if (all_rec[q]==all_res[j].recursos):
+                plus[q]=plus[q]+1
     return render(request, 'modulos/modulo_dashboard.html',{'names':json.dumps(names),
                                                             'data':json.dumps(sum),
-                                                            'times':json.dumps(times)})
+                                                            'times':json.dumps(times),
+                                                            'all_rec':all_rec,
+                                                            'plus':plus})
 
 
 @login_required(login_url='login/')
