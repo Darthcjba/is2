@@ -10,7 +10,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import date,datetime
 from django.core.mail import send_mail
-
+from django.core import serializers
+import json
 
 
 @login_required(login_url='login/')
@@ -45,7 +46,20 @@ def modulo_mantenimiento(request):
 @login_required(login_url='login/')
 @has_permission_decorator('can_access_dashboard')
 def modulo_dashboard(request):
-    return render(request, 'modulos/modulo_dashboard.html')
+    all_tdr = TdRecurso.objects.all().order_by('description')
+    all_values = TdRecurso.objects.all().order_by('description').values()
+    num = len(all_tdr)
+    sum = [None] * len(all_tdr)
+    names=[None] * len(all_tdr)
+    data = serializers.serialize("json",TdRecurso.objects.all().order_by('description'),fields=('description'))
+    for i in range(num):
+        tdr = all_tdr[i].id_tdr
+        all_recursos = Recurso.objects.filter(id_tdr=tdr).order_by('name_r')
+        tam = len(all_recursos)
+        sum[i] = tam
+        names[i] = all_tdr[i].description
+    return render(request, 'modulos/modulo_dashboard.html',{'names':json.dumps(names),
+                                                            'data':json.dumps(sum)})
 
 
 @login_required(login_url='login/')
@@ -417,5 +431,4 @@ def newrecurso(request, id_tdr):
         form = RecursoFillForm()
     return render(request, 'tdr/recursofill.html', {'form': form,
                                                     'tdr': tdr})
-
 

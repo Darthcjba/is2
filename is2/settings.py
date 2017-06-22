@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'log.apps.LogConfig',
     'polireserva.apps.PolireservaConfig',
     'datetimewidget',
+    'chartjs',
 ]
 
 MIDDLEWARE = [
