@@ -47,19 +47,29 @@ def modulo_mantenimiento(request):
 @has_permission_decorator('can_access_dashboard')
 def modulo_dashboard(request):
     all_tdr = TdRecurso.objects.all().order_by('description')
-    all_values = TdRecurso.objects.all().order_by('description').values()
+    all_res=Reservas.objects.all()
     num = len(all_tdr)
+    max=len(all_res)
     sum = [None] * len(all_tdr)
+    times= [0] * len(all_tdr)
     names=[None] * len(all_tdr)
-    data = serializers.serialize("json",TdRecurso.objects.all().order_by('description'),fields=('description'))
+
     for i in range(num):
         tdr = all_tdr[i].id_tdr
         all_recursos = Recurso.objects.filter(id_tdr=tdr).order_by('name_r')
         tam = len(all_recursos)
         sum[i] = tam
         names[i] = all_tdr[i].description
+
+    for j in range(max):
+        p=all_res[j].tdr_id
+        tipoder=TdRecurso.objects.get(pk=p)
+        for i in range(num):
+            if (names[i]==tipoder.description):
+                times[i]=times[i]+1
     return render(request, 'modulos/modulo_dashboard.html',{'names':json.dumps(names),
-                                                            'data':json.dumps(sum)})
+                                                            'data':json.dumps(sum),
+                                                            'times':json.dumps(times)})
 
 
 @login_required(login_url='login/')
