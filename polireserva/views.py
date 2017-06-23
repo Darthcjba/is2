@@ -1,9 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
+from reportlab.lib import colors
+from reportlab.lib.units import cm
+from reportlab.platypus import Table, TableStyle
 from rolepermissions.decorators import has_permission_decorator
 from rolepermissions.roles import get_user_roles, assign_role
-
+from django.http import HttpResponse
 from log.models import Usuario
 from .forms import *
 from django.contrib.auth.models import User
@@ -12,6 +15,10 @@ from datetime import date,datetime
 from django.core.mail import send_mail
 from django.core import serializers
 import json
+from django.conf import settings
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from django.views.generic import View
 
 
 @login_required(login_url='login/')
@@ -449,3 +456,96 @@ def newrecurso(request, id_tdr):
     return render(request, 'tdr/recursofill.html', {'form': form,
                                                     'tdr': tdr})
 
+class ReporteRecursosPDF(View):
+
+    def cabecera(self,pdf):
+        #Utilizamos el archivo logo
+        archivo_imagen = settings.MEDIA_ROOT +'/images/bg_poli.jpeg'
+        pdf.drawImage(archivo_imagen, 40, 750, 120, 90,preserveAspectRatio=True)
+        pdf.setFont("Helvetica", 16)
+        pdf.drawString(230, 790, u"POLIRESERVAS")
+        pdf.setFont("Helvetica", 14)
+        pdf.drawString(200, 770, u"REPORTE DE RECURSOS")
+
+    def get(self, request, *args, **kwargs):
+        #Indicamos el tipo de contenido a devolver, en este caso un pdf
+        response = HttpResponse(content_type='application/pdf')
+        #La clase io.BytesIO permite tratar un array de bytes como un fichero binario, se utiliza como almacenamiento temporal
+        buffer = BytesIO()
+        #Canvas nos permite hacer el reporte con coordenadas X y Y
+        pdf = canvas.Canvas(buffer)
+        self.cabecera(pdf)
+        y=550
+        self.tabla(pdf,y)
+        pdf.showPage()
+        pdf.save()
+        pdf = buffer.getvalue()
+        buffer.close()
+        response.write(pdf)
+        return response
+
+    def tabla(self, pdf, y):
+        # Creamos una tupla de encabezados para neustra tabla
+        encabezados = ('Recurso', 'Tipo de Recurso', 'Estado')
+        all_rec=Recurso.objects.all()
+        # Creamos una lista de tuplas que van a contener a las personas
+        detalles = [(rec.name_r, rec.id_tdr, rec.status) for rec in all_rec]
+        detalle_orden = Table([encabezados] + detalles, colWidths=[5 * cm, 5 * cm, 5 * cm])
+        # Aplicamos estilos a las celdas de la tabla
+        detalle_orden.setStyle(TableStyle(
+            [
+                # La primera fila(encabezados) va a estar centrada
+                ('ALIGN', (0, 0), (2, 0), 'CENTER'),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                ('FONTSIZE', (0, 0), (-1, -1), 10),
+            ]
+        ))
+        detalle_orden.wrapOn(pdf, 800, 600)
+        detalle_orden.drawOn(pdf, 120, y)
+
+class ReporteReservaPDF(View):
+
+    def cabecera(self,pdf):
+        #Utilizamos el archivo logo
+        archivo_imagen = settings.MEDIA_ROOT +'/images/bg_poli.jpeg'
+        pdf.drawImage(archivo_imagen, 40, 750, 120, 90,preserveAspectRatio=True)
+        pdf.setFont("Helvetica", 16)
+        pdf.drawString(230, 790, u"POLIRESERVAS")
+        pdf.setFont("Helvetica", 14)
+        pdf.drawString(200, 770, u"REPORTE DE RESERVAS")
+
+    def get(self, request, *args, **kwargs):
+        #Indicamos el tipo de contenido a devolver, en este caso un pdf
+        response = HttpResponse(content_type='application/pdf')
+        #La clase io.BytesIO permite tratar un array de bytes como un fichero binario, se utiliza como almacenamiento temporal
+        buffer = BytesIO()
+        #Canvas nos permite hacer el reporte con coordenadas X y Y
+        pdf = canvas.Canvas(buffer)
+        self.cabecera(pdf)
+        y=420
+        self.tabla(pdf,y)
+        pdf.showPage()
+        pdf.save()
+        pdf = buffer.getvalue()
+        buffer.close()
+        response.write(pdf)
+        return response
+
+    def tabla(self, pdf, y):
+        # Creamos una tupla de encabezados para neustra tabla
+        encabezados = ('Recurso', 'Estado', 'Fecha inicio','Fecha fin','Usuario')
+        all_res=Reservas.objects.all()
+        # Creamos una lista de tuplas que van a contener a las personas
+        detalles = [(res.recursos, res.status, res.date_i, res.date_f, res.user) for res in all_res]
+        detalle_orden = Table([encabezados] + detalles, colWidths=[4 * cm, 2 * cm, 5 * cm, 5 * cm, 4 * cm])
+        # Aplicamos estilos a las celdas de la tabla
+        detalle_orden.setStyle(TableStyle(
+            [
+                # La primera fila(encabezados) va a estar centrada
+                ('ALIGN', (0, 0), (4, 0), 'CENTER'),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                ('FONTSIZE', (0, 0), (-1, -1), 10),
+            ]
+        ))
+        detalle_orden.wrapOn(pdf, 600, 600)
+        detalle_orden.drawOn(pdf, 15, y)

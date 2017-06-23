@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'polireserva.apps.PolireservaConfig',
     'datetimewidget',
     'chartjs',
+    'reportlab',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,5 @@ if 'test' in sys.argv:
 LOGIN_REDIRECT_URL = '/polireserva'
 
 ROLEPERMISSIONS_MODULE = 'is2.roles'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

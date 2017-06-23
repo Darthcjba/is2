@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^dashboard/$', views.modulo_dashboard, name='modulo_dashboard'),
     #/polireserva/tdr/ --Lista Tipos de Recursos
     url(r'^administracion/recursos/$', views.tdrlist, name= 'tdrlist'),
+    #/polireserva/tdr/reporte --realiza un reporte
+    url(r'^administracion/recursos/reporte/$', views.ReporteRecursosPDF.as_view(), name= 'recursosreport'),
     # /polireserva/tdr/<id_tdr>/ --Detalles Tipo de Recurso
     url(r'^tdr/(?P<id_tdr>[0-9]+)/$', views.tdrdetail, name= 'tdrdetail'),
     # /polireserva/tdr/new/ --Crear Tipo de Recurso
@@ -42,6 +44,8 @@ urlpatterns = [
 
     #polireservas/reservas/list/ --Listar reservas
     url(r'^administracion/reservas/$', views.reservalist, name='reservalist'),
+    #polireservas/reservas/list/ --Listar reservas
+    url(r'^administracion/reservas/reporte$', views.ReporteReservaPDF.as_view(), name='reportereservas'),
     # polireservas/reservas/new/ --Nueva reserva
     url(r'^reservas/new/$', views.newreserva, name='newreserva'),
     # polireservas/reservas/<id_R>/ --Detalles reserva
