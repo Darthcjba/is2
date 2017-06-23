@@ -362,6 +362,10 @@ def newreserva(request):
                             print 'entra en el else 1'
                             usuario_bd = Usuario.objects.get(username=reserva.user)
                             usuario_rq = Usuario.objects.get(username=new_reserva.user)
+                            if usuario_rq.ladder == usuario_bd.ladder:
+                                messages.warning(request,"El recurso seleccionado se encuentra actualmente en reservado. Puede modificar su reserva si lo desea")
+                                return render(request, 'reservas/newreserva.html',
+                                              {'form': form, 'titulo': 'Nueva Reserva', 'accion': 'Guardar'})
                             if usuario_rq.ladder > usuario_bd.ladder:
                                 print 'request > db'
                                 print usuario_bd.username.id
@@ -381,6 +385,10 @@ def newreserva(request):
                         print 'entra en el else 2'
                         usuario_bd = Usuario.objects.get(username=reserva.user)
                         usuario_rq = Usuario.objects.get(username=new_reserva.user)
+                        if usuario_rq.ladder == usuario_bd.ladder:
+                            messages.warning(request,"El recurso seleccionado se encuentra actualmente en reservado. Puede modificar su reserva si lo desea")
+                            return render(request, 'reservas/newreserva.html',
+                                          {'form': form, 'titulo': 'Nueva Reserva', 'accion': 'Guardar'})
                         if usuario_rq.ladder > usuario_bd.ladder:
                             print usuario_bd.username.id
                             Reservas.objects.get(id_R=reserva.id_R).delete()
