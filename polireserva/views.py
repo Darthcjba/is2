@@ -368,13 +368,13 @@ def newreserva(request):
                                 Reservas.objects.get(id_R=reserva.id_R ).delete()
                                 #mandando mails
                                 print usuario_bd.username.email
-                                # send_mail(
-                                #    'Notificacion de Polireserva',
-                                #    'Aviso para' + usuario_bd.username.first_name + ' ' + usuario_bd.username.last_name + '! Te han quitado la reserva puto.',
-                                #    'polireservais2@gmail.com',
-                                #    [form.cleaned_data.get(usuario_bd.username.email)],
-                                #    fail_silently=False,
-                                # )
+                                send_mail(
+                                   'Notificacion de Polireserva',
+                                   'Aviso para' + usuario_bd.username.first_name + ' ' + usuario_bd.username.last_name + '! Un usuario con mayor prioridad ha reservadon dentro del horario del suyo. Por favor seleccione otro recurso.',
+                                   'polireservais2@gmail.com',
+                                   [usuario_bd.username.email],
+                                   fail_silently=False,
+                                )
                                 new_reserva.save()
 
                     else:
@@ -386,14 +386,13 @@ def newreserva(request):
                             Reservas.objects.get(id_R=reserva.id_R).delete()
                             #mandando mails
                             print usuario_bd.username.email
-                            #send_mail(
-                            #    'Notificacion de Polireserva',
-                            #    'Aviso para' + usuario_bd.username.first_name + ' ' + usuario_bd.username.last_name + '! Te han quitado la reserva puto.',
-                            #    'polireservais2@gmail.com',
-                            #    [form.cleaned_data.get(usuario_bd.username.email)],
-                            #    fail_silently=False,
-                            #)
-
+                            send_mail(
+                               'Notificacion de Polireserva',
+                               'Aviso para' + usuario_bd.username.first_name + ' ' + usuario_bd.username.last_name + '! Un usuario con mayor prioridad ha reservadon dentro del horario del suyo. Por favor seleccione otro recurso.',
+                               'polireservais2@gmail.com',
+                               [usuario_bd.username.email],
+                               fail_silently=False,
+                            )
                             new_reserva.save()
                 # new_reserva.save()
 
