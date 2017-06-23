@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from log import forms
 from django.contrib.auth import login, authenticate
 from django.core.mail import send_mail
+from rolepermissions.roles import assign_role
 
 # Create your views here.
 # this login required decorator is to not allow to any
@@ -21,6 +22,10 @@ def register(request):
         if form.is_valid() and extra_form.is_valid():
             new_user = form.save()
             new_extended_obj = extra_form.save(commit=False)
+            if (new_extended_obj.ladder=='invitado'):
+                assign_role(new_user, "invitado")
+            else:
+                assign_role(new_user, "usuario")
             # assign the user to the extended obj
             new_extended_obj.user = new_user
             new_extended_obj.username_id = new_user.id
