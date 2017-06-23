@@ -6,6 +6,8 @@ from log import forms
 from django.contrib.auth import login, authenticate
 from django.core.mail import send_mail
 from rolepermissions.roles import assign_role
+from django.contrib import messages
+
 
 # Create your views here.
 # this login required decorator is to not allow to any
@@ -44,6 +46,7 @@ def register(request):
                 [form.cleaned_data.get('email')],
                 fail_silently=False,
             )
+            messages.success(request, "Se ha registrado con exito a nuestro sistema!")
             return redirect('home')
     else:
         form = forms.SignUpForm()
