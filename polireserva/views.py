@@ -5,6 +5,8 @@ from reportlab.lib import colors
 from reportlab.lib.units import cm
 from reportlab.platypus import Table, TableStyle
 from rolepermissions.decorators import has_permission_decorator
+from rolepermissions.roles import get_user_roles, assign_role, remove_role, clear_roles
+
 from rolepermissions.roles import get_user_roles, assign_role
 from django.http import HttpResponse
 from log.models import Usuario
@@ -92,6 +94,18 @@ def userlist(request):
     all_user = Usuario.objects.all().order_by('username')
     return render(request,'usuarios/list.html',{'all_user':all_user})
 
+def deleteusuario(request,username_id):
+    user = User.objects.get(id=username_id)
+    return render(request, 'usuarios/deleteusuario.html', {'user': user})
+
+
+@login_required(login_url='login/')
+def deleteusuarioconfirm(request,username_id):
+    user = User.objects.get(id=username_id)
+    user.delete()
+    messages.success(request, "El usuario fue eliminado exitosamente")
+    return redirect('polireserva:userlist')
+
 
 def rolelist(request,username_id):
     user= User.objects.get(id=username_id)
@@ -107,6 +121,13 @@ def roleassing(request,username_id):
 def roleassignation(request,username_id,string):
     user = User.objects.get(id=username_id)
     assign_role(user,string)
+    messages.success(request, "Se agrego el rol "+string)
+    return redirect('polireserva:roleslist',username_id)
+
+def roleclear(request,username_id):
+    user = User.objects.get(id=username_id)
+    clear_roles(user)
+    messages.success(request, "Se limpiaron los roles para este usuario")
     return redirect('polireserva:roleslist',username_id)
 
 def mantenimientolist(request):

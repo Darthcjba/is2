@@ -32,6 +32,9 @@ urlpatterns = [
     url(r'^tdr/(?P<id_tdr>[0-9]+)/confirm/$', views.deletetdrconfirm, name='confirmtdr'),
     #polireserva/usuarios/ --Listar usuarios
     url(r'^administracion/usuarios/$', views.userlist, name= 'userlist'),
+    # /polireserva/usuarios/<id_usuario>/delete/ --Eliminar Usuario
+    url(r'^administracion/usuarios/(?P<username_id>[0-9]+)/delete/$', views.deleteusuario, name='deleteuser'),
+    url(r'^administracion/usuarios/(?P<username_id>[0-9]+)/confirm/$', views.deleteusuarioconfirm, name='confirmusuario'),
     #listar roles de un usuario
     url(r'^usuarios/(?P<username_id>[0-9]+)/$', views.rolelist, name= 'roleslist'),
 
@@ -40,6 +43,8 @@ urlpatterns = [
 
     #asignar rol
     url(r'^usuarios/(?P<username_id>[0-9]+)/addroles/(?P<string>[\w\-]+)/$', views.roleassignation, name='rolesassignation'),
+    #eliminar todos los roles
+    url(r'^usuarios/(?P<username_id>[0-9]+)/clearroles/$', views.roleclear, name='roleclear'),
 
 
     #polireservas/reservas/list/ --Listar reservas

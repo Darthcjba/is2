@@ -8,18 +8,23 @@
         <div class="jumbotron">
             <h2>Usuario: {{user.username}}</h2>
             <h4>ID: {{user.id}}</h4>
+            <hr>
+            <h3>Roles Asignados:</h3>
             <ul class=" media-list " role="menu">
                  {% if roles %}
                      {% for role in roles %}
-                                 <a class="btn btn-menu btn-success btn-block"
-                                       href="#">{{ role }}</a>
+                         <tr>
+                             <a class="btn btn-menu btn-success btn-block " href="#">{{ role }}</a></th>
+
+                         </tr>
                      {% endfor %}
                  {% else %}
                     <h4>No existen roles asignados a este usuario</h4>
                  {% endif %}
             </ul>
-            <a class="btn btn-success btn-sm" href="{% url 'polireserva:userlist' %}">Atras</a>
-            <a class="btn btn-success btn-sm" href="{% url 'polireserva:rolesassing' user.id %}">Agregar rol</a>
+                    <a class="btn btn-success btn-sm" href="{% url 'polireserva:userlist' %}">Atras</a>
+                    <a class="btn btn-success btn-sm" href="{% url 'polireserva:rolesassing' user.id %}">Agregar rol</a>
+                    <a style="background-color:#e74c3c ; border-color: #e74c3c" class="btn btn-success btn-sm" href="{% url 'polireserva:roleclear' user.id %}">Limpiar roles</a>
         </div>
     </div>
 </div>
