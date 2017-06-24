@@ -8,7 +8,7 @@
                 <h2>Esta seguro que desea eliminar el Tipo de recurso {{ tdr.description }} y todos sus recursos asociados?</h2>
                     <table>
                         <tr>
-                            <th><a class="btn btn-success btn-sm" href="../../">No</a></th>
+                            <th><a class="btn btn-success btn-sm" href="{% url 'polireserva:tdrlist' %}">No</a></th>
                             <th><a class="btn btn-danger btn-block " href="{% url 'polireserva:confirmtdr' tdr.id_tdr %}" >Si</a></th>
                         </tr>
                     </table>

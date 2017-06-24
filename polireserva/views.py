@@ -94,12 +94,16 @@ def userlist(request):
     all_user = Usuario.objects.all().order_by('username')
     return render(request,'usuarios/list.html',{'all_user':all_user})
 
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_delete_usuario')
 def deleteusuario(request,username_id):
     user = User.objects.get(id=username_id)
     return render(request, 'usuarios/deleteusuario.html', {'user': user})
 
 
 @login_required(login_url='login/')
+@has_permission_decorator('can_delete_usuario')
 def deleteusuarioconfirm(request,username_id):
     user = User.objects.get(id=username_id)
     user.delete()
@@ -107,36 +111,48 @@ def deleteusuarioconfirm(request,username_id):
     return redirect('polireserva:userlist')
 
 
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_admin')
 def rolelist(request,username_id):
     user= User.objects.get(id=username_id)
     roles = get_user_roles(user)
     return render(request,'usuarios/roles.html',{'user':user,
                                                  'roles':roles})
 
+@login_required(login_url='login/')
+@has_permission_decorator('can_assign_role')
 def roleassing(request,username_id):
     user=User.objects.get(id=username_id)
     return render(request, 'usuarios/addrole.html',{'user':user})
 
 
+@login_required(login_url='login/')
+@has_permission_decorator('can_assign_role')
 def roleassignation(request,username_id,string):
     user = User.objects.get(id=username_id)
     assign_role(user,string)
     messages.success(request, "Se agrego el rol "+string)
     return redirect('polireserva:roleslist',username_id)
 
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_assign_role')
 def roleclear(request,username_id):
     user = User.objects.get(id=username_id)
     clear_roles(user)
     messages.success(request, "Se limpiaron los roles para este usuario")
     return redirect('polireserva:roleslist',username_id)
 
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_mantenimiento')
 def mantenimientolist(request):
     all_man = Mantenimiento.objects.filter(estado="Encurso")
     all_need = Mantenimiento.objects.filter(estado="Enespera")
-    return render(request,'mantenimiento/list.html',{'all_man': all_man,
-                                                     'all_need':all_need})
+    return render(request,'mantenimiento/list.html',{'all_man': all_man, 'all_need':all_need})
 
 
+@login_required(login_url='login/')
 def mantenimientonew(request):
     if request.method == 'POST':
         form = MantenimientoNewForm(request.POST)
@@ -153,9 +169,10 @@ def mantenimientonew(request):
         form = MantenimientoNewForm()
     return render(request, 'mantenimiento/new.html', {'form': form})
 
+
+@login_required(login_url='login/')
 def mantenimientofin(request,id_M):
     man = get_object_or_404(Mantenimiento,pk=id_M)
-
     if request.method == 'POST':
         form = MantenimientoFinForm(request.POST)
         if form.is_valid():
@@ -172,13 +189,14 @@ def mantenimientofin(request,id_M):
     return render(request,'mantenimiento/fin.html',{'form':form,
                                                      'man':man})
 
-
+@login_required(login_url='login/')
 def amantenimiento(request,id_M):
     man = get_object_or_404(Mantenimiento,pk=id_M)
     rec = man.recurso
     return render(request, 'mantenimiento/detail.html', {'man': man,
                                                        'rec': rec})
 
+@login_required(login_url='login/')
 def enviarman(request,id_M):
     man = get_object_or_404(Mantenimiento,pk=id_M)
     man.estado="Encurso"
@@ -188,6 +206,9 @@ def enviarman(request,id_M):
     man.save()
     return redirect('polireserva:mantenimientolist')
 
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_recepcion')
 def recepcionlist(request):
     d=date.today()
     res_today=[]
@@ -197,10 +218,16 @@ def recepcionlist(request):
             res_today.append(res)
     return render(request,'recepcion/list.html',{'res_today':res_today})
 
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_recepcion')
 def recepcionentrega(request,id_R):
     reserva=get_object_or_404(Reservas,pk=id_R)
     return render(request,'recepcion/detail.html',{'reserva':reserva})
 
+
+@login_required(login_url='login/')
+@has_permission_decorator('can_access_recepcion')
 def recepcionconfirm(request,id_R):
     reserva=get_object_or_404(Reservas,pk=id_R)
     reserva.status="Encurso"
@@ -210,6 +237,8 @@ def recepcionconfirm(request,id_R):
     reserva.save()
     return redirect('polireserva:recepcionlist')
 
+
+@login_required(login_url='login/')
 def devolucion(request,id_R):
     reserva=get_object_or_404(Reservas,pk=id_R)
     date=timezone.now()
@@ -238,7 +267,7 @@ def devolucion(request,id_R):
                                                      'date':date})
 
 
-
+@login_required(login_url='login/')
 def devaman(request,id_R):
     reserva=get_object_or_404(Reservas,pk=id_R)
     date=timezone.now()
@@ -289,7 +318,6 @@ def deleterecurso(request,id_tdr,id_r):
     })
 
 
-
 @login_required(login_url='login/')
 @has_permission_decorator('can_delete_recurso')
 def deleterecursonconfirm(request,id_tdr,id_r):
@@ -336,7 +364,7 @@ def newtdr(request):
 @has_permission_decorator('can_list_reserva')
 def reservalist(request):
     all_reservas = Reservas.objects.all().order_by('date_i')
-    return render(request, 'reservas/listareservas.html', {'all_reservas': all_reservas, 'titulo':'Reservas'})
+    return render(request, 'reservas/listareservas.html', {'all_reservas': all_reservas, 'titulo':'Reservas del Sistema'})
 
 
 @login_required(login_url='login/')
@@ -350,6 +378,7 @@ def reservadetail(request, id_R):
     reserva = get_object_or_404(Reservas, pk=id_R)
     recurso = reserva.recursos
     return render(request, 'reservas/reservasdetail.html', {'reserva': reserva, 'recursos':recurso})
+
 
 import datetime
 @login_required(login_url='login/')
@@ -458,6 +487,7 @@ def updatereserva(request, id_R=None):
 def deletereserva(request,id_R):
     reserva = get_object_or_404(Reservas, pk=id_R)
     return render(request,'reservas/deletereserva.html', {'reserva':reserva})
+
 
 @login_required(login_url='login/')
 def deletereservaconfirm(request,id_R):
