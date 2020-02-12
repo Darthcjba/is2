@@ -5,7 +5,7 @@ core-python==4.8
 core-python-netns==1.0
 corens3-python==4.8
 cryptography==1.7.1
-Django==1.11
+Django==1.11.28
 django-chartjs==1.2
 django-datetime-widget==0.9.3
 django-discover-runner==1.0
